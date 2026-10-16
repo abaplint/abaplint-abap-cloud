@@ -4,6 +4,7 @@
   <asx:values>
    <DEVC>
     <CTEXT>abaplint ATC checks for ABAP Cloud</CTEXT>
+    <PACKKIND>5</PACKKIND>
    </DEVC>
   </asx:values>
  </asx:abap>
