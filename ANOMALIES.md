@@ -12,11 +12,11 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 - **Impact:** Lint can't show that `src/generated` is cloud compatible.
 - **Status:** workaround for the new code: [abaplint-cloud.jsonc](abaplint-cloud.jsonc) (`npm run lint:cloud`) checks `src/*` and `src/checks` with the Cloud version, using `src/generated` only as a dependency. Open for `src/generated`, see the next entry.
 
-### ABAPiti's generated timer uses GET RUN TIME
-- **Where:** `src/generated`
-- **What:** ABAPiti emits `GET RUN TIME FIELD` in `zlnt_runtime_tele_970d5104e5f4=>now`, which isn't allowed in ABAP Cloud. The generated helper is rewritten to use `utclong_current` and `utclong_diff`. Separately, `cl_abap_message_digest` in `zlnt_runtime_stri_248d3505915c` still needs its API release state checked in the target system.
-- **Impact:** The helper measures elapsed wall-clock time, so system clock adjustments can affect telemetry measurements.
-- **Status:** workaround in [scripts/replace-runtime.mjs](scripts/replace-runtime.mjs), which runs after ABAPiti. The separate unreleased `cl_abap_conv_out_ce` and `cl_abap_conv_in_ce` APIs (about 600 uses) are worked around by [scripts/replace-conv.mjs](scripts/replace-conv.mjs).
+### The generated code uses `cl_abap_message_digest`
+- **Where:** `src/generated/zlnt_runtime_stri_248d3505915c`
+- **What:** Its API release state for use in ABAP for Cloud Development has not been checked in the target system.
+- **Impact:** Activation may fail if the class is not released for Cloud development.
+- **Status:** open
 
 ### Code point conversions are untested on a real system
 - **Where:** [scripts/replace-conv.mjs](scripts/replace-conv.mjs)
