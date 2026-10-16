@@ -7,6 +7,8 @@ const srcFolder = path.join(packageRoot, "src");
 const classesFolder = path.join(srcFolder, "generated");
 const checksFolder = path.join(srcFolder, "checks");
 const keep = new Set(["package.devc.xml"]);
+// abapGit keeps the ABAP language version in UNICODE for classes and in PACKKIND for packages, 5 is ABAP for Cloud Development
+const languageVersion = "5";
 const category = "zlnc_abaplint";
 const variant = "zlnc_abaplint";
 
@@ -204,6 +206,7 @@ for (const filename of readdirSync(checksFolder)) {
 if (!existsSync(path.join(checksFolder, "package.devc.xml"))) {
   writeFileSync(path.join(checksFolder, "package.devc.xml"), abapGitXml("LCL_OBJECT_DEVC", `   <DEVC>
     <CTEXT>ATC checks for abaplint rules</CTEXT>
+    <PACKKIND>${languageVersion}</PACKKIND>
    </DEVC>`));
 }
 
@@ -237,7 +240,7 @@ ENDCLASS.
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>
-    <UNICODE>X</UNICODE>
+    <UNICODE>${languageVersion}</UNICODE>
    </VSEOCLASS>`));
   writeJson(`${chko}.chko.json`, {
     formatVersion: "1",

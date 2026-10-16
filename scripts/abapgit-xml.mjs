@@ -6,6 +6,8 @@ const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const outputRoot = path.join(packageRoot, "output");
 const classesFolder = path.join(packageRoot, "src", "generated");
 const manifestPath = path.join(outputRoot, "abaplint-release-manifest.json");
+// abapGit keeps the ABAP language version of classes and interfaces in UNICODE, 5 is ABAP for Cloud Development
+const languageVersion = "5";
 
 function escapeXml(text) {
   return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -72,7 +74,7 @@ for (const [name, {type, source}] of objects) {
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>
-    <UNICODE>X</UNICODE>
+    <UNICODE>${languageVersion}</UNICODE>
    </VSEOCLASS>`);
   } else {
     xml = abapGitXml("LCL_OBJECT_INTF", `   <VSEOINTERF>
@@ -81,7 +83,7 @@ for (const [name, {type, source}] of objects) {
     <DESCRIPT>${descript}</DESCRIPT>
     <EXPOSURE>2</EXPOSURE>
     <STATE>1</STATE>
-    <UNICODE>X</UNICODE>
+    <UNICODE>${languageVersion}</UNICODE>
    </VSEOINTERF>`);
   }
   writeFileSync(path.join(classesFolder, `${name}.${type}.xml`), xml);
