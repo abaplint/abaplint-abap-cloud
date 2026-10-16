@@ -154,6 +154,7 @@ CLASS zcl_lnt_atc_source_reader IMPLEMENTATION.
   METHOD zif_lnt_source_reader~read.
     DATA lt_statements TYPE if_ci_atc_source_code_provider=>ty_statements.
     DATA lr_procedures TYPE REF TO if_ci_atc_source_code_provider=>ty_procedures.
+    DATA ls_unit TYPE if_ci_atc_source_code_provider=>ty_compilation_unit.
     FIELD-SYMBOLS <lt_procedures> TYPE if_ci_atc_source_code_provider=>ty_procedures.
 
     CLEAR et_files.
@@ -163,9 +164,18 @@ CLASS zcl_lnt_atc_source_reader IMPLEMENTATION.
       RETURN.
     ENDIF.
 
-    DATA(ls_unit) = mi_code_provider->object_to_comp_unit( VALUE #(
-      type = iv_object_type
-      name = iv_object_name ) ).
+    CASE iv_object_type.
+      WHEN 'CLAS'.
+        ls_unit-kind = if_ci_atc_source_code_provider=>compilation_unit_kinds-class.
+      WHEN 'INTF'.
+        ls_unit-kind = if_ci_atc_source_code_provider=>compilation_unit_kinds-interface.
+      WHEN 'FUGR'.
+        ls_unit-kind = if_ci_atc_source_code_provider=>compilation_unit_kinds-function_group.
+      WHEN OTHERS.
+        RETURN.
+    ENDCASE.
+    ls_unit-name = to_upper( iv_object_name ).
+
     TRY.
         lr_procedures = mi_code_provider->get_procedures( ls_unit ).
       CATCH cx_ci_atc_invalid_comp_unit.
@@ -345,16 +355,8 @@ CLASS zcl_lnt_atc_source_reader IMPLEMENTATION.
     CLEAR et_files.
     CLEAR et_line_map.
 
+* ABAP Cloud has no programs, only classes, interfaces and function groups contain source
     CASE iv_object_type.
-      WHEN 'PROG'.
-        add_include(
-          EXPORTING
-            iv_filename = to_filename( iv_name = iv_object_name iv_extension = 'prog.abap' )
-            iv_include  = to_upper( iv_object_name )
-            it_includes = it_includes
-          CHANGING
-            ct_files    = et_files
-            ct_line_map = et_line_map ).
       WHEN 'CLAS'.
         build_clas(
           EXPORTING

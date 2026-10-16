@@ -342,22 +342,14 @@ CLASS ltcl_build_files IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD prog.
-* other includes of the program are objects of their own
+* there are no programs in ABAP Cloud
     build(
       iv_object_type = 'PROG'
-      iv_object_name = 'ztest'
-      it_includes    = VALUE #(
-        ( include = 'ZTEST' source = VALUE #( ( `REPORT ZTEST.` ) ( `INCLUDE ZTEST_TOP.` ) ) )
-        ( include = 'ZTEST_TOP' source = VALUE #( ( `DATA FOO TYPE I.` ) ) ) ) ).
+      iv_object_name = 'ZTEST'
+      it_includes    = VALUE #( ( include = 'ZTEST' source = VALUE #( ( `REPORT ZTEST.` ) ) ) ) ).
 
-    cl_abap_unit_assert=>assert_equals(
-      act = mt_files
-      exp = VALUE zif_lnt_source_reader=>ty_files( ( filename = `ztest.prog.abap` source = VALUE #(
-        ( `REPORT ZTEST.` )
-        ( `INCLUDE ZTEST_TOP.` ) ) ) ) ).
-    cl_abap_unit_assert=>assert_equals(
-      act = mt_line_map[ 1 ]-include
-      exp = 'ZTEST' ).
+    cl_abap_unit_assert=>assert_initial( mt_files ).
+    cl_abap_unit_assert=>assert_initial( mt_line_map ).
   ENDMETHOD.
 
   METHOD fugr.
@@ -458,8 +450,10 @@ CLASS ltcl_read IMPLEMENTATION.
         et_line_map    = lt_line_map ).
 
     cl_abap_unit_assert=>assert_equals(
-      act = mo_provider->ms_unit-name
-      exp = 'ZCL_FOO' ).
+      act = mo_provider->ms_unit
+      exp = VALUE if_ci_atc_source_code_provider=>ty_compilation_unit(
+        kind = if_ci_atc_source_code_provider=>compilation_unit_kinds-class
+        name = 'ZCL_FOO' ) ).
     cl_abap_unit_assert=>assert_equals(
       act = lt_files
       exp = VALUE zif_lnt_source_reader=>ty_files( ( filename = `zcl_foo.clas.abap` source = VALUE #(
