@@ -12,11 +12,11 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 - **Impact:** Lint can't show that `src/generated` is cloud compatible.
 - **Status:** workaround for the new code: [abaplint-cloud.jsonc](abaplint-cloud.jsonc) (`npm run lint:cloud`) checks `src/*` and `src/checks` with the Cloud version, using `src/generated` only as a dependency. Open for `src/generated`, see the next entry.
 
-### The transpiled rules may not compile as ABAP Cloud
+### ABAPiti's generated timer uses GET RUN TIME
 - **Where:** `src/generated`
-- **What:** The checks call the transpiled rules, so they must compile as ABAP Cloud too. Linting `src/generated` with the Cloud version (`parser_error` and `check_syntax`) finds one statement: `GET RUN TIME FIELD` in `zlnt_runtime_tele_970d5104e5f4=>now`, which isn't allowed in ABAP Cloud. abaplint doesn't know which SAP APIs are released, so the lint can't show whether the generated code only calls released ones. `cl_abap_message_digest` (one use, in `zlnt_runtime_stri_248d3505915c`) needs its release state checked.
-- **Impact:** The checks can't be activated on an ABAP Cloud system until `GET RUN TIME` is replaced.
-- **Status:** open, best fixed in ABAPiti. The unreleased `cl_abap_conv_out_ce` and `cl_abap_conv_in_ce` (about 600 uses) are worked around by [scripts/replace-conv.mjs](scripts/replace-conv.mjs), which runs after ABAPiti and rewrites them to `cl_abap_conv_codepage`.
+- **What:** ABAPiti emits `GET RUN TIME FIELD` in `zlnt_runtime_tele_970d5104e5f4=>now`, which isn't allowed in ABAP Cloud. The generated helper is rewritten to use `utclong_current` and `utclong_diff`. Separately, `cl_abap_message_digest` in `zlnt_runtime_stri_248d3505915c` still needs its API release state checked in the target system.
+- **Impact:** The helper measures elapsed wall-clock time, so system clock adjustments can affect telemetry measurements.
+- **Status:** workaround in [scripts/replace-runtime.mjs](scripts/replace-runtime.mjs), which runs after ABAPiti. The separate unreleased `cl_abap_conv_out_ce` and `cl_abap_conv_in_ce` APIs (about 600 uses) are worked around by [scripts/replace-conv.mjs](scripts/replace-conv.mjs).
 
 ### Code point conversions are untested on a real system
 - **Where:** [scripts/replace-conv.mjs](scripts/replace-conv.mjs)

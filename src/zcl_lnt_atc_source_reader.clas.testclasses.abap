@@ -3,12 +3,16 @@ CLASS ltd_code_provider DEFINITION FINAL FOR TESTING.
     INTERFACES if_ci_atc_source_code_provider.
     DATA mt_procedures TYPE if_ci_atc_source_code_provider=>ty_procedures.
     DATA mv_unbound TYPE abap_bool.
+    DATA mv_invalid TYPE abap_bool.
     DATA ms_unit TYPE if_ci_atc_source_code_provider=>ty_compilation_unit.
 ENDCLASS.
 
 CLASS ltd_code_provider IMPLEMENTATION.
   METHOD if_ci_atc_source_code_provider~get_procedures.
     ms_unit = compilation_unit.
+    IF mv_invalid = abap_true.
+      RAISE EXCEPTION NEW cx_ci_atc_invalid_comp_unit( ).
+    ENDIF.
     IF mv_unbound = abap_true.
       RETURN.
     ENDIF.
@@ -407,6 +411,7 @@ CLASS ltcl_read DEFINITION FINAL FOR TESTING RISK LEVEL HARMLESS DURATION SHORT 
     METHODS teardown.
     METHODS clas FOR TESTING RAISING cx_static_check.
     METHODS no_procedures FOR TESTING RAISING cx_static_check.
+    METHODS invalid_comp_unit FOR TESTING RAISING cx_static_check.
     METHODS no_code_provider FOR TESTING RAISING cx_static_check.
     METHODS run_rule FOR TESTING RAISING cx_static_check.
 
@@ -480,6 +485,22 @@ CLASS ltcl_read IMPLEMENTATION.
     DATA lt_files TYPE zif_lnt_source_reader=>ty_files.
 
     mo_provider->mv_unbound = abap_true.
+
+    mi_reader->read(
+      EXPORTING
+        iv_object_type = 'CLAS'
+        iv_object_name = 'ZCL_FOO'
+      IMPORTING
+        et_files       = lt_files ).
+
+    cl_abap_unit_assert=>assert_initial( lt_files ).
+  ENDMETHOD.
+
+  METHOD invalid_comp_unit.
+    DATA lt_files TYPE zif_lnt_source_reader=>ty_files.
+
+    set_class( ).
+    mo_provider->mv_invalid = abap_true.
 
     mi_reader->read(
       EXPORTING

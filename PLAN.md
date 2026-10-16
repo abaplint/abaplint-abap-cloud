@@ -41,12 +41,12 @@ src/zcl_lnt_atc_source_reader  builds abapGit style files from if_ci_atc_source_
 | 0, spike on a real system | **Not done**, needs an SAP BTP ABAP environment or S/4HANA Cloud system. The reader is built on the assumptions listed in [ANOMALIES.md](ANOMALIES.md). |
 | 1, generator script | Done: [scripts/checks.mjs](scripts/checks.mjs) writes 115 checks plus CHKO, CHKC and CHKV files, and skips 25 rules with reasons. |
 | 2, runtime classes | Done: `zcl_lnt_atc_check`, `zcl_lnt_atc_meta_data`, `zcl_lnt_atc_source_reader`, `zcl_lnt_utils`, `zif_lnt_source_reader` |
-| 3, tests | Done: 39 unit tests pass with `npm run unit`; `abaplint` and `npm run lint:cloud` (Cloud language version) report 0 issues. |
+| 3, tests | Done: 40 unit tests pass with `npm run unit`; `abaplint` and `npm run lint:cloud` (Cloud language version) report 0 issues. |
 | 4, real system test | **Not done**, needs a system. |
 
-Blocker for Phase 4: `src/generated` uses `GET RUN TIME`, which ABAP Cloud doesn't allow. The unreleased `cl_abap_conv_out_ce` and `cl_abap_conv_in_ce` are rewritten to `cl_abap_conv_codepage` by [scripts/replace-conv.mjs](scripts/replace-conv.mjs) after ABAPiti runs. See [ANOMALIES.md](ANOMALIES.md).
+`src/generated` uses `GET RUN TIME`, which ABAP Cloud doesn't allow. [scripts/replace-runtime.mjs](scripts/replace-runtime.mjs) rewrites the generated timer to UTCLONG-based elapsed wall-clock timing after ABAPiti. The unreleased `cl_abap_conv_out_ce` and `cl_abap_conv_in_ce` are rewritten to `cl_abap_conv_codepage` by [scripts/replace-conv.mjs](scripts/replace-conv.mjs). See [ANOMALIES.md](ANOMALIES.md).
 
-Changes from the plan below: the rules run with syntax version `v758`, not `Cloud`. The transpiler skips the CHKO, CHKC and CHKV files. The source reader catches `cx_root`. See [ANOMALIES.md](ANOMALIES.md) for why.
+Changes from the plan below: the rules run with syntax version `v758`, not `Cloud`. The transpiler skips the CHKO, CHKC and CHKV files. See [ANOMALIES.md](ANOMALIES.md) for why.
 
 Record anything unexpected found while working on this plan in [ANOMALIES.md](ANOMALIES.md): generator output, stubs, tooling, or differences from the classic repository. That keeps this plan about the work itself.
 
@@ -180,14 +180,11 @@ Keep `run_rule`, the registry cache, `get_config`, `find_object`, `to_findings` 
 
 ## Note: open-abap-ci may need updates
 
-The lint and unit tests here run against the stubs in [open-abap/open-abap-ci `src/cloud`](https://github.com/open-abap/open-abap-ci/tree/main/src/cloud), not the real SAP classes. Those stubs are incomplete and differ from the released APIs in places. So some of this work may need pull requests to open-abap-ci before it lints or runs here. Known so far:
+The lint and unit tests here run against the stubs in [open-abap/open-abap-ci `src/cloud`](https://github.com/open-abap/open-abap-ci/tree/main/src/cloud), not the real SAP classes. The stubs are for shape and static analysis: definitions must match the released APIs, but methods only need an implementation if the tests here call them. Several stub methods return initial values, such as `cl_ci_atc_data_provider->get_code_provider( )` and the `cl_ci_atc_assistant_factory` methods. That's fine, because the tests inject `zif_lnt_source_reader` and pass an initial data provider and assistant factory.
 
-- `cl_ci_atc_data_provider` is not `FINAL CREATE PRIVATE`, unlike the released class. Code that subclasses or instantiates it passes locally but won't compile on a real system. Tests must use our own `zif_lnt_source_reader` injection, not a data provider subclass.
-- `cl_ci_atc_data_provider->get_code_provider( )` and `main_program_from_comp_unit( )` return initial values (`" todo`). `get_checked_destination( )` is commented out because `if_rfc_dest` is missing.
-- `cl_ci_atc_assistant_factory` methods all return initial values. That's fine while quick fixes and finding details aren't used.
-- Compare `if_ci_atc_check`, `if_ci_atc_check_meta_data` and `if_ci_atc_source_code_provider` with the released versions (for example [abapedia steampunk-2305-api](https://github.com/abapedia/steampunk-2305-api)). Fix any differences in types, enums or method signatures in open-abap-ci, not with workarounds here.
+Compare the stubs with the released versions (for example [abapedia steampunk-2305-api](https://github.com/abapedia/steampunk-2305-api)), and fix any difference in class modifiers, types, enums, exceptions or method signatures in open-abap-ci, not with workarounds here. [open-abap-ci #28](https://github.com/open-abap/open-abap-ci/pull/28) made `cl_ci_atc_data_provider` `FINAL CREATE PRIVATE` and added the released exception classes `cx_ci_atc_check_invalid_attr`, `cx_ci_atc_invalid_comp_unit` and `cx_ci_atc_token_no_call`.
 
-Record every stub gap found in [ANOMALIES.md](ANOMALIES.md) and link the open-abap-ci pull request that fixes it.
+Record every difference found in [ANOMALIES.md](ANOMALIES.md) and link the open-abap-ci pull request that fixes it.
 
 ## Phase 4: real system test
 

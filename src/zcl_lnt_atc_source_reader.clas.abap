@@ -166,10 +166,9 @@ CLASS zcl_lnt_atc_source_reader IMPLEMENTATION.
     DATA(ls_unit) = mi_code_provider->object_to_comp_unit( VALUE #(
       type = iv_object_type
       name = iv_object_name ) ).
-* the released API raises cx_ci_atc_invalid_comp_unit, a cx_dynamic_check, open-abap-ci declares cx_static_check
     TRY.
         lr_procedures = mi_code_provider->get_procedures( ls_unit ).
-      CATCH cx_root.
+      CATCH cx_ci_atc_invalid_comp_unit.
         RETURN.
     ENDTRY.
     IF lr_procedures IS NOT BOUND.

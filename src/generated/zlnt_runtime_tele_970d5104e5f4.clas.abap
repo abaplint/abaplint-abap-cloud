@@ -4,25 +4,22 @@ CLASS zlnt_runtime_tele_970d5104e5f4 DEFINITION PUBLIC CREATE PRIVATE.
   PROTECTED SECTION.
   PRIVATE SECTION.
     CLASS-DATA initialized TYPE abap_bool.
-    CLASS-DATA previous TYPE i.
-    CLASS-DATA elapsed TYPE f.
+    CLASS-DATA previous TYPE utclong.
+    CLASS-DATA elapsed TYPE decfloat34.
 ENDCLASS.
 CLASS zlnt_runtime_tele_970d5104e5f4 IMPLEMENTATION.
   METHOD now.
-    DATA reading TYPE i.
-    DATA delta TYPE f.
-    GET RUN TIME FIELD reading.
+    DATA(current) = utclong_current( ).
     IF initialized = abap_false.
       initialized = abap_true.
-      previous = reading.
+      previous = current.
     ELSE.
-      delta = CONV f( reading ) - CONV f( previous ).
-      IF delta < 0.
-        delta = delta + 2147483648.
+      DATA(delta) = utclong_diff( high = current low = previous ).
+      IF delta > 0.
+        elapsed = elapsed + delta.
       ENDIF.
-      elapsed = elapsed + delta.
-      previous = reading.
+      previous = current.
     ENDIF.
-    result = trunc( elapsed / 1000 ).
+    result = trunc( elapsed * 1000 ).
   ENDMETHOD.
 ENDCLASS.
