@@ -12,17 +12,6 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 - **Impact:** Lint can't show that `src/generated` is cloud compatible.
 - **Status:** workaround for the new code: [abaplint-cloud.jsonc](abaplint-cloud.jsonc) (`npm run lint:cloud`) checks `src/*` and `src/checks` with the Cloud version, using `src/generated` only as a dependency. Open for `src/generated`, see the next entry.
 
-### The generated code uses `cl_abap_message_digest`
-- **Where:** `src/generated/zlnt_runtime_stri_248d3505915c`
-- **What:** Its API release state for use in ABAP for Cloud Development has not been checked in the target system.
-- **Impact:** Activation may fail if the class is not released for Cloud development.
-- **Status:** open
-
-### Code point conversions are untested on a real system
-- **Where:** [scripts/replace-conv.mjs](scripts/replace-conv.mjs)
-- **What:** The rewrite uses `cl_abap_conv_codepage` with `UTF-16LE` for the converters (as before, encoding 4103) and `UTF-16BE` to turn a code point into a character. open-abap-core supports `UTF-16BE` only in `create_in`, which is why `create_out` uses `UTF-16LE` and adds up the two bytes. Not verified on SAP: whether `UTF-16BE` decoding keeps U+FEFF (`uccpi( 65279 )`, 37 uses) or drops it as a byte order mark.
-- **Status:** open
-
 ### A generated rule class uses the hand-written class prefix
 - **Where:** `src/generated/zcl_lnt_atc_check_category.clas.abap`
 - **What:** The transpiled abaplint rule `atc_check_category` uses the `zcl_lnt_atc_*` prefix of the hand-written classes (`zcl_lnt_atc_check`, `zcl_lnt_atc_meta_data`, `zcl_lnt_atc_source_reader`).
