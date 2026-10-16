@@ -2,7 +2,7 @@
   "name": "@abaplint/abaplint-abap-cloud",
   "private": true,
   "version": "0.0.0",
-  "description": "ABAPiti transpilation experiments for @abaplint/core",
+  "description": "abaplint rules as ABAP Cloud ATC checks",
   "engines": {
     "node": ">=22"
   },

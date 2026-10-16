@@ -6,11 +6,6 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 
 ## Generator and tooling
 
-### package.json still names the classic package
-- **Where:** [package.json](package.json)
-- **What:** `name` is `@abaplint/abaplint-abap-classic`, and `description` says "ABAPiti transpilation experiments".
-- **Status:** open
-
 ### Syntax check uses the Normal language version, not Cloud
 - **Where:** [abaplint.jsonc](abaplint.jsonc), `syntax.version`
 - **What:** `"release": "open-abap", "language": "Normal"`, with dependencies on open-abap-core and open-abap-gui. Code that isn't released for ABAP Cloud passes lint.
@@ -25,7 +20,7 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 
 ### The transpiler runtime removes trailing whitespace for WIDTH
 - **Where:** `@abaplint/runtime`, `template_formatting.js`
-- **What:** `|{ ch WIDTH = 1 }|` uses JavaScript `trimEnd()`, which removes trailing newlines and tabs as well as blanks. ABAP only removes trailing blanks of c fields. A newline became a blank, the lexer saw one long line, and a unit test failed.
+- **What:** `|{ ch WIDTH = 1 }|` uses JavaScript `trimEnd()`, which removes trailing newlines and tabs as well as blanks, for strings too. ABAP only removes trailing blanks, and only of c fields. A newline became a blank, the lexer saw one long line, and a unit test failed. Tested in the transpiler: a newline or tab in `c LENGTH 1` comes back as `' '`. `` `a` && newline `` as a string comes back as `'a'`, and `` `a ` `` as a string also comes back as `'a'`. Without `WIDTH`, all of these are correct.
 - **Status:** workaround: `replace-conv.mjs` uses `COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch )`. Should be fixed in the transpiler.
 
 ### Code point conversions are untested on a real system
