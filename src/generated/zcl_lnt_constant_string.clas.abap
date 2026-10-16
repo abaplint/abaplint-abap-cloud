@@ -21,20 +21,20 @@ CLASS zcl_lnt_constant_string IMPLEMENTATION.
     DATA(t4) = |^('[^\n\r|.
     DATA t5 TYPE c LENGTH 1.
     CLEAR t5.
-    t5 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t5 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t4 t5 INTO t4 RESPECTING BLANKS.
     DATA t6 TYPE c LENGTH 1.
     CLEAR t6.
-    t6 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t6 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t4 t6 INTO t4 RESPECTING BLANKS.
     t4 = t4 && |]*')\|(`[^\n\r|.
     DATA t7 TYPE c LENGTH 1.
     CLEAR t7.
-    t7 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t7 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t4 t7 INTO t4 RESPECTING BLANKS.
     DATA t8 TYPE c LENGTH 1.
     CLEAR t8.
-    t8 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t8 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t4 t8 INTO t4 RESPECTING BLANKS.
     t4 = t4 && |]*`)$|.
     DATA(t9) = ||.

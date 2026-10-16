@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "no_aliases: No ALIASES",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_NO_ALIASES",
+  "checkType": "remoteEnabled"
+}

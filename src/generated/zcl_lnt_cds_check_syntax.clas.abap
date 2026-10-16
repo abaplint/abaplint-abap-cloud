@@ -5560,48 +5560,48 @@ CLASS zcl_lnt_cds_check_syntax IMPLEMENTATION.
       DATA(t19) = |@[\t\n|.
       DATA t20 TYPE c LENGTH 1.
       CLEAR t20.
-      t20 = cl_abap_conv_in_ce=>uccpi( 11 ).
+      t20 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ).
       CONCATENATE t19 t20 INTO t19 RESPECTING BLANKS.
       DATA t21 TYPE c LENGTH 1.
       CLEAR t21.
-      t21 = cl_abap_conv_in_ce=>uccpi( 12 ).
+      t21 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
       CONCATENATE t19 t21 INTO t19 RESPECTING BLANKS.
       t19 = t19 && |\r    - |.
       DATA t22 TYPE c LENGTH 1.
       CLEAR t22.
-      t22 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+      t22 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
       CONCATENATE t19 t22 INTO t19 RESPECTING BLANKS.
       DATA t23 TYPE c LENGTH 1.
       CLEAR t23.
-      t23 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+      t23 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
       CONCATENATE t19 t23 INTO t19 RESPECTING BLANKS.
       t19 = t19 && |  　|.
       DATA t24 TYPE c LENGTH 1.
       CLEAR t24.
-      t24 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+      t24 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
       CONCATENATE t19 t24 INTO t19 RESPECTING BLANKS.
       t19 = t19 && |]*<?[\t\n|.
       DATA t25 TYPE c LENGTH 1.
       CLEAR t25.
-      t25 = cl_abap_conv_in_ce=>uccpi( 11 ).
+      t25 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ).
       CONCATENATE t19 t25 INTO t19 RESPECTING BLANKS.
       DATA t26 TYPE c LENGTH 1.
       CLEAR t26.
-      t26 = cl_abap_conv_in_ce=>uccpi( 12 ).
+      t26 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
       CONCATENATE t19 t26 INTO t19 RESPECTING BLANKS.
       t19 = t19 && |\r    - |.
       DATA t27 TYPE c LENGTH 1.
       CLEAR t27.
-      t27 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+      t27 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
       CONCATENATE t19 t27 INTO t19 RESPECTING BLANKS.
       DATA t28 TYPE c LENGTH 1.
       CLEAR t28.
-      t28 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+      t28 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
       CONCATENATE t19 t28 INTO t19 RESPECTING BLANKS.
       t19 = t19 && |  　|.
       DATA t29 TYPE c LENGTH 1.
       CLEAR t29.
-      t29 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+      t29 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
       CONCATENATE t19 t29 INTO t19 RESPECTING BLANKS.
       t19 = t19 && |]*EndUserText|.
       DATA(t30) = |i|.

@@ -11,7 +11,7 @@ CLASS zcl_lnt_dynpros_module DEFINITION PUBLIC CREATE PUBLIC.
     METHODS zlnt_builtin_nati_72359f490bf2 RETURNING VALUE(result) TYPE REF TO zlnt_runtime_clas_a39833db3295.
   PROTECTED SECTION.
   PRIVATE SECTION.
-    CLASS-DATA zlnt_builtin_code_ea1dc2bd83b1 TYPE REF TO cl_abap_conv_out_ce.
+    CLASS-DATA zlnt_builtin_code_ea1dc2bd83b1 TYPE REF TO if_abap_conv_out.
 ENDCLASS.
 CLASS zcl_lnt_dynpros_module IMPLEMENTATION.
   METHOD parse_number.
@@ -69,12 +69,16 @@ CLASS zcl_lnt_dynpros_module IMPLEMENTATION.
       CLEAR t26.
       DATA(t27) = VALUE i( ).
       t23 = t22.
-      t20 = cl_abap_conv_out_ce=>uccpi( t23 ).
+      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t23 IS INITIAL THEN ` ` ELSE t23 ) ).
+      DATA zlnt_conv_1_low TYPE i.
+      zlnt_conv_1_low = zlnt_conv_1(1).
+      t20 = zlnt_conv_1+1(1).
+      t20 = t20 * 256 + zlnt_conv_1_low.
       IF t20 >= 255.
         IF zlnt_builtin_code_ea1dc2bd83b1 IS NOT BOUND.
-          zlnt_builtin_code_ea1dc2bd83b1 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+          zlnt_builtin_code_ea1dc2bd83b1 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        zlnt_builtin_code_ea1dc2bd83b1->convert( EXPORTING data = t22 IMPORTING buffer = t24 ).
+        t24 = zlnt_builtin_code_ea1dc2bd83b1->convert( COND string( WHEN t22 IS INITIAL THEN ` ` ELSE t22 ) ).
         t25 = t24(1).
         t26 = t24+1(1).
         t20 = t25.

@@ -16,7 +16,7 @@ CLASS zlnt_runtime_xmlw_d7bcce7c35ad IMPLEMENTATION.
     parser->input = p0.
     REPLACE ALL OCCURRENCES OF cl_abap_char_utilities=>cr_lf IN parser->input WITH cl_abap_char_utilities=>newline.
     DATA cr TYPE c LENGTH 1.
-    cr = cl_abap_conv_in_ce=>uccpi( 13 ).
+    cr = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ).
     REPLACE ALL OCCURRENCES OF cr IN parser->input WITH cl_abap_char_utilities=>newline.
     result = parser->read_node( '' ).
   ENDMETHOD.

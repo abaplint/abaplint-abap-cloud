@@ -16,7 +16,7 @@ CLASS zcl_lnt_catch_and_raise DEFINITION PUBLIC INHERITING FROM zcl_lnt_abap_rul
     METHODS zlnt_builtin_nati_72359f490bf2 REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
-    CLASS-DATA zlnt_builtin_code_be380fe754b8 TYPE REF TO cl_abap_conv_out_ce.
+    CLASS-DATA zlnt_builtin_code_be380fe754b8 TYPE REF TO if_abap_conv_out.
 ENDCLASS.
 CLASS zcl_lnt_catch_and_raise IMPLEMENTATION.
   METHOD constructor.
@@ -469,12 +469,16 @@ CLASS zcl_lnt_catch_and_raise IMPLEMENTATION.
         CLEAR t114.
         DATA(t115) = VALUE i( ).
         t111 = t110.
-        t108 = cl_abap_conv_out_ce=>uccpi( t111 ).
+        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t111 IS INITIAL THEN ` ` ELSE t111 ) ).
+        DATA zlnt_conv_1_low TYPE i.
+        zlnt_conv_1_low = zlnt_conv_1(1).
+        t108 = zlnt_conv_1+1(1).
+        t108 = t108 * 256 + zlnt_conv_1_low.
         IF t108 >= 255.
           IF zlnt_builtin_code_be380fe754b8 IS NOT BOUND.
-            zlnt_builtin_code_be380fe754b8 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+            zlnt_builtin_code_be380fe754b8 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          zlnt_builtin_code_be380fe754b8->convert( EXPORTING data = t110 IMPORTING buffer = t112 ).
+          t112 = zlnt_builtin_code_be380fe754b8->convert( COND string( WHEN t110 IS INITIAL THEN ` ` ELSE t110 ) ).
           t113 = t112(1).
           t114 = t112+1(1).
           t108 = t113.
@@ -502,12 +506,16 @@ CLASS zcl_lnt_catch_and_raise IMPLEMENTATION.
         CLEAR t122.
         DATA(t123) = VALUE i( ).
         t119 = t118.
-        t116 = cl_abap_conv_out_ce=>uccpi( t119 ).
+        DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t119 IS INITIAL THEN ` ` ELSE t119 ) ).
+        DATA zlnt_conv_2_low TYPE i.
+        zlnt_conv_2_low = zlnt_conv_2(1).
+        t116 = zlnt_conv_2+1(1).
+        t116 = t116 * 256 + zlnt_conv_2_low.
         IF t116 >= 255.
           IF zlnt_builtin_code_be380fe754b8 IS NOT BOUND.
-            zlnt_builtin_code_be380fe754b8 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+            zlnt_builtin_code_be380fe754b8 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          zlnt_builtin_code_be380fe754b8->convert( EXPORTING data = t118 IMPORTING buffer = t120 ).
+          t120 = zlnt_builtin_code_be380fe754b8->convert( COND string( WHEN t118 IS INITIAL THEN ` ` ELSE t118 ) ).
           t121 = t120(1).
           t122 = t120+1(1).
           t116 = t121.
@@ -562,25 +570,25 @@ CLASS zcl_lnt_catch_and_raise IMPLEMENTATION.
       DATA(t140) = |[\t\n|.
       DATA t141 TYPE c LENGTH 1.
       CLEAR t141.
-      t141 = cl_abap_conv_in_ce=>uccpi( 11 ).
+      t141 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ).
       CONCATENATE t140 t141 INTO t140 RESPECTING BLANKS.
       DATA t142 TYPE c LENGTH 1.
       CLEAR t142.
-      t142 = cl_abap_conv_in_ce=>uccpi( 12 ).
+      t142 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
       CONCATENATE t140 t142 INTO t140 RESPECTING BLANKS.
       t140 = t140 && |\r    - |.
       DATA t143 TYPE c LENGTH 1.
       CLEAR t143.
-      t143 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+      t143 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
       CONCATENATE t140 t143 INTO t140 RESPECTING BLANKS.
       DATA t144 TYPE c LENGTH 1.
       CLEAR t144.
-      t144 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+      t144 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
       CONCATENATE t140 t144 INTO t140 RESPECTING BLANKS.
       t140 = t140 && |  　|.
       DATA t145 TYPE c LENGTH 1.
       CLEAR t145.
-      t145 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+      t145 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
       CONCATENATE t140 t145 INTO t140 RESPECTING BLANKS.
       t140 = t140 && |]+|.
       DATA(t146) = ||.

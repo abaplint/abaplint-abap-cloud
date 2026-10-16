@@ -26,21 +26,21 @@ CLASS zlnt_runtime_rege_5a210f82384e IMPLEMENTATION.
     DATA whitespace TYPE string.
     DATA dot_class TYPE string.
     DATA normalized TYPE string.
-    whitespace = cl_abap_conv_in_ce=>uccpi( 9 ) &&
-    cl_abap_conv_in_ce=>uccpi( 10 ) &&
-    cl_abap_conv_in_ce=>uccpi( 11 ) &&
-    cl_abap_conv_in_ce=>uccpi( 12 ) &&
-    cl_abap_conv_in_ce=>uccpi( 13 ) &&
+    whitespace = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000A` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
     `    - ` &&
-    cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-    cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
     `  　` &&
-    cl_abap_conv_in_ce=>uccpi( 65279 ).
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
     dot_class = `[^` &&
-    cl_abap_conv_in_ce=>uccpi( 10 ) &&
-    cl_abap_conv_in_ce=>uccpi( 13 ) &&
-    cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-    cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000A` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
     `]`.
     me->flags = flags.
     n = strlen( pattern ).

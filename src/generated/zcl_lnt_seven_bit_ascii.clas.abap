@@ -640,11 +640,11 @@ CLASS zcl_lnt_seven_bit_ascii IMPLEMENTATION.
           t161 = t161 && |\n\r|.
           DATA t162 TYPE c LENGTH 1.
           CLEAR t162.
-          t162 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+          t162 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
           CONCATENATE t161 t162 INTO t161 RESPECTING BLANKS.
           DATA t163 TYPE c LENGTH 1.
           CLEAR t163.
-          t163 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+          t163 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
           CONCATENATE t161 t163 INTO t161 RESPECTING BLANKS.
           t161 = t161 && |]+$|.
           DATA(t164) = ||.

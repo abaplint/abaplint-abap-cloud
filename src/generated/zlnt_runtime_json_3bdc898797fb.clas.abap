@@ -46,9 +46,9 @@ CLASS zlnt_runtime_json_3bdc898797fb IMPLEMENTATION.
     DATA change TYPE edit.
     DATA fragments TYPE STANDARD TABLE OF string WITH DEFAULT KEY.
     DATA copied TYPE i.
-    cr = cl_abap_conv_in_ce=>uccpi( 13 ).
-    ls = cl_abap_conv_in_ce=>uccpi( 8232 ).
-    ps = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    cr = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ).
+    ls = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
+    ps = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE ` ` cl_abap_char_utilities=>horizontal_tab cr cl_abap_char_utilities=>newline INTO white RESPECTING BLANKS.
     CONCATENATE cr cl_abap_char_utilities=>newline ls ps INTO line_end RESPECTING BLANKS.
     length = strlen( p0 ).

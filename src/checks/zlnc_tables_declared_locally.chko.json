@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "tables_declared_locally: Check for locally declared TABLES",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_TBLS_DCLRD_LCLLY",
+  "checkType": "remoteEnabled"
+}

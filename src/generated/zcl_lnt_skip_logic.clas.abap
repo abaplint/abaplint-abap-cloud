@@ -502,11 +502,11 @@ CLASS zcl_lnt_skip_logic IMPLEMENTATION.
                 DATA(t178) = |<CLSPROXY>([^\n\r|.
                 DATA t179 TYPE c LENGTH 1.
                 CLEAR t179.
-                t179 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+                t179 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
                 CONCATENATE t178 t179 INTO t178 RESPECTING BLANKS.
                 DATA t180 TYPE c LENGTH 1.
                 CLEAR t180.
-                t180 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+                t180 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
                 CONCATENATE t178 t180 INTO t178 RESPECTING BLANKS.
                 t178 = t178 && `])<\/CLSPROXY>`.
                 DATA(t181) = ||.
@@ -668,11 +668,11 @@ CLASS zcl_lnt_skip_logic IMPLEMENTATION.
                   DATA(t242) = |<CLSPROXY>([^\n\r|.
                   DATA t243 TYPE c LENGTH 1.
                   CLEAR t243.
-                  t243 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+                  t243 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
                   CONCATENATE t242 t243 INTO t242 RESPECTING BLANKS.
                   DATA t244 TYPE c LENGTH 1.
                   CLEAR t244.
-                  t244 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+                  t244 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
                   CONCATENATE t242 t244 INTO t242 RESPECTING BLANKS.
                   t242 = t242 && `])<\/CLSPROXY>`.
                   DATA(t245) = ||.
@@ -959,11 +959,11 @@ CLASS zcl_lnt_skip_logic IMPLEMENTATION.
     DATA(t34) = |<CLSPROXY>([^\n\r|.
     DATA t35 TYPE c LENGTH 1.
     CLEAR t35.
-    t35 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t35 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t34 t35 INTO t34 RESPECTING BLANKS.
     DATA t36 TYPE c LENGTH 1.
     CLEAR t36.
-    t36 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t36 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t34 t36 INTO t34 RESPECTING BLANKS.
     t34 = t34 && `])<\/CLSPROXY>`.
     DATA(t37) = ||.
@@ -1064,11 +1064,11 @@ CLASS zcl_lnt_skip_logic IMPLEMENTATION.
     DATA(t34) = |<CLSPROXY>([^\n\r|.
     DATA t35 TYPE c LENGTH 1.
     CLEAR t35.
-    t35 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t35 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t34 t35 INTO t34 RESPECTING BLANKS.
     DATA t36 TYPE c LENGTH 1.
     CLEAR t36.
-    t36 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t36 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t34 t36 INTO t34 RESPECTING BLANKS.
     t34 = t34 && `])<\/CLSPROXY>`.
     DATA(t37) = ||.

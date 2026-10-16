@@ -78,11 +78,11 @@ CLASS zcl_lnt_sy_select_option IMPLEMENTATION.
       t36 = t36 && |\n\r|.
       DATA t37 TYPE c LENGTH 1.
       CLEAR t37.
-      t37 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+      t37 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
       CONCATENATE t36 t37 INTO t36 RESPECTING BLANKS.
       DATA t38 TYPE c LENGTH 1.
       CLEAR t38.
-      t38 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+      t38 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
       CONCATENATE t36 t38 INTO t36 RESPECTING BLANKS.
       t36 = t36 && |]+$|.
       DATA(t39) = ||.

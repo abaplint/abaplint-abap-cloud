@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "catch_and_raise: Catch and re-raise same exception",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_CATCH_AND_RAISE",
+  "checkType": "remoteEnabled"
+}

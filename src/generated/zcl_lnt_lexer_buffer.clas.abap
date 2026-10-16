@@ -17,7 +17,7 @@ CLASS zcl_lnt_lexer_buffer DEFINITION PUBLIC CREATE PUBLIC.
     METHODS zlnt_builtin_nati_72359f490bf2 RETURNING VALUE(result) TYPE REF TO zlnt_runtime_clas_a39833db3295.
   PROTECTED SECTION.
   PRIVATE SECTION.
-    CLASS-DATA zlnt_builtin_code_c83088ceb759 TYPE REF TO cl_abap_conv_out_ce.
+    CLASS-DATA zlnt_builtin_code_c83088ceb759 TYPE REF TO if_abap_conv_out.
 ENDCLASS.
 CLASS zcl_lnt_lexer_buffer IMPLEMENTATION.
   METHOD constructor.
@@ -160,12 +160,16 @@ CLASS zcl_lnt_lexer_buffer IMPLEMENTATION.
       CLEAR t19.
       DATA(t20) = VALUE i( ).
       t16 = t15.
-      t11 = cl_abap_conv_out_ce=>uccpi( t16 ).
+      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t16 IS INITIAL THEN ` ` ELSE t16 ) ).
+      DATA zlnt_conv_1_low TYPE i.
+      zlnt_conv_1_low = zlnt_conv_1(1).
+      t11 = zlnt_conv_1+1(1).
+      t11 = t11 * 256 + zlnt_conv_1_low.
       IF t11 >= 255.
         IF zlnt_builtin_code_c83088ceb759 IS NOT BOUND.
-          zlnt_builtin_code_c83088ceb759 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+          zlnt_builtin_code_c83088ceb759 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        zlnt_builtin_code_c83088ceb759->convert( EXPORTING data = t15 IMPORTING buffer = t17 ).
+        t17 = zlnt_builtin_code_c83088ceb759->convert( COND string( WHEN t15 IS INITIAL THEN ` ` ELSE t15 ) ).
         t18 = t17(1).
         t19 = t17+1(1).
         t11 = t18.

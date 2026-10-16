@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "no_dynamic_stuff: No dynamic stuff",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_NO_DYNAMIC_STUFF",
+  "checkType": "remoteEnabled"
+}

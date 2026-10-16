@@ -7,7 +7,9 @@
     "node": ">=22"
   },
   "scripts": {
-    "regenerate": "node scripts/call-abapiti.mjs && node scripts/abapgit-xml.mjs && abaplint --fix",
+    "regenerate": "node scripts/call-abapiti.mjs && node scripts/replace-conv.mjs && node scripts/abapgit-xml.mjs && node scripts/checks.mjs && abaplint --fix",
+    "checks": "node scripts/checks.mjs",
+    "lint:cloud": "abaplint abaplint-cloud.jsonc",
     "unit": "node --max-old-space-size=20480 node_modules/@abaplint/transpiler-cli/abap_transpile && node transpiled/index.mjs",
     "test": "abaplint && npm run unit"
   },

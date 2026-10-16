@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "empty_event: Empty selection screen or list processing ev...",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_EMPTY_EVENT",
+  "checkType": "remoteEnabled"
+}

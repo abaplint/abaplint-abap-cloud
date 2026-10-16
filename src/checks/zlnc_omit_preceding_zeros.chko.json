@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "omit_preceding_zeros: Omit preceding zeros",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_OMIT_PRECEDING_ZEROS",
+  "checkType": "remoteEnabled"
+}

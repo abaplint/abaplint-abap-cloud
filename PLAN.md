@@ -34,6 +34,20 @@ src/zif_lnt_source_reader      unchanged interface
 src/zcl_lnt_atc_source_reader  builds abapGit style files from if_ci_atc_source_code_provider
 ```
 
+## Status
+
+| Phase | State |
+|---|---|
+| 0, spike on a real system | **Not done**, needs an SAP BTP ABAP environment or S/4HANA Cloud system. The reader is built on the assumptions listed in [ANOMALIES.md](ANOMALIES.md). |
+| 1, generator script | Done: [scripts/checks.mjs](scripts/checks.mjs) writes 115 checks plus CHKO, CHKC and CHKV files, and skips 25 rules with reasons. |
+| 2, runtime classes | Done: `zcl_lnt_atc_check`, `zcl_lnt_atc_meta_data`, `zcl_lnt_atc_source_reader`, `zcl_lnt_utils`, `zif_lnt_source_reader` |
+| 3, tests | Done: 39 unit tests pass with `npm run unit`; `abaplint` and `npm run lint:cloud` (Cloud language version) report 0 issues. |
+| 4, real system test | **Not done**, needs a system. |
+
+Blocker for Phase 4: `src/generated` uses `GET RUN TIME`, which ABAP Cloud doesn't allow. The unreleased `cl_abap_conv_out_ce` and `cl_abap_conv_in_ce` are rewritten to `cl_abap_conv_codepage` by [scripts/replace-conv.mjs](scripts/replace-conv.mjs) after ABAPiti runs. See [ANOMALIES.md](ANOMALIES.md).
+
+Changes from the plan below: the rules run with syntax version `v758`, not `Cloud`. The transpiler skips the CHKO, CHKC and CHKV files. The source reader catches `cx_root`. See [ANOMALIES.md](ANOMALIES.md) for why.
+
 Record anything unexpected found while working on this plan in [ANOMALIES.md](ANOMALIES.md): generator output, stubs, tooling, or differences from the classic repository. That keeps this plan about the work itself.
 
 The shared logic goes in a hand written abstract base class, so each generated class stays a few lines long and the script stays simple. This differs from classic, which put everything in the generated class plus static utils. A base class is needed here because `IF_CI_ATC_CHECK` has five methods, and every check needs a separate meta data object. `/cc4a/check_meta_data` in [SAP/code-pal-for-abap-cloud](https://github.com/SAP/code-pal-for-abap-cloud/tree/main/src/core) is a good model for the meta data class.

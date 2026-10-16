@@ -35,25 +35,25 @@ CLASS zcl_lnt_sequential_blank IMPLEMENTATION.
     DATA(t5) = |^[\t\n|.
     DATA t6 TYPE c LENGTH 1.
     CLEAR t6.
-    t6 = cl_abap_conv_in_ce=>uccpi( 11 ).
+    t6 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ).
     CONCATENATE t5 t6 INTO t5 RESPECTING BLANKS.
     DATA t7 TYPE c LENGTH 1.
     CLEAR t7.
-    t7 = cl_abap_conv_in_ce=>uccpi( 12 ).
+    t7 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
     CONCATENATE t5 t7 INTO t5 RESPECTING BLANKS.
     t5 = t5 && |\r    - |.
     DATA t8 TYPE c LENGTH 1.
     CLEAR t8.
-    t8 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t8 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t5 t8 INTO t5 RESPECTING BLANKS.
     DATA t9 TYPE c LENGTH 1.
     CLEAR t9.
-    t9 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t9 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t5 t9 INTO t5 RESPECTING BLANKS.
     t5 = t5 && |  　|.
     DATA t10 TYPE c LENGTH 1.
     CLEAR t10.
-    t10 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+    t10 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
     CONCATENATE t5 t10 INTO t5 RESPECTING BLANKS.
     t5 = t5 && |]*$|.
     DATA(t11) = ||.

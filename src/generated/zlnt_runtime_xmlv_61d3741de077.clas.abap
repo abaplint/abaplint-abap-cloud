@@ -5,7 +5,7 @@ CLASS zlnt_runtime_xmlv_61d3741de077 DEFINITION PUBLIC CREATE PRIVATE.
   PRIVATE SECTION.
     TYPES: BEGIN OF open_tag, name TYPE string, pos TYPE i, END OF open_tag.
     TYPES tags_type TYPE STANDARD TABLE OF open_tag WITH DEFAULT KEY.
-    CLASS-DATA converter TYPE REF TO cl_abap_conv_out_ce.
+    CLASS-DATA converter TYPE REF TO if_abap_conv_out.
     DATA input TYPE string.
     DATA cursor TYPE i.
     DATA problem TYPE REF TO zlnt_runtime_dyna_a429568d5be8.
@@ -45,12 +45,16 @@ CLASS zlnt_runtime_xmlv_61d3741de077 IMPLEMENTATION.
     result = -1.
     IF idx >= 0 AND idx < strlen( input ).
       ch = input+idx(1).
-      result = cl_abap_conv_out_ce=>uccpi( ch ).
+      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch ) ).
+      DATA zlnt_conv_1_low TYPE i.
+      zlnt_conv_1_low = zlnt_conv_1(1).
+      result = zlnt_conv_1+1(1).
+      result = result * 256 + zlnt_conv_1_low.
       IF result >= 255.
         IF converter IS NOT BOUND.
-          converter = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+          converter = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        converter->convert( EXPORTING data = ch IMPORTING buffer = bytes ).
+        bytes = converter->convert( COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch ) ).
         low = bytes(1).
         high = bytes+1(1).
         result = low.

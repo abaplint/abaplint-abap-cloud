@@ -1,0 +1,31 @@
+// Checks the hand written classes and the generated checks with the ABAP Cloud language version.
+// src/generated is only a dependency here, see ANOMALIES.md
+{
+  "global": {
+    "files": "/src/{*,checks/*}.*"
+  },
+  "dependencies": [
+    {
+      "folder": "/src/generated",
+      "files": "/**/*.*"
+    },
+    {
+      "url": "https://github.com/open-abap/open-abap-core",
+      "files": "/src/**/*.*"
+    },
+    {
+      "url": "https://github.com/open-abap/open-abap-ci",
+      "files": "/src/**/*.*"
+    }
+  ],
+  "syntax": {
+    "version": "Cloud",
+    "errorNamespace": "."
+  },
+  "rules": {
+    "parser_error": true,
+    "check_syntax": true,
+    "cloud_types": true,
+    "unknown_types": true
+  }
+}

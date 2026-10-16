@@ -133,20 +133,20 @@ CLASS zcl_lnt_text_element_string IMPLEMENTATION.
     DATA(t31) = |^('[^\n\r|.
     DATA t32 TYPE c LENGTH 1.
     CLEAR t32.
-    t32 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t32 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t31 t32 INTO t31 RESPECTING BLANKS.
     DATA t33 TYPE c LENGTH 1.
     CLEAR t33.
-    t33 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t33 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t31 t33 INTO t31 RESPECTING BLANKS.
     t31 = t31 && |]*')\|(`[^\n\r|.
     DATA t34 TYPE c LENGTH 1.
     CLEAR t34.
-    t34 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t34 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t31 t34 INTO t31 RESPECTING BLANKS.
     DATA t35 TYPE c LENGTH 1.
     CLEAR t35.
-    t35 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t35 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t31 t35 INTO t31 RESPECTING BLANKS.
     t31 = t31 && |]*`)$|.
     DATA(t36) = ||.

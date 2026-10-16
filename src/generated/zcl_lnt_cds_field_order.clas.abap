@@ -22,7 +22,7 @@ CLASS zcl_lnt_cds_field_order DEFINITION PUBLIC CREATE PUBLIC.
     METHODS zlnt_builtin_nati_72359f490bf2 RETURNING VALUE(result) TYPE REF TO zlnt_runtime_clas_a39833db3295.
   PROTECTED SECTION.
   PRIVATE SECTION.
-    CLASS-DATA zlnt_builtin_code_7ed9498cda68 TYPE REF TO cl_abap_conv_out_ce.
+    CLASS-DATA zlnt_builtin_code_7ed9498cda68 TYPE REF TO if_abap_conv_out.
 ENDCLASS.
 CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
   METHOD constructor.
@@ -457,25 +457,25 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
         DATA(t107) = |^(KEY\|VIRTUAL)[\t\n|.
         DATA t108 TYPE c LENGTH 1.
         CLEAR t108.
-        t108 = cl_abap_conv_in_ce=>uccpi( 11 ).
+        t108 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ).
         CONCATENATE t107 t108 INTO t107 RESPECTING BLANKS.
         DATA t109 TYPE c LENGTH 1.
         CLEAR t109.
-        t109 = cl_abap_conv_in_ce=>uccpi( 12 ).
+        t109 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
         CONCATENATE t107 t109 INTO t107 RESPECTING BLANKS.
         t107 = t107 && |\r    - |.
         DATA t110 TYPE c LENGTH 1.
         CLEAR t110.
-        t110 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+        t110 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
         CONCATENATE t107 t110 INTO t107 RESPECTING BLANKS.
         DATA t111 TYPE c LENGTH 1.
         CLEAR t111.
-        t111 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+        t111 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
         CONCATENATE t107 t111 INTO t107 RESPECTING BLANKS.
         t107 = t107 && |  　|.
         DATA t112 TYPE c LENGTH 1.
         CLEAR t112.
-        t112 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+        t112 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
         CONCATENATE t107 t112 INTO t107 RESPECTING BLANKS.
         t107 = t107 && |]+|.
         DATA(t113) = |i|.
@@ -504,12 +504,16 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
           CLEAR t125.
           DATA(t126) = VALUE i( ).
           t122 = t121.
-          t119 = cl_abap_conv_out_ce=>uccpi( t122 ).
+          DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t122 IS INITIAL THEN ` ` ELSE t122 ) ).
+          DATA zlnt_conv_1_low TYPE i.
+          zlnt_conv_1_low = zlnt_conv_1(1).
+          t119 = zlnt_conv_1+1(1).
+          t119 = t119 * 256 + zlnt_conv_1_low.
           IF t119 >= 255.
             IF zlnt_builtin_code_7ed9498cda68 IS NOT BOUND.
-              zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_7ed9498cda68->convert( EXPORTING data = t121 IMPORTING buffer = t123 ).
+            t123 = zlnt_builtin_code_7ed9498cda68->convert( COND string( WHEN t121 IS INITIAL THEN ` ` ELSE t121 ) ).
             t124 = t123(1).
             t125 = t123+1(1).
             t119 = t124.
@@ -537,12 +541,16 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
           CLEAR t133.
           DATA(t134) = VALUE i( ).
           t130 = t129.
-          t127 = cl_abap_conv_out_ce=>uccpi( t130 ).
+          DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t130 IS INITIAL THEN ` ` ELSE t130 ) ).
+          DATA zlnt_conv_2_low TYPE i.
+          zlnt_conv_2_low = zlnt_conv_2(1).
+          t127 = zlnt_conv_2+1(1).
+          t127 = t127 * 256 + zlnt_conv_2_low.
           IF t127 >= 255.
             IF zlnt_builtin_code_7ed9498cda68 IS NOT BOUND.
-              zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_7ed9498cda68->convert( EXPORTING data = t129 IMPORTING buffer = t131 ).
+            t131 = zlnt_builtin_code_7ed9498cda68->convert( COND string( WHEN t129 IS INITIAL THEN ` ` ELSE t129 ) ).
             t132 = t131(1).
             t133 = t131+1(1).
             t127 = t132.
@@ -576,25 +584,25 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
         DATA(t144) = |[\t\n|.
         DATA t145 TYPE c LENGTH 1.
         CLEAR t145.
-        t145 = cl_abap_conv_in_ce=>uccpi( 11 ).
+        t145 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ).
         CONCATENATE t144 t145 INTO t144 RESPECTING BLANKS.
         DATA t146 TYPE c LENGTH 1.
         CLEAR t146.
-        t146 = cl_abap_conv_in_ce=>uccpi( 12 ).
+        t146 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
         CONCATENATE t144 t146 INTO t144 RESPECTING BLANKS.
         t144 = t144 && |\r    - |.
         DATA t147 TYPE c LENGTH 1.
         CLEAR t147.
-        t147 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+        t147 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
         CONCATENATE t144 t147 INTO t144 RESPECTING BLANKS.
         DATA t148 TYPE c LENGTH 1.
         CLEAR t148.
-        t148 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+        t148 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
         CONCATENATE t144 t148 INTO t144 RESPECTING BLANKS.
         t144 = t144 && |  　|.
         DATA t149 TYPE c LENGTH 1.
         CLEAR t149.
-        t149 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+        t149 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
         CONCATENATE t144 t149 INTO t144 RESPECTING BLANKS.
         t144 = t144 && |.,:(]+|.
         DATA(t150) = ||.
@@ -1208,25 +1216,25 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
     DATA(t10) = |^(KEY\|VIRTUAL)[\t\n|.
     DATA t11 TYPE c LENGTH 1.
     CLEAR t11.
-    t11 = cl_abap_conv_in_ce=>uccpi( 11 ).
+    t11 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ).
     CONCATENATE t10 t11 INTO t10 RESPECTING BLANKS.
     DATA t12 TYPE c LENGTH 1.
     CLEAR t12.
-    t12 = cl_abap_conv_in_ce=>uccpi( 12 ).
+    t12 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
     CONCATENATE t10 t12 INTO t10 RESPECTING BLANKS.
     t10 = t10 && |\r    - |.
     DATA t13 TYPE c LENGTH 1.
     CLEAR t13.
-    t13 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t13 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t10 t13 INTO t10 RESPECTING BLANKS.
     DATA t14 TYPE c LENGTH 1.
     CLEAR t14.
-    t14 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t14 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t10 t14 INTO t10 RESPECTING BLANKS.
     t10 = t10 && |  　|.
     DATA t15 TYPE c LENGTH 1.
     CLEAR t15.
-    t15 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+    t15 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
     CONCATENATE t10 t15 INTO t10 RESPECTING BLANKS.
     t10 = t10 && |]+|.
     DATA(t16) = |i|.
@@ -1255,12 +1263,16 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
       CLEAR t28.
       DATA(t29) = VALUE i( ).
       t25 = t24.
-      t22 = cl_abap_conv_out_ce=>uccpi( t25 ).
+      DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t25 IS INITIAL THEN ` ` ELSE t25 ) ).
+      DATA zlnt_conv_3_low TYPE i.
+      zlnt_conv_3_low = zlnt_conv_3(1).
+      t22 = zlnt_conv_3+1(1).
+      t22 = t22 * 256 + zlnt_conv_3_low.
       IF t22 >= 255.
         IF zlnt_builtin_code_7ed9498cda68 IS NOT BOUND.
-          zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+          zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        zlnt_builtin_code_7ed9498cda68->convert( EXPORTING data = t24 IMPORTING buffer = t26 ).
+        t26 = zlnt_builtin_code_7ed9498cda68->convert( COND string( WHEN t24 IS INITIAL THEN ` ` ELSE t24 ) ).
         t27 = t26(1).
         t28 = t26+1(1).
         t22 = t27.
@@ -1288,12 +1300,16 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
       CLEAR t36.
       DATA(t37) = VALUE i( ).
       t33 = t32.
-      t30 = cl_abap_conv_out_ce=>uccpi( t33 ).
+      DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t33 IS INITIAL THEN ` ` ELSE t33 ) ).
+      DATA zlnt_conv_4_low TYPE i.
+      zlnt_conv_4_low = zlnt_conv_4(1).
+      t30 = zlnt_conv_4+1(1).
+      t30 = t30 * 256 + zlnt_conv_4_low.
       IF t30 >= 255.
         IF zlnt_builtin_code_7ed9498cda68 IS NOT BOUND.
-          zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+          zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        zlnt_builtin_code_7ed9498cda68->convert( EXPORTING data = t32 IMPORTING buffer = t34 ).
+        t34 = zlnt_builtin_code_7ed9498cda68->convert( COND string( WHEN t32 IS INITIAL THEN ` ` ELSE t32 ) ).
         t35 = t34(1).
         t36 = t34+1(1).
         t30 = t35.
@@ -1327,25 +1343,25 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
     DATA(t47) = |[\t\n|.
     DATA t48 TYPE c LENGTH 1.
     CLEAR t48.
-    t48 = cl_abap_conv_in_ce=>uccpi( 11 ).
+    t48 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ).
     CONCATENATE t47 t48 INTO t47 RESPECTING BLANKS.
     DATA t49 TYPE c LENGTH 1.
     CLEAR t49.
-    t49 = cl_abap_conv_in_ce=>uccpi( 12 ).
+    t49 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
     CONCATENATE t47 t49 INTO t47 RESPECTING BLANKS.
     t47 = t47 && |\r    - |.
     DATA t50 TYPE c LENGTH 1.
     CLEAR t50.
-    t50 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t50 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t47 t50 INTO t47 RESPECTING BLANKS.
     DATA t51 TYPE c LENGTH 1.
     CLEAR t51.
-    t51 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t51 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t47 t51 INTO t47 RESPECTING BLANKS.
     t47 = t47 && |  　|.
     DATA t52 TYPE c LENGTH 1.
     CLEAR t52.
-    t52 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+    t52 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
     CONCATENATE t47 t52 INTO t47 RESPECTING BLANKS.
     t47 = t47 && |.,:(]+|.
     DATA(t53) = ||.

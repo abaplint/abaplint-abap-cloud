@@ -15,7 +15,7 @@ CLASS zcl_lnt_exit_or_check DEFINITION PUBLIC INHERITING FROM zcl_lnt_abap_rule 
     METHODS zlnt_builtin_nati_72359f490bf2 REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
-    CLASS-DATA zlnt_builtin_code_438f0e5e4132 TYPE REF TO cl_abap_conv_out_ce.
+    CLASS-DATA zlnt_builtin_code_438f0e5e4132 TYPE REF TO if_abap_conv_out.
 ENDCLASS.
 CLASS zcl_lnt_exit_or_check IMPLEMENTATION.
   METHOD constructor.
@@ -481,12 +481,16 @@ CLASS zcl_lnt_exit_or_check IMPLEMENTATION.
               CLEAR t95.
               DATA(t96) = VALUE i( ).
               t92 = t91.
-              t89 = cl_abap_conv_out_ce=>uccpi( t92 ).
+              DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t92 IS INITIAL THEN ` ` ELSE t92 ) ).
+              DATA zlnt_conv_1_low TYPE i.
+              zlnt_conv_1_low = zlnt_conv_1(1).
+              t89 = zlnt_conv_1+1(1).
+              t89 = t89 * 256 + zlnt_conv_1_low.
               IF t89 >= 255.
                 IF zlnt_builtin_code_438f0e5e4132 IS NOT BOUND.
-                  zlnt_builtin_code_438f0e5e4132 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                  zlnt_builtin_code_438f0e5e4132 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                zlnt_builtin_code_438f0e5e4132->convert( EXPORTING data = t91 IMPORTING buffer = t93 ).
+                t93 = zlnt_builtin_code_438f0e5e4132->convert( COND string( WHEN t91 IS INITIAL THEN ` ` ELSE t91 ) ).
                 t94 = t93(1).
                 t95 = t93+1(1).
                 t89 = t94.
@@ -514,12 +518,16 @@ CLASS zcl_lnt_exit_or_check IMPLEMENTATION.
               CLEAR t103.
               DATA(t104) = VALUE i( ).
               t100 = t99.
-              t97 = cl_abap_conv_out_ce=>uccpi( t100 ).
+              DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t100 IS INITIAL THEN ` ` ELSE t100 ) ).
+              DATA zlnt_conv_2_low TYPE i.
+              zlnt_conv_2_low = zlnt_conv_2(1).
+              t97 = zlnt_conv_2+1(1).
+              t97 = t97 * 256 + zlnt_conv_2_low.
               IF t97 >= 255.
                 IF zlnt_builtin_code_438f0e5e4132 IS NOT BOUND.
-                  zlnt_builtin_code_438f0e5e4132 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                  zlnt_builtin_code_438f0e5e4132 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                zlnt_builtin_code_438f0e5e4132->convert( EXPORTING data = t99 IMPORTING buffer = t101 ).
+                t101 = zlnt_builtin_code_438f0e5e4132->convert( COND string( WHEN t99 IS INITIAL THEN ` ` ELSE t99 ) ).
                 t102 = t101(1).
                 t103 = t101+1(1).
                 t97 = t102.

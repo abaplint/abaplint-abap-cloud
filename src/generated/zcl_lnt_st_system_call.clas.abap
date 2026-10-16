@@ -23,11 +23,11 @@ CLASS zcl_lnt_st_system_call IMPLEMENTATION.
     DATA(t5) = |^[^\n\r|.
     DATA t6 TYPE c LENGTH 1.
     CLEAR t6.
-    t6 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t6 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t5 t6 INTO t5 RESPECTING BLANKS.
     DATA t7 TYPE c LENGTH 1.
     CLEAR t7.
-    t7 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t7 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t5 t7 INTO t5 RESPECTING BLANKS.
     t5 = t5 && |]+$|.
     DATA(t8) = ||.

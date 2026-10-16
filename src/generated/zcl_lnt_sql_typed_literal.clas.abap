@@ -91,11 +91,11 @@ CLASS zcl_lnt_sql_typed_literal IMPLEMENTATION.
     DATA(t26) = |^`[^\n\r|.
     DATA t27 TYPE c LENGTH 1.
     CLEAR t27.
-    t27 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t27 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t26 t27 INTO t26 RESPECTING BLANKS.
     DATA t28 TYPE c LENGTH 1.
     CLEAR t28.
-    t28 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t28 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t26 t28 INTO t26 RESPECTING BLANKS.
     t26 = t26 && |]*`$|.
     DATA(t29) = ||.

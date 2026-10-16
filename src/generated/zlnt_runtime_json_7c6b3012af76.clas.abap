@@ -26,7 +26,7 @@ CLASS zlnt_runtime_json_7c6b3012af76 IMPLEMENTATION.
   METHOD whitespace.
     DATA ch TYPE c LENGTH 1.
     DATA cr TYPE c LENGTH 1.
-    cr = cl_abap_conv_in_ce=>uccpi( 13 ).
+    cr = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ).
     WHILE cursor < strlen( input ).
       ch = input+cursor(1).
       IF ch <> space AND ch <> cr AND ch <> cl_abap_char_utilities=>newline AND ch <> cl_abap_char_utilities=>horizontal_tab.
@@ -61,7 +61,7 @@ CLASS zlnt_runtime_json_7c6b3012af76 IMPLEMENTATION.
     DATA pair TYPE string.
     DATA bytes TYPE xstring.
     DATA unit TYPE x LENGTH 2.
-    DATA converter TYPE REF TO cl_abap_conv_in_ce.
+    DATA converter TYPE REF TO if_abap_conv_in.
     cursor = cursor + 1.
     WHILE cursor < strlen( input ).
       ch = input+cursor(1).
@@ -78,13 +78,13 @@ CLASS zlnt_runtime_json_7c6b3012af76 IMPLEMENTATION.
         CASE ch.
           WHEN '"' OR '\' OR '/'.
           WHEN 'b'.
-            ch = cl_abap_conv_in_ce=>uccpi( 8 ).
+            ch = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0008` ) ).
           WHEN 'f'.
-            ch = cl_abap_conv_in_ce=>uccpi( 12 ).
+            ch = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
           WHEN 'n'.
             ch = cl_abap_char_utilities=>newline.
           WHEN 'r'.
-            ch = cl_abap_conv_in_ce=>uccpi( 13 ).
+            ch = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ).
           WHEN 't'.
             ch = cl_abap_char_utilities=>horizontal_tab.
           WHEN 'u'.
@@ -99,8 +99,8 @@ CLASS zlnt_runtime_json_7c6b3012af76 IMPLEMENTATION.
                   CONCATENATE unit+1(1) unit+0(1) INTO bytes IN BYTE MODE.
                   unit = low.
                   CONCATENATE bytes unit+1(1) unit+0(1) INTO bytes IN BYTE MODE.
-                  converter = cl_abap_conv_in_ce=>create( encoding = '4103' ).
-                  converter->convert( EXPORTING input = bytes IMPORTING data = ch ).
+                  converter = cl_abap_conv_codepage=>create_in( codepage = `UTF-16LE` ).
+                  ch = converter->convert( bytes ).
                 ELSE.
                   cursor = cursor - 6.
                   ch = unicode_unit( code ).
@@ -113,13 +113,19 @@ CLASS zlnt_runtime_json_7c6b3012af76 IMPLEMENTATION.
               unit = code.
               ch = unicode_unit( code ).
             ELSE.
-              ch = cl_abap_conv_in_ce=>uccpi( code ).
+              DATA zlnt_conv_1 TYPE x LENGTH 2.
+              zlnt_conv_1 = code.
+              ch = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( zlnt_conv_1 ) ).
             ENDIF.
           WHEN OTHERS.
             RAISE EXCEPTION TYPE zlnt_exception_js_ebcc2df7d5e4.
         ENDCASE.
       ELSE.
-        code = cl_abap_conv_out_ce=>uccpi( ch ).
+        DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch ) ).
+        DATA zlnt_conv_3_low TYPE i.
+        zlnt_conv_3_low = zlnt_conv_3(1).
+        code = zlnt_conv_3+1(1).
+        code = code * 256 + zlnt_conv_3_low.
         IF code < 32.
           RAISE EXCEPTION TYPE zlnt_exception_js_ebcc2df7d5e4.
         ENDIF.
@@ -209,7 +215,7 @@ CLASS zlnt_runtime_json_7c6b3012af76 IMPLEMENTATION.
         start = cursor.
         WHILE cursor < strlen( input ).
           ch = input+cursor(1).
-          IF ch = ',' OR ch = '}' OR ch = ']' OR ch = ` ` OR ch = cl_abap_char_utilities=>newline OR ch = cl_abap_char_utilities=>horizontal_tab OR ch = cl_abap_conv_in_ce=>uccpi( 13 ).
+          IF ch = ',' OR ch = '}' OR ch = ']' OR ch = ` ` OR ch = cl_abap_char_utilities=>newline OR ch = cl_abap_char_utilities=>horizontal_tab OR ch = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ).
             EXIT.
           ENDIF.
           cursor = cursor + 1.
@@ -245,9 +251,11 @@ CLASS zlnt_runtime_json_7c6b3012af76 IMPLEMENTATION.
     DATA unit TYPE x LENGTH 2.
     DATA padding TYPE x LENGTH 2.
     DATA bytes TYPE xstring.
-    DATA converter TYPE REF TO cl_abap_conv_in_ce.
+    DATA converter TYPE REF TO if_abap_conv_in.
     IF p0 < 55296 OR p0 > 57343.
-      result = cl_abap_conv_in_ce=>uccpi( p0 ).
+      DATA zlnt_conv_2 TYPE x LENGTH 2.
+      zlnt_conv_2 = p0.
+      result = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( zlnt_conv_2 ) ).
       RETURN.
     ENDIF.
     unit = p0.
@@ -259,8 +267,8 @@ CLASS zlnt_runtime_json_7c6b3012af76 IMPLEMENTATION.
       padding = '00D8'.
       CONCATENATE padding bytes INTO bytes IN BYTE MODE.
     ENDIF.
-    converter = cl_abap_conv_in_ce=>create( encoding = '4103' ).
-    converter->convert( EXPORTING input = bytes IMPORTING data = result ).
+    converter = cl_abap_conv_codepage=>create_in( codepage = `UTF-16LE` ).
+    result = converter->convert( bytes ).
     IF p0 < 56320.
       result = result+0(1).
     ELSE.

@@ -44,11 +44,11 @@ CLASS zcl_lnt_neptune_api IMPLEMENTATION.
       DATA(t11) = |[^\n\r|.
       DATA t12 TYPE c LENGTH 1.
       CLEAR t12.
-      t12 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+      t12 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
       CONCATENATE t11 t12 INTO t11 RESPECTING BLANKS.
       DATA t13 TYPE c LENGTH 1.
       CLEAR t13.
-      t13 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+      t13 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
       CONCATENATE t11 t13 INTO t11 RESPECTING BLANKS.
       t11 = t11 && |]*|.
       DATA(t14) = |i|.

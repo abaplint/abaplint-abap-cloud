@@ -221,7 +221,7 @@ CLASS zcl_lnt_xmlbom IMPLEMENTATION.
       DATA(t17) = ||.
       DATA t18 TYPE c LENGTH 1.
       CLEAR t18.
-      t18 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+      t18 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
       CONCATENATE t17 t18 INTO t17 RESPECTING BLANKS.
       DATA(t19) = strlen( t14 ).
       DATA t20 TYPE i.
@@ -277,7 +277,7 @@ CLASS zcl_lnt_xmlbom IMPLEMENTATION.
     DATA(t42) = ||.
     DATA t43 TYPE c LENGTH 1.
     CLEAR t43.
-    t43 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+    t43 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
     CONCATENATE t42 t43 INTO t42 RESPECTING BLANKS.
     t39 = zcl_lnt_edit_helper=>insert_at( i_file = t40 i_pos = t41 i_text = t42 ).
     t38 = t39.
@@ -470,7 +470,7 @@ CLASS zcl_lnt_xmlbom IMPLEMENTATION.
     DATA(t11) = ||.
     DATA t12 TYPE c LENGTH 1.
     CLEAR t12.
-    t12 = cl_abap_conv_in_ce=>uccpi( 65279 ).
+    t12 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
     CONCATENATE t11 t12 INTO t11 RESPECTING BLANKS.
     t8 = zcl_lnt_edit_helper=>insert_at( i_file = t9 i_pos = t10 i_text = t11 ).
     t7 = t8.

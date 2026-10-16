@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "use_class_based_exceptions: Use class based exceptions",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_US_CLSS_BSD_EXCPTNS",
+  "checkType": "remoteEnabled"
+}

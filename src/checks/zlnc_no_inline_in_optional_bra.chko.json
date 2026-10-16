@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "no_inline_in_optional_branches: Don't declare inline in o...",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_N_INLN_IN_OPTNL_BRNCHS",
+  "checkType": "remoteEnabled"
+}

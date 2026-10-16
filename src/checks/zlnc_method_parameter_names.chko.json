@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "method_parameter_names: Method parameter naming conventions",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_METHOD_PARAMETER_NAMES",
+  "checkType": "remoteEnabled"
+}

@@ -237,11 +237,11 @@ CLASS zcl_lnt_break IMPLEMENTATION.
     DATA(t56) = |[^\n\r|.
     DATA t57 TYPE c LENGTH 1.
     CLEAR t57.
-    t57 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t57 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t56 t57 INTO t56 RESPECTING BLANKS.
     DATA t58 TYPE c LENGTH 1.
     CLEAR t58.
-    t58 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t58 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t56 t58 INTO t56 RESPECTING BLANKS.
     t56 = t56 && |]*|.
     DATA(t59) = ||.

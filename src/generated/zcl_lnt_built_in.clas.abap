@@ -777,7 +777,7 @@ CLASS zcl_lnt_built_in IMPLEMENTATION.
         DATA(t76) = ||.
         DATA t77 TYPE c LENGTH 1.
         CLEAR t77.
-        t77 = cl_abap_conv_in_ce=>uccpi( 8 ).
+        t77 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0008` ) ).
         CONCATENATE t76 t77 INTO t76 RESPECTING BLANKS.
         DATA(t78) = NEW zlnt_runtime_opti_4ba3bdccd169( ).
         t78->has = abap_true.
@@ -845,7 +845,7 @@ CLASS zcl_lnt_built_in IMPLEMENTATION.
         DATA(t99) = ||.
         DATA t100 TYPE c LENGTH 1.
         CLEAR t100.
-        t100 = cl_abap_conv_in_ce=>uccpi( 12 ).
+        t100 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ).
         CONCATENATE t99 t100 INTO t99 RESPECTING BLANKS.
         DATA(t101) = NEW zlnt_runtime_opti_4ba3bdccd169( ).
         t101->has = abap_true.
@@ -945,11 +945,11 @@ CLASS zcl_lnt_built_in IMPLEMENTATION.
         DATA(t133) = ||.
         DATA t134 TYPE c LENGTH 1.
         CLEAR t134.
-        t134 = cl_abap_conv_in_ce=>uccpi( 0 ).
+        t134 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0000` ) ).
         CONCATENATE t133 t134 INTO t133 RESPECTING BLANKS.
         DATA t135 TYPE c LENGTH 1.
         CLEAR t135.
-        t135 = cl_abap_conv_in_ce=>uccpi( 0 ).
+        t135 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0000` ) ).
         CONCATENATE t133 t135 INTO t133 RESPECTING BLANKS.
         DATA(t136) = NEW zlnt_runtime_opti_4ba3bdccd169( ).
         t136->has = abap_true.
@@ -1017,7 +1017,7 @@ CLASS zcl_lnt_built_in IMPLEMENTATION.
         DATA(t157) = ||.
         DATA t158 TYPE c LENGTH 1.
         CLEAR t158.
-        t158 = cl_abap_conv_in_ce=>uccpi( 11 ).
+        t158 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ).
         CONCATENATE t157 t158 INTO t157 RESPECTING BLANKS.
         DATA(t159) = NEW zlnt_runtime_opti_4ba3bdccd169( ).
         t159->has = abap_true.

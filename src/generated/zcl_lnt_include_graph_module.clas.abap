@@ -163,11 +163,11 @@ CLASS zcl_lnt_include_graph_module IMPLEMENTATION.
     t3 = t3 && |\n\r|.
     DATA t4 TYPE c LENGTH 1.
     CLEAR t4.
-    t4 = cl_abap_conv_in_ce=>uccpi( 8232 ).
+    t4 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ).
     CONCATENATE t3 t4 INTO t3 RESPECTING BLANKS.
     DATA t5 TYPE c LENGTH 1.
     CLEAR t5.
-    t5 = cl_abap_conv_in_ce=>uccpi( 8233 ).
+    t5 = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ).
     CONCATENATE t3 t5 INTO t3 RESPECTING BLANKS.
     t3 = t3 && |]+XX$|.
     DATA(t6) = ||.

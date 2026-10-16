@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "inline_data_old_versions: Inline data, old versions",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_INLN_DT_OLD_VRSNS",
+  "checkType": "remoteEnabled"
+}

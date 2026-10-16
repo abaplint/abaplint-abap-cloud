@@ -16,7 +16,7 @@ CLASS zcl_lnt_no_chained_assignment DEFINITION PUBLIC INHERITING FROM zcl_lnt_ab
     METHODS zlnt_builtin_nati_72359f490bf2 REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
-    CLASS-DATA zlnt_builtin_code_e8b6ad3e9ab4 TYPE REF TO cl_abap_conv_out_ce.
+    CLASS-DATA zlnt_builtin_code_e8b6ad3e9ab4 TYPE REF TO if_abap_conv_out.
 ENDCLASS.
 CLASS zcl_lnt_no_chained_assignment IMPLEMENTATION.
   METHOD constructor.
@@ -755,12 +755,16 @@ CLASS zcl_lnt_no_chained_assignment IMPLEMENTATION.
         CLEAR t120.
         DATA(t121) = VALUE i( ).
         t117 = t116.
-        t114 = cl_abap_conv_out_ce=>uccpi( t117 ).
+        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t117 IS INITIAL THEN ` ` ELSE t117 ) ).
+        DATA zlnt_conv_1_low TYPE i.
+        zlnt_conv_1_low = zlnt_conv_1(1).
+        t114 = zlnt_conv_1+1(1).
+        t114 = t114 * 256 + zlnt_conv_1_low.
         IF t114 >= 255.
           IF zlnt_builtin_code_e8b6ad3e9ab4 IS NOT BOUND.
-            zlnt_builtin_code_e8b6ad3e9ab4 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+            zlnt_builtin_code_e8b6ad3e9ab4 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          zlnt_builtin_code_e8b6ad3e9ab4->convert( EXPORTING data = t116 IMPORTING buffer = t118 ).
+          t118 = zlnt_builtin_code_e8b6ad3e9ab4->convert( COND string( WHEN t116 IS INITIAL THEN ` ` ELSE t116 ) ).
           t119 = t118(1).
           t120 = t118+1(1).
           t114 = t119.

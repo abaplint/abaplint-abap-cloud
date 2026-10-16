@@ -18,7 +18,7 @@ CLASS zcl_lnt_commented_code DEFINITION PUBLIC INHERITING FROM zcl_lnt_abap_rule
     METHODS zlnt_builtin_nati_72359f490bf2 REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
-    CLASS-DATA zlnt_builtin_code_6fdde2a7fb2f TYPE REF TO cl_abap_conv_out_ce.
+    CLASS-DATA zlnt_builtin_code_6fdde2a7fb2f TYPE REF TO if_abap_conv_out.
 ENDCLASS.
 CLASS zcl_lnt_commented_code IMPLEMENTATION.
   METHOD constructor.
@@ -324,12 +324,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
           CLEAR t51.
           DATA(t52) = VALUE i( ).
           t48 = t47.
-          t45 = cl_abap_conv_out_ce=>uccpi( t48 ).
+          DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t48 IS INITIAL THEN ` ` ELSE t48 ) ).
+          DATA zlnt_conv_1_low TYPE i.
+          zlnt_conv_1_low = zlnt_conv_1(1).
+          t45 = zlnt_conv_1+1(1).
+          t45 = t45 * 256 + zlnt_conv_1_low.
           IF t45 >= 255.
             IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t47 IMPORTING buffer = t49 ).
+            t49 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t47 IS INITIAL THEN ` ` ELSE t47 ) ).
             t50 = t49(1).
             t51 = t49+1(1).
             t45 = t50.
@@ -357,12 +361,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
           CLEAR t59.
           DATA(t60) = VALUE i( ).
           t56 = t55.
-          t53 = cl_abap_conv_out_ce=>uccpi( t56 ).
+          DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t56 IS INITIAL THEN ` ` ELSE t56 ) ).
+          DATA zlnt_conv_2_low TYPE i.
+          zlnt_conv_2_low = zlnt_conv_2(1).
+          t53 = zlnt_conv_2+1(1).
+          t53 = t53 * 256 + zlnt_conv_2_low.
           IF t53 >= 255.
             IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t55 IMPORTING buffer = t57 ).
+            t57 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t55 IS INITIAL THEN ` ` ELSE t55 ) ).
             t58 = t57(1).
             t59 = t57+1(1).
             t53 = t58.
@@ -426,12 +434,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
             CLEAR t78.
             DATA(t79) = VALUE i( ).
             t75 = t74.
-            t72 = cl_abap_conv_out_ce=>uccpi( t75 ).
+            DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t75 IS INITIAL THEN ` ` ELSE t75 ) ).
+            DATA zlnt_conv_3_low TYPE i.
+            zlnt_conv_3_low = zlnt_conv_3(1).
+            t72 = zlnt_conv_3+1(1).
+            t72 = t72 * 256 + zlnt_conv_3_low.
             IF t72 >= 255.
               IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-                zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t74 IMPORTING buffer = t76 ).
+              t76 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t74 IS INITIAL THEN ` ` ELSE t74 ) ).
               t77 = t76(1).
               t78 = t76+1(1).
               t72 = t77.
@@ -459,12 +471,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
             CLEAR t86.
             DATA(t87) = VALUE i( ).
             t83 = t82.
-            t80 = cl_abap_conv_out_ce=>uccpi( t83 ).
+            DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t83 IS INITIAL THEN ` ` ELSE t83 ) ).
+            DATA zlnt_conv_4_low TYPE i.
+            zlnt_conv_4_low = zlnt_conv_4(1).
+            t80 = zlnt_conv_4+1(1).
+            t80 = t80 * 256 + zlnt_conv_4_low.
             IF t80 >= 255.
               IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-                zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t82 IMPORTING buffer = t84 ).
+              t84 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t82 IS INITIAL THEN ` ` ELSE t82 ) ).
               t85 = t84(1).
               t86 = t84+1(1).
               t80 = t85.
@@ -573,12 +589,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
           CLEAR t123.
           DATA(t124) = VALUE i( ).
           t120 = t119.
-          t117 = cl_abap_conv_out_ce=>uccpi( t120 ).
+          DATA(zlnt_conv_5) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t120 IS INITIAL THEN ` ` ELSE t120 ) ).
+          DATA zlnt_conv_5_low TYPE i.
+          zlnt_conv_5_low = zlnt_conv_5(1).
+          t117 = zlnt_conv_5+1(1).
+          t117 = t117 * 256 + zlnt_conv_5_low.
           IF t117 >= 255.
             IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t119 IMPORTING buffer = t121 ).
+            t121 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t119 IS INITIAL THEN ` ` ELSE t119 ) ).
             t122 = t121(1).
             t123 = t121+1(1).
             t117 = t122.
@@ -606,12 +626,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
           CLEAR t131.
           DATA(t132) = VALUE i( ).
           t128 = t127.
-          t125 = cl_abap_conv_out_ce=>uccpi( t128 ).
+          DATA(zlnt_conv_6) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t128 IS INITIAL THEN ` ` ELSE t128 ) ).
+          DATA zlnt_conv_6_low TYPE i.
+          zlnt_conv_6_low = zlnt_conv_6(1).
+          t125 = zlnt_conv_6+1(1).
+          t125 = t125 * 256 + zlnt_conv_6_low.
           IF t125 >= 255.
             IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t127 IMPORTING buffer = t129 ).
+            t129 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t127 IS INITIAL THEN ` ` ELSE t127 ) ).
             t130 = t129(1).
             t131 = t129+1(1).
             t125 = t130.
@@ -752,12 +776,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
             CLEAR t184.
             DATA(t185) = VALUE i( ).
             t181 = t180.
-            t178 = cl_abap_conv_out_ce=>uccpi( t181 ).
+            DATA(zlnt_conv_7) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t181 IS INITIAL THEN ` ` ELSE t181 ) ).
+            DATA zlnt_conv_7_low TYPE i.
+            zlnt_conv_7_low = zlnt_conv_7(1).
+            t178 = zlnt_conv_7+1(1).
+            t178 = t178 * 256 + zlnt_conv_7_low.
             IF t178 >= 255.
               IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-                zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t180 IMPORTING buffer = t182 ).
+              t182 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t180 IS INITIAL THEN ` ` ELSE t180 ) ).
               t183 = t182(1).
               t184 = t182+1(1).
               t178 = t183.
@@ -785,12 +813,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
             CLEAR t192.
             DATA(t193) = VALUE i( ).
             t189 = t188.
-            t186 = cl_abap_conv_out_ce=>uccpi( t189 ).
+            DATA(zlnt_conv_8) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t189 IS INITIAL THEN ` ` ELSE t189 ) ).
+            DATA zlnt_conv_8_low TYPE i.
+            zlnt_conv_8_low = zlnt_conv_8(1).
+            t186 = zlnt_conv_8+1(1).
+            t186 = t186 * 256 + zlnt_conv_8_low.
             IF t186 >= 255.
               IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-                zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t188 IMPORTING buffer = t190 ).
+              t190 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t188 IS INITIAL THEN ` ` ELSE t188 ) ).
               t191 = t190(1).
               t192 = t190+1(1).
               t186 = t191.
@@ -869,12 +901,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
         CLEAR t223.
         DATA(t224) = VALUE i( ).
         t220 = t219.
-        t217 = cl_abap_conv_out_ce=>uccpi( t220 ).
+        DATA(zlnt_conv_9) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t220 IS INITIAL THEN ` ` ELSE t220 ) ).
+        DATA zlnt_conv_9_low TYPE i.
+        zlnt_conv_9_low = zlnt_conv_9(1).
+        t217 = zlnt_conv_9+1(1).
+        t217 = t217 * 256 + zlnt_conv_9_low.
         IF t217 >= 255.
           IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-            zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+            zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t219 IMPORTING buffer = t221 ).
+          t221 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t219 IS INITIAL THEN ` ` ELSE t219 ) ).
           t222 = t221(1).
           t223 = t221+1(1).
           t217 = t222.
@@ -902,12 +938,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
         CLEAR t231.
         DATA(t232) = VALUE i( ).
         t228 = t227.
-        t225 = cl_abap_conv_out_ce=>uccpi( t228 ).
+        DATA(zlnt_conv_10) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t228 IS INITIAL THEN ` ` ELSE t228 ) ).
+        DATA zlnt_conv_10_low TYPE i.
+        zlnt_conv_10_low = zlnt_conv_10(1).
+        t225 = zlnt_conv_10+1(1).
+        t225 = t225 * 256 + zlnt_conv_10_low.
         IF t225 >= 255.
           IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-            zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+            zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t227 IMPORTING buffer = t229 ).
+          t229 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t227 IS INITIAL THEN ` ` ELSE t227 ) ).
           t230 = t229(1).
           t231 = t229+1(1).
           t225 = t230.
@@ -1426,12 +1466,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
         CLEAR t24.
         DATA(t25) = VALUE i( ).
         t21 = t20.
-        t18 = cl_abap_conv_out_ce=>uccpi( t21 ).
+        DATA(zlnt_conv_11) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t21 IS INITIAL THEN ` ` ELSE t21 ) ).
+        DATA zlnt_conv_11_low TYPE i.
+        zlnt_conv_11_low = zlnt_conv_11(1).
+        t18 = zlnt_conv_11+1(1).
+        t18 = t18 * 256 + zlnt_conv_11_low.
         IF t18 >= 255.
           IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-            zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+            zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t20 IMPORTING buffer = t22 ).
+          t22 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t20 IS INITIAL THEN ` ` ELSE t20 ) ).
           t23 = t22(1).
           t24 = t22+1(1).
           t18 = t23.
@@ -1459,12 +1503,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
         CLEAR t32.
         DATA(t33) = VALUE i( ).
         t29 = t28.
-        t26 = cl_abap_conv_out_ce=>uccpi( t29 ).
+        DATA(zlnt_conv_12) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t29 IS INITIAL THEN ` ` ELSE t29 ) ).
+        DATA zlnt_conv_12_low TYPE i.
+        zlnt_conv_12_low = zlnt_conv_12(1).
+        t26 = zlnt_conv_12+1(1).
+        t26 = t26 * 256 + zlnt_conv_12_low.
         IF t26 >= 255.
           IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-            zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+            zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t28 IMPORTING buffer = t30 ).
+          t30 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t28 IS INITIAL THEN ` ` ELSE t28 ) ).
           t31 = t30(1).
           t32 = t30+1(1).
           t26 = t31.
@@ -1528,12 +1576,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
           CLEAR t51.
           DATA(t52) = VALUE i( ).
           t48 = t47.
-          t45 = cl_abap_conv_out_ce=>uccpi( t48 ).
+          DATA(zlnt_conv_13) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t48 IS INITIAL THEN ` ` ELSE t48 ) ).
+          DATA zlnt_conv_13_low TYPE i.
+          zlnt_conv_13_low = zlnt_conv_13(1).
+          t45 = zlnt_conv_13+1(1).
+          t45 = t45 * 256 + zlnt_conv_13_low.
           IF t45 >= 255.
             IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t47 IMPORTING buffer = t49 ).
+            t49 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t47 IS INITIAL THEN ` ` ELSE t47 ) ).
             t50 = t49(1).
             t51 = t49+1(1).
             t45 = t50.
@@ -1561,12 +1613,16 @@ CLASS zcl_lnt_commented_code IMPLEMENTATION.
           CLEAR t59.
           DATA(t60) = VALUE i( ).
           t56 = t55.
-          t53 = cl_abap_conv_out_ce=>uccpi( t56 ).
+          DATA(zlnt_conv_14) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t56 IS INITIAL THEN ` ` ELSE t56 ) ).
+          DATA zlnt_conv_14_low TYPE i.
+          zlnt_conv_14_low = zlnt_conv_14(1).
+          t53 = zlnt_conv_14+1(1).
+          t53 = t53 * 256 + zlnt_conv_14_low.
           IF t53 >= 255.
             IF zlnt_builtin_code_6fdde2a7fb2f IS NOT BOUND.
-              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_6fdde2a7fb2f = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_6fdde2a7fb2f->convert( EXPORTING data = t55 IMPORTING buffer = t57 ).
+            t57 = zlnt_builtin_code_6fdde2a7fb2f->convert( COND string( WHEN t55 IS INITIAL THEN ` ` ELSE t55 ) ).
             t58 = t57(1).
             t59 = t57+1(1).
             t53 = t58.

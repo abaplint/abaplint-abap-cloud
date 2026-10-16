@@ -35,7 +35,7 @@ CLASS zcl_lnt_xml_consistency DEFINITION PUBLIC CREATE PUBLIC.
     METHODS zlnt_builtin_nati_72359f490bf2 RETURNING VALUE(result) TYPE REF TO zlnt_runtime_clas_a39833db3295.
   PROTECTED SECTION.
   PRIVATE SECTION.
-    CLASS-DATA zlnt_builtin_code_47a4f748f766 TYPE REF TO cl_abap_conv_out_ce.
+    CLASS-DATA zlnt_builtin_code_47a4f748f766 TYPE REF TO if_abap_conv_out.
 ENDCLASS.
 CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
   METHOD constructor.
@@ -2310,12 +2310,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
         CLEAR t60.
         DATA(t61) = VALUE i( ).
         t57 = t56.
-        t52 = cl_abap_conv_out_ce=>uccpi( t57 ).
+        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t57 IS INITIAL THEN ` ` ELSE t57 ) ).
+        DATA zlnt_conv_1_low TYPE i.
+        zlnt_conv_1_low = zlnt_conv_1(1).
+        t52 = zlnt_conv_1+1(1).
+        t52 = t52 * 256 + zlnt_conv_1_low.
         IF t52 >= 255.
           IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-            zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+            zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t56 IMPORTING buffer = t58 ).
+          t58 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t56 IS INITIAL THEN ` ` ELSE t56 ) ).
           t59 = t58(1).
           t60 = t58+1(1).
           t52 = t59.
@@ -2738,12 +2742,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t244.
             DATA(t245) = VALUE i( ).
             t241 = t240.
-            t238 = cl_abap_conv_out_ce=>uccpi( t241 ).
+            DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t241 IS INITIAL THEN ` ` ELSE t241 ) ).
+            DATA zlnt_conv_2_low TYPE i.
+            zlnt_conv_2_low = zlnt_conv_2(1).
+            t238 = zlnt_conv_2+1(1).
+            t238 = t238 * 256 + zlnt_conv_2_low.
             IF t238 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t240 IMPORTING buffer = t242 ).
+              t242 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t240 IS INITIAL THEN ` ` ELSE t240 ) ).
               t243 = t242(1).
               t244 = t242+1(1).
               t238 = t243.
@@ -3429,12 +3437,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t488.
           DATA(t489) = VALUE i( ).
           t485 = t484.
-          t480 = cl_abap_conv_out_ce=>uccpi( t485 ).
+          DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t485 IS INITIAL THEN ` ` ELSE t485 ) ).
+          DATA zlnt_conv_3_low TYPE i.
+          zlnt_conv_3_low = zlnt_conv_3(1).
+          t480 = zlnt_conv_3+1(1).
+          t480 = t480 * 256 + zlnt_conv_3_low.
           IF t480 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t484 IMPORTING buffer = t486 ).
+            t486 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t484 IS INITIAL THEN ` ` ELSE t484 ) ).
             t487 = t486(1).
             t488 = t486+1(1).
             t480 = t487.
@@ -3864,12 +3876,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               CLEAR t675.
               DATA(t676) = VALUE i( ).
               t672 = t671.
-              t669 = cl_abap_conv_out_ce=>uccpi( t672 ).
+              DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t672 IS INITIAL THEN ` ` ELSE t672 ) ).
+              DATA zlnt_conv_4_low TYPE i.
+              zlnt_conv_4_low = zlnt_conv_4(1).
+              t669 = zlnt_conv_4+1(1).
+              t669 = t669 * 256 + zlnt_conv_4_low.
               IF t669 >= 255.
                 IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                  zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                  zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t671 IMPORTING buffer = t673 ).
+                t673 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t671 IS INITIAL THEN ` ` ELSE t671 ) ).
                 t674 = t673(1).
                 t675 = t673+1(1).
                 t669 = t674.
@@ -5267,12 +5283,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
         CLEAR t46.
         DATA(t47) = VALUE i( ).
         t43 = t42.
-        t40 = cl_abap_conv_out_ce=>uccpi( t43 ).
+        DATA(zlnt_conv_5) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t43 IS INITIAL THEN ` ` ELSE t43 ) ).
+        DATA zlnt_conv_5_low TYPE i.
+        zlnt_conv_5_low = zlnt_conv_5(1).
+        t40 = zlnt_conv_5+1(1).
+        t40 = t40 * 256 + zlnt_conv_5_low.
         IF t40 >= 255.
           IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-            zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+            zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t42 IMPORTING buffer = t44 ).
+          t44 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t42 IS INITIAL THEN ` ` ELSE t42 ) ).
           t45 = t44(1).
           t46 = t44+1(1).
           t40 = t45.
@@ -7481,12 +7501,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t749.
           DATA(t750) = VALUE i( ).
           t746 = t745.
-          t743 = cl_abap_conv_out_ce=>uccpi( t746 ).
+          DATA(zlnt_conv_6) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t746 IS INITIAL THEN ` ` ELSE t746 ) ).
+          DATA zlnt_conv_6_low TYPE i.
+          zlnt_conv_6_low = zlnt_conv_6(1).
+          t743 = zlnt_conv_6+1(1).
+          t743 = t743 * 256 + zlnt_conv_6_low.
           IF t743 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t745 IMPORTING buffer = t747 ).
+            t747 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t745 IS INITIAL THEN ` ` ELSE t745 ) ).
             t748 = t747(1).
             t749 = t747+1(1).
             t743 = t748.
@@ -7970,12 +7994,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t938.
           DATA(t939) = VALUE i( ).
           t935 = t934.
-          t932 = cl_abap_conv_out_ce=>uccpi( t935 ).
+          DATA(zlnt_conv_7) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t935 IS INITIAL THEN ` ` ELSE t935 ) ).
+          DATA zlnt_conv_7_low TYPE i.
+          zlnt_conv_7_low = zlnt_conv_7(1).
+          t932 = zlnt_conv_7+1(1).
+          t932 = t932 * 256 + zlnt_conv_7_low.
           IF t932 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t934 IMPORTING buffer = t936 ).
+            t936 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t934 IS INITIAL THEN ` ` ELSE t934 ) ).
             t937 = t936(1).
             t938 = t936+1(1).
             t932 = t937.
@@ -8459,12 +8487,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t1127.
           DATA(t1128) = VALUE i( ).
           t1124 = t1123.
-          t1121 = cl_abap_conv_out_ce=>uccpi( t1124 ).
+          DATA(zlnt_conv_8) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1124 IS INITIAL THEN ` ` ELSE t1124 ) ).
+          DATA zlnt_conv_8_low TYPE i.
+          zlnt_conv_8_low = zlnt_conv_8(1).
+          t1121 = zlnt_conv_8+1(1).
+          t1121 = t1121 * 256 + zlnt_conv_8_low.
           IF t1121 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t1123 IMPORTING buffer = t1125 ).
+            t1125 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1123 IS INITIAL THEN ` ` ELSE t1123 ) ).
             t1126 = t1125(1).
             t1127 = t1125+1(1).
             t1121 = t1126.
@@ -8949,12 +8981,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t1316.
           DATA(t1317) = VALUE i( ).
           t1313 = t1312.
-          t1310 = cl_abap_conv_out_ce=>uccpi( t1313 ).
+          DATA(zlnt_conv_9) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1313 IS INITIAL THEN ` ` ELSE t1313 ) ).
+          DATA zlnt_conv_9_low TYPE i.
+          zlnt_conv_9_low = zlnt_conv_9(1).
+          t1310 = zlnt_conv_9+1(1).
+          t1310 = t1310 * 256 + zlnt_conv_9_low.
           IF t1310 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t1312 IMPORTING buffer = t1314 ).
+            t1314 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1312 IS INITIAL THEN ` ` ELSE t1312 ) ).
             t1315 = t1314(1).
             t1316 = t1314+1(1).
             t1310 = t1315.
@@ -9439,12 +9475,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t1505.
           DATA(t1506) = VALUE i( ).
           t1502 = t1501.
-          t1499 = cl_abap_conv_out_ce=>uccpi( t1502 ).
+          DATA(zlnt_conv_10) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1502 IS INITIAL THEN ` ` ELSE t1502 ) ).
+          DATA zlnt_conv_10_low TYPE i.
+          zlnt_conv_10_low = zlnt_conv_10(1).
+          t1499 = zlnt_conv_10+1(1).
+          t1499 = t1499 * 256 + zlnt_conv_10_low.
           IF t1499 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t1501 IMPORTING buffer = t1503 ).
+            t1503 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1501 IS INITIAL THEN ` ` ELSE t1501 ) ).
             t1504 = t1503(1).
             t1505 = t1503+1(1).
             t1499 = t1504.
@@ -10004,12 +10044,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t1723.
             DATA(t1724) = VALUE i( ).
             t1720 = t1719.
-            t1717 = cl_abap_conv_out_ce=>uccpi( t1720 ).
+            DATA(zlnt_conv_11) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1720 IS INITIAL THEN ` ` ELSE t1720 ) ).
+            DATA zlnt_conv_11_low TYPE i.
+            zlnt_conv_11_low = zlnt_conv_11(1).
+            t1717 = zlnt_conv_11+1(1).
+            t1717 = t1717 * 256 + zlnt_conv_11_low.
             IF t1717 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t1719 IMPORTING buffer = t1721 ).
+              t1721 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1719 IS INITIAL THEN ` ` ELSE t1719 ) ).
               t1722 = t1721(1).
               t1723 = t1721+1(1).
               t1717 = t1722.
@@ -10472,12 +10516,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t1906.
             DATA(t1907) = VALUE i( ).
             t1903 = t1902.
-            t1900 = cl_abap_conv_out_ce=>uccpi( t1903 ).
+            DATA(zlnt_conv_12) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1903 IS INITIAL THEN ` ` ELSE t1903 ) ).
+            DATA zlnt_conv_12_low TYPE i.
+            zlnt_conv_12_low = zlnt_conv_12(1).
+            t1900 = zlnt_conv_12+1(1).
+            t1900 = t1900 * 256 + zlnt_conv_12_low.
             IF t1900 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t1902 IMPORTING buffer = t1904 ).
+              t1904 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1902 IS INITIAL THEN ` ` ELSE t1902 ) ).
               t1905 = t1904(1).
               t1906 = t1904+1(1).
               t1900 = t1905.
@@ -10940,12 +10988,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t2089.
             DATA(t2090) = VALUE i( ).
             t2086 = t2085.
-            t2083 = cl_abap_conv_out_ce=>uccpi( t2086 ).
+            DATA(zlnt_conv_13) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t2086 IS INITIAL THEN ` ` ELSE t2086 ) ).
+            DATA zlnt_conv_13_low TYPE i.
+            zlnt_conv_13_low = zlnt_conv_13(1).
+            t2083 = zlnt_conv_13+1(1).
+            t2083 = t2083 * 256 + zlnt_conv_13_low.
             IF t2083 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t2085 IMPORTING buffer = t2087 ).
+              t2087 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t2085 IS INITIAL THEN ` ` ELSE t2085 ) ).
               t2088 = t2087(1).
               t2089 = t2087+1(1).
               t2083 = t2088.
@@ -11408,12 +11460,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t2272.
             DATA(t2273) = VALUE i( ).
             t2269 = t2268.
-            t2266 = cl_abap_conv_out_ce=>uccpi( t2269 ).
+            DATA(zlnt_conv_14) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t2269 IS INITIAL THEN ` ` ELSE t2269 ) ).
+            DATA zlnt_conv_14_low TYPE i.
+            zlnt_conv_14_low = zlnt_conv_14(1).
+            t2266 = zlnt_conv_14+1(1).
+            t2266 = t2266 * 256 + zlnt_conv_14_low.
             IF t2266 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t2268 IMPORTING buffer = t2270 ).
+              t2270 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t2268 IS INITIAL THEN ` ` ELSE t2268 ) ).
               t2271 = t2270(1).
               t2272 = t2270+1(1).
               t2266 = t2271.
@@ -11876,12 +11932,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t2455.
             DATA(t2456) = VALUE i( ).
             t2452 = t2451.
-            t2449 = cl_abap_conv_out_ce=>uccpi( t2452 ).
+            DATA(zlnt_conv_15) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t2452 IS INITIAL THEN ` ` ELSE t2452 ) ).
+            DATA zlnt_conv_15_low TYPE i.
+            zlnt_conv_15_low = zlnt_conv_15(1).
+            t2449 = zlnt_conv_15+1(1).
+            t2449 = t2449 * 256 + zlnt_conv_15_low.
             IF t2449 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t2451 IMPORTING buffer = t2453 ).
+              t2453 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t2451 IS INITIAL THEN ` ` ELSE t2451 ) ).
               t2454 = t2453(1).
               t2455 = t2453+1(1).
               t2449 = t2454.
@@ -12607,12 +12667,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t76.
           DATA(t77) = VALUE i( ).
           t73 = t72.
-          t70 = cl_abap_conv_out_ce=>uccpi( t73 ).
+          DATA(zlnt_conv_16) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t73 IS INITIAL THEN ` ` ELSE t73 ) ).
+          DATA zlnt_conv_16_low TYPE i.
+          zlnt_conv_16_low = zlnt_conv_16(1).
+          t70 = zlnt_conv_16+1(1).
+          t70 = t70 * 256 + zlnt_conv_16_low.
           IF t70 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t72 IMPORTING buffer = t74 ).
+            t74 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t72 IS INITIAL THEN ` ` ELSE t72 ) ).
             t75 = t74(1).
             t76 = t74+1(1).
             t70 = t75.
@@ -13144,12 +13208,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t285.
             DATA(t286) = VALUE i( ).
             t282 = t281.
-            t279 = cl_abap_conv_out_ce=>uccpi( t282 ).
+            DATA(zlnt_conv_17) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t282 IS INITIAL THEN ` ` ELSE t282 ) ).
+            DATA zlnt_conv_17_low TYPE i.
+            zlnt_conv_17_low = zlnt_conv_17(1).
+            t279 = zlnt_conv_17+1(1).
+            t279 = t279 * 256 + zlnt_conv_17_low.
             IF t279 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t281 IMPORTING buffer = t283 ).
+              t283 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t281 IS INITIAL THEN ` ` ELSE t281 ) ).
               t284 = t283(1).
               t285 = t283+1(1).
               t279 = t284.
@@ -13680,12 +13748,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t494.
             DATA(t495) = VALUE i( ).
             t491 = t490.
-            t488 = cl_abap_conv_out_ce=>uccpi( t491 ).
+            DATA(zlnt_conv_18) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t491 IS INITIAL THEN ` ` ELSE t491 ) ).
+            DATA zlnt_conv_18_low TYPE i.
+            zlnt_conv_18_low = zlnt_conv_18(1).
+            t488 = zlnt_conv_18+1(1).
+            t488 = t488 * 256 + zlnt_conv_18_low.
             IF t488 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t490 IMPORTING buffer = t492 ).
+              t492 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t490 IS INITIAL THEN ` ` ELSE t490 ) ).
               t493 = t492(1).
               t494 = t492+1(1).
               t488 = t493.
@@ -14185,12 +14257,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t76.
           DATA(t77) = VALUE i( ).
           t73 = t72.
-          t70 = cl_abap_conv_out_ce=>uccpi( t73 ).
+          DATA(zlnt_conv_19) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t73 IS INITIAL THEN ` ` ELSE t73 ) ).
+          DATA zlnt_conv_19_low TYPE i.
+          zlnt_conv_19_low = zlnt_conv_19(1).
+          t70 = zlnt_conv_19+1(1).
+          t70 = t70 * 256 + zlnt_conv_19_low.
           IF t70 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t72 IMPORTING buffer = t74 ).
+            t74 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t72 IS INITIAL THEN ` ` ELSE t72 ) ).
             t75 = t74(1).
             t76 = t74+1(1).
             t70 = t75.
@@ -14728,12 +14804,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t288.
             DATA(t289) = VALUE i( ).
             t285 = t284.
-            t282 = cl_abap_conv_out_ce=>uccpi( t285 ).
+            DATA(zlnt_conv_20) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t285 IS INITIAL THEN ` ` ELSE t285 ) ).
+            DATA zlnt_conv_20_low TYPE i.
+            zlnt_conv_20_low = zlnt_conv_20(1).
+            t282 = zlnt_conv_20+1(1).
+            t282 = t282 * 256 + zlnt_conv_20_low.
             IF t282 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t284 IMPORTING buffer = t286 ).
+              t286 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t284 IS INITIAL THEN ` ` ELSE t284 ) ).
               t287 = t286(1).
               t288 = t286+1(1).
               t282 = t287.
@@ -15317,12 +15397,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t110.
             DATA(t111) = VALUE i( ).
             t107 = t106.
-            t104 = cl_abap_conv_out_ce=>uccpi( t107 ).
+            DATA(zlnt_conv_21) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t107 IS INITIAL THEN ` ` ELSE t107 ) ).
+            DATA zlnt_conv_21_low TYPE i.
+            zlnt_conv_21_low = zlnt_conv_21(1).
+            t104 = zlnt_conv_21+1(1).
+            t104 = t104 * 256 + zlnt_conv_21_low.
             IF t104 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t106 IMPORTING buffer = t108 ).
+              t108 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t106 IS INITIAL THEN ` ` ELSE t106 ) ).
               t109 = t108(1).
               t110 = t108+1(1).
               t104 = t109.
@@ -15894,12 +15978,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t338.
             DATA(t339) = VALUE i( ).
             t335 = t334.
-            t332 = cl_abap_conv_out_ce=>uccpi( t335 ).
+            DATA(zlnt_conv_22) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t335 IS INITIAL THEN ` ` ELSE t335 ) ).
+            DATA zlnt_conv_22_low TYPE i.
+            zlnt_conv_22_low = zlnt_conv_22(1).
+            t332 = zlnt_conv_22+1(1).
+            t332 = t332 * 256 + zlnt_conv_22_low.
             IF t332 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t334 IMPORTING buffer = t336 ).
+              t336 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t334 IS INITIAL THEN ` ` ELSE t334 ) ).
               t337 = t336(1).
               t338 = t336+1(1).
               t332 = t337.
@@ -16758,12 +16846,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t76.
             DATA(t77) = VALUE i( ).
             t73 = t72.
-            t70 = cl_abap_conv_out_ce=>uccpi( t73 ).
+            DATA(zlnt_conv_23) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t73 IS INITIAL THEN ` ` ELSE t73 ) ).
+            DATA zlnt_conv_23_low TYPE i.
+            zlnt_conv_23_low = zlnt_conv_23(1).
+            t70 = zlnt_conv_23+1(1).
+            t70 = t70 * 256 + zlnt_conv_23_low.
             IF t70 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t72 IMPORTING buffer = t74 ).
+              t74 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t72 IS INITIAL THEN ` ` ELSE t72 ) ).
               t75 = t74(1).
               t76 = t74+1(1).
               t70 = t75.
@@ -16791,12 +16883,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t84.
             DATA(t85) = VALUE i( ).
             t81 = t80.
-            t78 = cl_abap_conv_out_ce=>uccpi( t81 ).
+            DATA(zlnt_conv_24) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t81 IS INITIAL THEN ` ` ELSE t81 ) ).
+            DATA zlnt_conv_24_low TYPE i.
+            zlnt_conv_24_low = zlnt_conv_24(1).
+            t78 = zlnt_conv_24+1(1).
+            t78 = t78 * 256 + zlnt_conv_24_low.
             IF t78 >= 255.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t80 IMPORTING buffer = t82 ).
+              t82 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t80 IS INITIAL THEN ` ` ELSE t80 ) ).
               t83 = t82(1).
               t84 = t82+1(1).
               t78 = t83.
@@ -16876,12 +16972,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               CLEAR t109.
               DATA(t110) = VALUE i( ).
               t106 = t105.
-              t103 = cl_abap_conv_out_ce=>uccpi( t106 ).
+              DATA(zlnt_conv_25) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t106 IS INITIAL THEN ` ` ELSE t106 ) ).
+              DATA zlnt_conv_25_low TYPE i.
+              zlnt_conv_25_low = zlnt_conv_25(1).
+              t103 = zlnt_conv_25+1(1).
+              t103 = t103 * 256 + zlnt_conv_25_low.
               IF t103 >= 255.
                 IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                  zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                  zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t105 IMPORTING buffer = t107 ).
+                t107 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t105 IS INITIAL THEN ` ` ELSE t105 ) ).
                 t108 = t107(1).
                 t109 = t107+1(1).
                 t103 = t108.
@@ -16909,12 +17009,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               CLEAR t117.
               DATA(t118) = VALUE i( ).
               t114 = t113.
-              t111 = cl_abap_conv_out_ce=>uccpi( t114 ).
+              DATA(zlnt_conv_26) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t114 IS INITIAL THEN ` ` ELSE t114 ) ).
+              DATA zlnt_conv_26_low TYPE i.
+              zlnt_conv_26_low = zlnt_conv_26(1).
+              t111 = zlnt_conv_26+1(1).
+              t111 = t111 * 256 + zlnt_conv_26_low.
               IF t111 >= 255.
                 IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-                  zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+                  zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t113 IMPORTING buffer = t115 ).
+                t115 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t113 IS INITIAL THEN ` ` ELSE t113 ) ).
                 t116 = t115(1).
                 t117 = t115+1(1).
                 t111 = t116.
@@ -17328,12 +17432,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t269.
           DATA(t270) = VALUE i( ).
           t266 = t265.
-          t263 = cl_abap_conv_out_ce=>uccpi( t266 ).
+          DATA(zlnt_conv_27) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t266 IS INITIAL THEN ` ` ELSE t266 ) ).
+          DATA zlnt_conv_27_low TYPE i.
+          zlnt_conv_27_low = zlnt_conv_27(1).
+          t263 = zlnt_conv_27+1(1).
+          t263 = t263 * 256 + zlnt_conv_27_low.
           IF t263 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t265 IMPORTING buffer = t267 ).
+            t267 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t265 IS INITIAL THEN ` ` ELSE t265 ) ).
             t268 = t267(1).
             t269 = t267+1(1).
             t263 = t268.
@@ -17361,12 +17469,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t277.
           DATA(t278) = VALUE i( ).
           t274 = t273.
-          t271 = cl_abap_conv_out_ce=>uccpi( t274 ).
+          DATA(zlnt_conv_28) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t274 IS INITIAL THEN ` ` ELSE t274 ) ).
+          DATA zlnt_conv_28_low TYPE i.
+          zlnt_conv_28_low = zlnt_conv_28(1).
+          t271 = zlnt_conv_28+1(1).
+          t271 = t271 * 256 + zlnt_conv_28_low.
           IF t271 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t273 IMPORTING buffer = t275 ).
+            t275 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t273 IS INITIAL THEN ` ` ELSE t273 ) ).
             t276 = t275(1).
             t277 = t275+1(1).
             t271 = t276.
@@ -17658,12 +17770,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t382.
           DATA(t383) = VALUE i( ).
           t379 = t378.
-          t376 = cl_abap_conv_out_ce=>uccpi( t379 ).
+          DATA(zlnt_conv_29) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t379 IS INITIAL THEN ` ` ELSE t379 ) ).
+          DATA zlnt_conv_29_low TYPE i.
+          zlnt_conv_29_low = zlnt_conv_29(1).
+          t376 = zlnt_conv_29+1(1).
+          t376 = t376 * 256 + zlnt_conv_29_low.
           IF t376 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t378 IMPORTING buffer = t380 ).
+            t380 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t378 IS INITIAL THEN ` ` ELSE t378 ) ).
             t381 = t380(1).
             t382 = t380+1(1).
             t376 = t381.
@@ -17691,12 +17807,16 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t390.
           DATA(t391) = VALUE i( ).
           t387 = t386.
-          t384 = cl_abap_conv_out_ce=>uccpi( t387 ).
+          DATA(zlnt_conv_30) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t387 IS INITIAL THEN ` ` ELSE t387 ) ).
+          DATA zlnt_conv_30_low TYPE i.
+          zlnt_conv_30_low = zlnt_conv_30(1).
+          t384 = zlnt_conv_30+1(1).
+          t384 = t384 * 256 + zlnt_conv_30_low.
           IF t384 >= 255.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
-              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_out_ce=>create( encoding = '4103' ).
+              zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            zlnt_builtin_code_47a4f748f766->convert( EXPORTING data = t386 IMPORTING buffer = t388 ).
+            t388 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t386 IS INITIAL THEN ` ` ELSE t386 ) ).
             t389 = t388(1).
             t390 = t388+1(1).
             t384 = t389.

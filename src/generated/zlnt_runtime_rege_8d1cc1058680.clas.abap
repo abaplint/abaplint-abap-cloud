@@ -28,21 +28,21 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
     DATA whitespace TYPE string.
     DATA dot_class TYPE string.
     DATA normalized TYPE string.
-    whitespace = cl_abap_conv_in_ce=>uccpi( 9 ) &&
-    cl_abap_conv_in_ce=>uccpi( 10 ) &&
-    cl_abap_conv_in_ce=>uccpi( 11 ) &&
-    cl_abap_conv_in_ce=>uccpi( 12 ) &&
-    cl_abap_conv_in_ce=>uccpi( 13 ) &&
+    whitespace = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000A` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000C` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
     `    - ` &&
-    cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-    cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
     `  　` &&
-    cl_abap_conv_in_ce=>uccpi( 65279 ).
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ).
     dot_class = `[^` &&
-    cl_abap_conv_in_ce=>uccpi( 10 ) &&
-    cl_abap_conv_in_ce=>uccpi( 13 ) &&
-    cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-    cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000A` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+    cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
     `]`.
     me->flags = flags.
     n = strlen( pattern ).
@@ -196,14 +196,14 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
         CASE dispatch_key.
           WHEN ` (abap_true|abap_false)\s*\./i`.
             posix = `[ ]([Aa][Bb][Aa][Pp]_[Tt][Rr][Uu][Ee]|[Aa][Bb][Aa][Pp]_[Ff][Aa][Ll][Ss][Ee])[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]*\.`.
             excluded = ``.
             ignore_case = abap_false.
@@ -313,15 +313,15 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `.*/`.
             posix = `[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*`.
             excluded = ``.
             ignore_case = abap_false.
           WHEN `.*/i`.
             posix = `[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*`.
             excluded = ``.
             ignore_case = abap_false.
@@ -335,15 +335,15 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `<CLSPROXY>(.)</CLSPROXY>/`.
             posix = `<CLSPROXY>([^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `])</CLSPROXY>`.
             excluded = ``.
             ignore_case = abap_false.
           WHEN `<CLSPROXY>(.)<\/CLSPROXY>/`.
             posix = `<CLSPROXY>([^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `])</CLSPROXY>`.
             excluded = ``.
             ignore_case = abap_false.
@@ -363,23 +363,23 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `@\s*<?\s*EndUserText/i`.
             posix = `@[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]*<?[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]*[Ee][Nn][Dd][Uu][Ss][Ee][Rr][Tt][Ee][Xx][Tt]`.
             excluded = ``.
             ignore_case = abap_false.
@@ -401,20 +401,20 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `[\s.,:(]+/`.
             posix = `[(,.:` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+`.
             excluded = ``.
             ignore_case = abap_false.
           WHEN `[\u007f-\uffff]/`.
             posix = `[` &&
-            cl_abap_conv_in_ce=>uccpi( 127 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `007F` ) ) &&
             `-￿]`.
             excluded = ``.
             ignore_case = abap_false.
@@ -428,8 +428,8 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `\(.+$/`.
             posix = `\([^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]+(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -459,8 +459,8 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `\/\/.*$/gm`.
             posix = `//[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*`.
             excluded = ``.
             ignore_case = abap_false.
@@ -474,59 +474,59 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `\bdefine\s+(?:\w+\s+)*?behavior\s+for\s+([\w/]+)(?:\s+alias\s+(\w+))?/gi`.
             posix = `\b[dD][eE][fF][iI][nN][eE][` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+(?:[A-Za-z0-9_]+[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+)*?[bB][eE][hH][aA][vV][iI][oO][rR][` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+[fF][oO][rR][` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+([A-Za-z0-9_/]+)(?:[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+[aA][lL][iI][aA][sS][` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+([A-Za-z0-9_]+))?`.
             excluded = ``.
             ignore_case = abap_false.
@@ -540,53 +540,53 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `\r.+$/`.
             posix = `\r[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]+(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
           WHEN `\s+/`.
             posix = `[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+`.
             excluded = ``.
             ignore_case = abap_false.
           WHEN `\s+/g`.
             posix = `[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+`.
             excluded = ``.
             ignore_case = abap_false.
           WHEN `\s/g`.
             posix = `[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]`.
             excluded = ``.
             ignore_case = abap_false.
           WHEN `\u000b/g`.
             posix = `[` &&
-            cl_abap_conv_in_ce=>uccpi( 11 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000B` ) ) &&
             `]`.
             excluded = ``.
             ignore_case = abap_false.
@@ -659,8 +659,8 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^'.*'$/`.
             posix = `(?<![\s\S])'[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*'(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -670,11 +670,11 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^('.*')|(``.*``)$/`.
             posix = `(?<![\s\S])('[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*')|(``[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*``)(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -699,14 +699,14 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^(KEY|VIRTUAL)\s+/i`.
             posix = `(?<![\s\S])([Kk][Ee][Yy]|[Vv][Ii][Rr][Tt][Uu][Aa][Ll])[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]+`.
             excluded = ``.
             ignore_case = abap_false.
@@ -734,8 +734,8 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^(\/\w+\/)?L.+XX$/`.
             posix = `(?<![\s\S])(/[A-Za-z0-9_]+/)?L[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]+XX(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -758,18 +758,18 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^.+$/`.
             posix = `(?<![\s\S])[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]+(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
           WHEN `^.?cx_.*$/i`.
             posix = `(?<![\s\S])[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]?[Cc][Xx]_[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -954,8 +954,8 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^[a-zA-Z]{1,3}_.*$/i`.
             posix = `(?<![\s\S])[A-Za-z]{1,3}_[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -970,8 +970,8 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^\)?\. *(\".*)?$/`.
             posix = `(?<![\s\S])\)?\.[ ]*("[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*)?(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -993,11 +993,11 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^\/.+\/cx_.*$/i`.
             posix = `(?<![\s\S])/[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]+/[Cc][Xx]_[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -1044,14 +1044,14 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^\s*$/`.
             posix = `(?<![\s\S])[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]*(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -1077,8 +1077,8 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^``.*``$/`.
             posix = `(?<![\s\S])``[^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `]*``(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -1096,23 +1096,23 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `^count\(\s*\*\s*\)$/i`.
             posix = `(?<![\s\S])[Cc][Oo][Uu][Nn][Tt]\([` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]*\*[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]*\)(?![\s\S])`.
             excluded = ``.
             ignore_case = abap_false.
@@ -1138,8 +1138,8 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `a.c/i`.
             posix = `[Aa][^\n\r` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `][Cc]`.
             excluded = ``.
             ignore_case = abap_false.
@@ -1153,23 +1153,23 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
             ignore_case = abap_false.
           WHEN `label\s*:\s*'((?:[^']|'')*)'/gi`.
             posix = `[lL][aA][bB][eE][lL][` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]*:[` &&
-            cl_abap_conv_in_ce=>uccpi( 9 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `0009` ) ) &&
             `-` &&
-            cl_abap_conv_in_ce=>uccpi( 13 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `000D` ) ) &&
             `    - ` &&
-            cl_abap_conv_in_ce=>uccpi( 8232 ) &&
-            cl_abap_conv_in_ce=>uccpi( 8233 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2028` ) ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `2029` ) ) &&
             `  　` &&
-            cl_abap_conv_in_ce=>uccpi( 65279 ) &&
+            cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FEFF` ) ) &&
             `]*'((?:[^']|'')*)'`.
             excluded = ``.
             ignore_case = abap_false.
@@ -1518,9 +1518,13 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
     DATA cp TYPE i.
     WHILE i < strlen( p0 ).
       c = p0+i(1).
-      cp = cl_abap_conv_out_ce=>uccpi( c ).
+      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN c IS INITIAL THEN ` ` ELSE c ) ).
+      DATA zlnt_conv_1_low TYPE i.
+      zlnt_conv_1_low = zlnt_conv_1(1).
+      cp = zlnt_conv_1+1(1).
+      cp = cp * 256 + zlnt_conv_1_low.
       IF ( cp >= 55296 AND cp <= 57343 ) OR cp = 65533.
-        c = cl_abap_conv_in_ce=>uccp( 'FFFD' ).
+        c = cl_abap_conv_codepage=>create_in( codepage = `UTF-16BE` )->convert( CONV xstring( `FFFD` ) ).
       ENDIF.
       result = result && c.
       i = i + 1.
