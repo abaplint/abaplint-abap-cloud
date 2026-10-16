@@ -6,12 +6,6 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 
 ## Generator and tooling
 
-### Syntax check uses the Normal language version, not Cloud
-- **Where:** [abaplint.jsonc](abaplint.jsonc), `syntax.version`
-- **What:** `"release": "open-abap", "language": "Normal"`, with dependencies on open-abap-core and open-abap-gui. Code that isn't released for ABAP Cloud passes lint.
-- **Impact:** Lint can't show that `src/generated` is cloud compatible.
-- **Status:** workaround for the new code: [abaplint-cloud.jsonc](abaplint-cloud.jsonc) (`npm run lint:cloud`) checks `src/*` and `src/checks` with the Cloud version, using `src/generated` only as a dependency. Open for `src/generated`, see the next entry.
-
 ### A generated rule class uses the hand-written class prefix
 - **Where:** `src/generated/zcl_lnt_atc_check_category.clas.abap`
 - **What:** The transpiled abaplint rule `atc_check_category` uses the `zcl_lnt_atc_*` prefix of the hand-written classes (`zcl_lnt_atc_check`, `zcl_lnt_atc_meta_data`, `zcl_lnt_atc_source_reader`).
@@ -21,11 +15,6 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 - **Where:** `zcl_lnt_utils=>get_config`
 - **What:** PLAN.md suggested `"version": "Cloud"` for the configuration the rules run with. With it, `REPORT` and `WRITE` are parser errors, so every PROG and FUGR object, and every class using classic statements in a Standard ABAP system, would be reported.
 - **Status:** accepted. It stays `v758`, as in classic. Revisit if the checks should only run on ABAP Cloud objects.
-
-### The transpiler rejects the ATC object types
-- **Where:** [abap_transpile.json](abap_transpile.json)
-- **What:** `npm run unit` failed with `allowed_object_types, Object type CHKO not allowed` (also CHKC and CHKV). abaplint itself accepts the JSON files.
-- **Status:** workaround: `exclude_filter` for `.chko.json`, `.chkc.json` and `.chkv.json` in `abap_transpile.json`.
 
 ### 25 of 140 single-file rules are not generated
 - **Where:** `skip` in [scripts/checks.mjs](scripts/checks.mjs)

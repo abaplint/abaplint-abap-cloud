@@ -46,7 +46,7 @@ src/zcl_lnt_atc_source_reader  builds abapGit style files from if_ci_atc_source_
 
 `src/generated` uses `GET RUN TIME`, which ABAP Cloud doesn't allow. [scripts/replace-runtime.mjs](scripts/replace-runtime.mjs) rewrites the generated timer to UTCLONG-based elapsed wall-clock timing after ABAPiti. The unreleased `cl_abap_conv_out_ce` and `cl_abap_conv_in_ce` are rewritten to `cl_abap_conv_codepage` by [scripts/replace-conv.mjs](scripts/replace-conv.mjs). See [ANOMALIES.md](ANOMALIES.md).
 
-Changes from the plan below: the rules run with syntax version `v758`, not `Cloud`. The transpiler skips the CHKO, CHKC and CHKV files. See [ANOMALIES.md](ANOMALIES.md) for why.
+Changes from the plan below: the rules run with syntax version `v758`, not `Cloud`. See [ANOMALIES.md](ANOMALIES.md) for why.
 
 Record anything unexpected found while working on this plan in [ANOMALIES.md](ANOMALIES.md): generator output, stubs, tooling, or differences from the classic repository. That keeps this plan about the work itself.
 
