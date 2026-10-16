@@ -21,7 +21,7 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 ### The transpiler runtime removes trailing whitespace for WIDTH
 - **Where:** `@abaplint/runtime`, `template_formatting.js`
 - **What:** `|{ ch WIDTH = 1 }|` uses JavaScript `trimEnd()`, which removes trailing newlines and tabs as well as blanks, for strings too. ABAP only removes trailing blanks, and only of c fields. A newline became a blank, the lexer saw one long line, and a unit test failed. Tested in the transpiler: a newline or tab in `c LENGTH 1` comes back as `' '`. `` `a` && newline `` as a string comes back as `'a'`, and `` `a ` `` as a string also comes back as `'a'`. Without `WIDTH`, all of these are correct.
-- **Status:** workaround: `replace-conv.mjs` uses `COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch )`. Should be fixed in the transpiler.
+- **Status:** workaround: `replace-conv.mjs` uses `COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch )`. Fixed in `@abaplint/runtime` 2.14.8, which no longer calls `trimEnd()`. This repo still installs 2.14.7; upgrade, then drop the workaround and this entry.
 
 ### Code point conversions are untested on a real system
 - **Where:** [scripts/replace-conv.mjs](scripts/replace-conv.mjs)
@@ -67,27 +67,3 @@ The source reader was written and tested against hand-built statements. Each ass
 - **Where:** `zcl_lnt_utils=>run_rule`
 - **What:** `zlnt_exception_un_5f2d02892fe8` (a `cx_no_check`) is passed on, as in classic, and leaves `if_ci_atc_check~run`. How ATC reports an exception from a check is untested.
 - **Status:** open
-
-## open-abap-ci stubs
-
-### `cl_ci_atc_data_provider` is not FINAL CREATE PRIVATE
-- **Where:** [open-abap-ci `src/cloud/cl_ci_atc_data_provider.clas.abap`](https://github.com/open-abap/open-abap-ci/blob/main/src/cloud/cl_ci_atc_data_provider.clas.abap)
-- **What:** The released class is `FINAL CREATE PRIVATE`; the stub is neither.
-- **Impact:** Test code that subclasses or creates it would lint and run here but not compile on a real system.
-- **Status:** workaround: the tests inject `zif_lnt_source_reader` with `zcl_lnt_utils=>set_source_reader( )` and pass an initial data provider. Should still be fixed in open-abap-ci.
-
-### `cl_ci_atc_data_provider` methods are not implemented
-- **Where:** same file
-- **What:** `get_code_provider( )` and `main_program_from_comp_unit( )` return initial values (`" todo`). `get_checked_destination( )` is commented out because `if_rfc_dest` is missing.
-- **Status:** open. Not needed by the tests.
-
-### `cl_ci_atc_assistant_factory` methods are not implemented
-- **Where:** [open-abap-ci `src/cloud/cl_ci_atc_assistant_factory.clas.abap`](https://github.com/open-abap/open-abap-ci/blob/main/src/cloud/cl_ci_atc_assistant_factory.clas.abap)
-- **What:** All methods return initial values.
-- **Impact:** None while quick fixes and finding details are out of scope.
-- **Status:** accepted
-
-### Stub methods raise `cx_static_check` instead of the released exceptions
-- **Where:** open-abap-ci `if_ci_atc_check~set_attributes`, `if_ci_atc_source_code_provider~get_procedures` and `~get_called_procedure`
-- **What:** The released interfaces (checked against [abapedia steampunk-2305-api](https://github.com/abapedia/steampunk-2305-api)) raise `cx_ci_atc_check_invalid_attr`, `cx_ci_atc_invalid_comp_unit` and `cx_ci_atc_token_no_call`. open-abap-ci doesn't have these classes. Released, they inherit from `cx_dynamic_check`, not `cx_static_check`, so code that catches only `cx_static_check` passes here but misses the real exception. Otherwise the three interfaces match.
-- **Status:** workaround: `zcl_lnt_atc_source_reader` catches `cx_root`. Should be fixed in open-abap-ci by adding the exception classes.
