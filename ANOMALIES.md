@@ -6,16 +6,6 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 
 ## Generator and tooling
 
-### A generated rule class uses the hand-written class prefix
-- **Where:** `src/generated/zcl_lnt_atc_check_category.clas.abap`
-- **What:** The transpiled abaplint rule `atc_check_category` uses the `zcl_lnt_atc_*` prefix of the hand-written classes (`zcl_lnt_atc_check`, `zcl_lnt_atc_meta_data`, `zcl_lnt_atc_source_reader`).
-- **Status:** workaround: `checks.mjs` fails if a hand-written name also exists in `src/generated`.
-
-### abaplint's Cloud version rejects programs, so the checks use v758
-- **Where:** `zcl_lnt_utils=>get_config`
-- **What:** PLAN.md suggested `"version": "Cloud"` for the configuration the rules run with. With it, `REPORT` and `WRITE` are parser errors, so every PROG and FUGR object, and every class using classic statements in a Standard ABAP system, would be reported.
-- **Status:** accepted. It stays `v758`, as in classic. Revisit if the checks should only run on ABAP Cloud objects.
-
 ### 25 of 140 single-file rules are not generated
 - **Where:** `skip` in [scripts/checks.mjs](scripts/checks.mjs)
 - **What:** Classic generates 140 checks; this repo generates 115. The source is rebuilt from tokens, so rules that need comments, pragmas or the original identifier case would report false positives. Rules for CDS, tables and number ranges never get their objects. Rules that look for tabs, trailing spaces, CRLF or spaces before `.` and `:` can never report on rebuilt source. The script prints the skipped rules with reasons.
