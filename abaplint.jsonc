@@ -19,7 +19,7 @@
   "syntax": {
     "version": {
       "release": "open-abap",
-      "language": "Normal"
+      "language": "Cloud"
     },
     "errorNamespace": "."
   },
@@ -70,7 +70,17 @@
     "chain_mainly_declarations": true,
     "align_pseudo_comments": true,
     "allowed_object_types": false,
-    "avoid_use": true,
+    "avoid_use": {
+      "skipQuickFix": false,
+      "define": true,
+      "statics": true,
+      "defaultKey": false,
+      "break": true,
+      "testSeams": true,
+      "describeLines": true,
+      "exportToMemory": true,
+      "exportToDatabase": true
+    },
     "change_if_to_case": false,
     "changing_sorted_line": true,
     "check_comments": false,
