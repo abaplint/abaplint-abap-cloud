@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "keep_single_parameter_on_one_line: Keep single parameters...",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_KP_SN_PRM_CLL_ON_ON_LN",
+  "checkType": "remoteEnabled"
+}

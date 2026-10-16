@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "max_one_method_parameter_per_line: Max one method paramet...",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_MX_ON_MTHD_PRMTR_PR_LN",
+  "checkType": "remoteEnabled"
+}

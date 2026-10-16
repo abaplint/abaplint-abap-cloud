@@ -1,0 +1,355 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "All abaplint checks",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "selectedChecks": [
+    {
+      "checkName": "ZLNC_ADD_TEST_ATTRIBUTES"
+    },
+    {
+      "checkName": "ZLNC_ALIGN_PARAMETERS"
+    },
+    {
+      "checkName": "ZLNC_ALIGN_TYPE_EXPRESSIONS"
+    },
+    {
+      "checkName": "ZLNC_ALLOWED_OBJECT_NAMING"
+    },
+    {
+      "checkName": "ZLNC_ALLOWED_OBJECT_TYPES"
+    },
+    {
+      "checkName": "ZLNC_AMBIGUOUS_STATEMENT"
+    },
+    {
+      "checkName": "ZLNC_AVOID_USE"
+    },
+    {
+      "checkName": "ZLNC_BEGIN_END_NAMES"
+    },
+    {
+      "checkName": "ZLNC_BEGIN_SINGLE_INCLUDE"
+    },
+    {
+      "checkName": "ZLNC_CATCH_AND_RAISE"
+    },
+    {
+      "checkName": "ZLNC_CHANGE_IF_TO_CASE"
+    },
+    {
+      "checkName": "ZLNC_CHECK_ABSTRACT"
+    },
+    {
+      "checkName": "ZLNC_CHECK_SUBRC"
+    },
+    {
+      "checkName": "ZLNC_CHAIN_MAINLY_DECLARATIONS"
+    },
+    {
+      "checkName": "ZLNC_CLASS_ATTRIBUTE_NAMES"
+    },
+    {
+      "checkName": "ZLNC_CALL_TRANSACTION_AUTHORIT"
+    },
+    {
+      "checkName": "ZLNC_CLOUD_TYPES"
+    },
+    {
+      "checkName": "ZLNC_CLASSIC_EXCEPTIONS_OVERLA"
+    },
+    {
+      "checkName": "ZLNC_CONSTRUCTOR_VISIBILITY_PU"
+    },
+    {
+      "checkName": "ZLNC_COLON_MISSING_SPACE"
+    },
+    {
+      "checkName": "ZLNC_CYCLOMATIC_COMPLEXITY"
+    },
+    {
+      "checkName": "ZLNC_DANGEROUS_STATEMENT"
+    },
+    {
+      "checkName": "ZLNC_DB_OPERATION_IN_LOOP"
+    },
+    {
+      "checkName": "ZLNC_DEFINITIONS_TOP"
+    },
+    {
+      "checkName": "ZLNC_DOUBLE_SPACE"
+    },
+    {
+      "checkName": "ZLNC_EMPTY_EVENT"
+    },
+    {
+      "checkName": "ZLNC_EMPTY_STATEMENT"
+    },
+    {
+      "checkName": "ZLNC_EMPTY_STRUCTURE"
+    },
+    {
+      "checkName": "ZLNC_EXIT_OR_CHECK"
+    },
+    {
+      "checkName": "ZLNC_EXPORTING"
+    },
+    {
+      "checkName": "ZLNC_FUNCTION_MODULE_RECOMMEND"
+    },
+    {
+      "checkName": "ZLNC_FORBIDDEN_IDENTIFIER"
+    },
+    {
+      "checkName": "ZLNC_FORM_TABLES_OBSOLETE"
+    },
+    {
+      "checkName": "ZLNC_FORBIDDEN_PSEUDO_AND_PRAG"
+    },
+    {
+      "checkName": "ZLNC_FULLY_TYPE_CONSTANTS"
+    },
+    {
+      "checkName": "ZLNC_FULLY_TYPE_ITABS"
+    },
+    {
+      "checkName": "ZLNC_FUNCTIONAL_WRITING"
+    },
+    {
+      "checkName": "ZLNC_IDENTICAL_CONDITIONS"
+    },
+    {
+      "checkName": "ZLNC_IDENTICAL_CONTENTS"
+    },
+    {
+      "checkName": "ZLNC_IDENTICAL_MOVE"
+    },
+    {
+      "checkName": "ZLNC_IF_IN_IF"
+    },
+    {
+      "checkName": "ZLNC_IMPLICIT_START_OF_SELECTI"
+    },
+    {
+      "checkName": "ZLNC_IN_STATEMENT_INDENTATION"
+    },
+    {
+      "checkName": "ZLNC_INDENTATION"
+    },
+    {
+      "checkName": "ZLNC_INLINE_DATA_OLD_VERSIONS"
+    },
+    {
+      "checkName": "ZLNC_INVALID_TABLE_INDEX"
+    },
+    {
+      "checkName": "ZLNC_KEEP_SINGLE_PARAMETER_ON_"
+    },
+    {
+      "checkName": "ZLNC_LINE_LENGTH"
+    },
+    {
+      "checkName": "ZLNC_LINE_ONLY_PUNC"
+    },
+    {
+      "checkName": "ZLNC_LINE_BREAK_MULTIPLE_PARAM"
+    },
+    {
+      "checkName": "ZLNC_LOCAL_CLASS_NAMING"
+    },
+    {
+      "checkName": "ZLNC_LOCAL_VARIABLE_NAMES"
+    },
+    {
+      "checkName": "ZLNC_MACRO_NAMING"
+    },
+    {
+      "checkName": "ZLNC_MANY_PARENTHESES"
+    },
+    {
+      "checkName": "ZLNC_MAX_ONE_STATEMENT"
+    },
+    {
+      "checkName": "ZLNC_METHOD_LENGTH"
+    },
+    {
+      "checkName": "ZLNC_METHOD_PARAMETER_NAMES"
+    },
+    {
+      "checkName": "ZLNC_MIX_RETURNING"
+    },
+    {
+      "checkName": "ZLNC_METHOD_IMPLEMENTED_TWICE"
+    },
+    {
+      "checkName": "ZLNC_METHOD_OVERWRITES_BUILTIN"
+    },
+    {
+      "checkName": "ZLNC_MAX_ONE_METHOD_PARAMETER_"
+    },
+    {
+      "checkName": "ZLNC_NO_INLINE_IN_OPTIONAL_BRA"
+    },
+    {
+      "checkName": "ZLNC_NO_MANDT_IN_DATABASE_OPER"
+    },
+    {
+      "checkName": "ZLNC_NAMES_NO_DASH"
+    },
+    {
+      "checkName": "ZLNC_NESTING"
+    },
+    {
+      "checkName": "ZLNC_NO_ALIASES"
+    },
+    {
+      "checkName": "ZLNC_NO_CHAINED_ASSIGNMENT"
+    },
+    {
+      "checkName": "ZLNC_NO_DYNAMIC_STUFF"
+    },
+    {
+      "checkName": "ZLNC_NO_EXCLAMATION_ESCAPE"
+    },
+    {
+      "checkName": "ZLNC_NO_EXTERNAL_FORM_CALLS"
+    },
+    {
+      "checkName": "ZLNC_NO_MACROS"
+    },
+    {
+      "checkName": "ZLNC_NO_PREFIXES"
+    },
+    {
+      "checkName": "ZLNC_NO_PUBLIC_ATTRIBUTES"
+    },
+    {
+      "checkName": "ZLNC_NO_YODA_CONDITIONS"
+    },
+    {
+      "checkName": "ZLNC_OBSOLETE_STATEMENT"
+    },
+    {
+      "checkName": "ZLNC_OMIT_PRECEDING_ZEROS"
+    },
+    {
+      "checkName": "ZLNC_OMIT_RECEIVING"
+    },
+    {
+      "checkName": "ZLNC_PARSER_BAD_EXCEPTIONS"
+    },
+    {
+      "checkName": "ZLNC_PARSER_ERROR"
+    },
+    {
+      "checkName": "ZLNC_PARSER_MISSING_SPACE"
+    },
+    {
+      "checkName": "ZLNC_PARSER_702_CHAINING"
+    },
+    {
+      "checkName": "ZLNC_PREFER_ABAP_BOOL"
+    },
+    {
+      "checkName": "ZLNC_PREFER_CORRESPONDING"
+    },
+    {
+      "checkName": "ZLNC_PREFER_IS_NOT"
+    },
+    {
+      "checkName": "ZLNC_PREFER_PRAGMAS"
+    },
+    {
+      "checkName": "ZLNC_PREFER_XSDBOOL"
+    },
+    {
+      "checkName": "ZLNC_PREFER_INSERT_INTO_TABLE"
+    },
+    {
+      "checkName": "ZLNC_PREFER_RAISE_EXCEPTION_NE"
+    },
+    {
+      "checkName": "ZLNC_PREFER_RETURNING_TO_EXPOR"
+    },
+    {
+      "checkName": "ZLNC_PREFERRED_COMPARE_OPERATO"
+    },
+    {
+      "checkName": "ZLNC_PREFIX_IS_CURRENT_CLASS"
+    },
+    {
+      "checkName": "ZLNC_REDUCE_STRING_TEMPLATES"
+    },
+    {
+      "checkName": "ZLNC_REDUCE_PROCEDURAL_CODE"
+    },
+    {
+      "checkName": "ZLNC_RFC_ERROR_HANDLING"
+    },
+    {
+      "checkName": "ZLNC_SELECT_ADD_ORDER_BY"
+    },
+    {
+      "checkName": "ZLNC_SELECT_PERFORMANCE"
+    },
+    {
+      "checkName": "ZLNC_7BIT_ASCII"
+    },
+    {
+      "checkName": "ZLNC_SHORT_CASE"
+    },
+    {
+      "checkName": "ZLNC_SELECTION_SCREEN_NAMING"
+    },
+    {
+      "checkName": "ZLNC_START_AT_TAB"
+    },
+    {
+      "checkName": "ZLNC_SUPERFLUOUS_VALUE"
+    },
+    {
+      "checkName": "ZLNC_SY_MODIFICATION"
+    },
+    {
+      "checkName": "ZLNC_SY_READ_RESTRICTION"
+    },
+    {
+      "checkName": "ZLNC_TABLES_DECLARED_LOCALLY"
+    },
+    {
+      "checkName": "ZLNC_TRY_WITHOUT_CATCH"
+    },
+    {
+      "checkName": "ZLNC_TYPE_FORM_PARAMETERS"
+    },
+    {
+      "checkName": "ZLNC_TYPES_NAMING"
+    },
+    {
+      "checkName": "ZLNC_UNNECESSARY_CHAINING"
+    },
+    {
+      "checkName": "ZLNC_UNNECESSARY_RETURN"
+    },
+    {
+      "checkName": "ZLNC_UNREACHABLE_CODE"
+    },
+    {
+      "checkName": "ZLNC_USE_CLASS_BASED_EXCEPTION"
+    },
+    {
+      "checkName": "ZLNC_USE_BOOL_EXPRESSION"
+    },
+    {
+      "checkName": "ZLNC_USE_LINE_EXISTS"
+    },
+    {
+      "checkName": "ZLNC_USE_NEW"
+    },
+    {
+      "checkName": "ZLNC_WHEN_OTHERS_LAST"
+    }
+  ]
+}

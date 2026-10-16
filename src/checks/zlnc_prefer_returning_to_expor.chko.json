@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "prefer_returning_to_exporting: Prefer RETURNING to EXPORTING",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_PRFR_RTRNNG_T_EXPRTNG",
+  "checkType": "remoteEnabled"
+}

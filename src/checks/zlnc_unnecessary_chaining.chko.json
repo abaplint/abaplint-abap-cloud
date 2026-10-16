@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "unnecessary_chaining: Unnecessary Chaining",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_UNNECESSARY_CHAINING",
+  "checkType": "remoteEnabled"
+}

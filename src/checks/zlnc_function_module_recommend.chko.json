@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "function_module_recommendations: Function Module Recommen...",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_FNCTN_MDL_RCMMNDTNS",
+  "checkType": "remoteEnabled"
+}

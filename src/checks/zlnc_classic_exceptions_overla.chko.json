@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "classic_exceptions_overlap: Classic exceptions overlap wh...",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_CLSSC_EXCPTNS_OVRLP",
+  "checkType": "remoteEnabled"
+}

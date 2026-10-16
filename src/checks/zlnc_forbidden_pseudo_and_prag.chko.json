@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "forbidden_pseudo_and_pragma: Forbidden pseudo comments an...",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_FRBDDN_PSD_AND_PRGM",
+  "checkType": "remoteEnabled"
+}

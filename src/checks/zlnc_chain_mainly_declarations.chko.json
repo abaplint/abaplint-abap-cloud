@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "chain_mainly_declarations: Chain mainly declarations",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_CHN_MNLY_DCLRTNS",
+  "checkType": "remoteEnabled"
+}

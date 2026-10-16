@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "prefer_xsdbool: Prefer xsdbool over boolc",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "category": "ZLNC_ABAPLINT",
+  "implementingClass": "ZCL_LNC_PREFER_XSDBOOL",
+  "checkType": "remoteEnabled"
+}
