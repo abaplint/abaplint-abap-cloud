@@ -121,7 +121,7 @@ CLASS zlnt_runtime_json_7c6b3012af76 IMPLEMENTATION.
             RAISE EXCEPTION TYPE zlnt_exception_js_ebcc2df7d5e4.
         ENDCASE.
       ELSE.
-        DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch ) ).
+        DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ ch WIDTH = 1 }| ).
         DATA zlnt_conv_3_low TYPE i.
         zlnt_conv_3_low = zlnt_conv_3(1).
         code = zlnt_conv_3+1(1).

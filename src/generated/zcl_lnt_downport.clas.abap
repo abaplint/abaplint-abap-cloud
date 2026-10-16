@@ -27398,7 +27398,7 @@ CLASS zcl_lnt_downport IMPLEMENTATION.
       CLEAR t197.
       DATA(t198) = VALUE i( ).
       t194 = t193.
-      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t194 IS INITIAL THEN ` ` ELSE t194 ) ).
+      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t194 WIDTH = 1 }| ).
       DATA zlnt_conv_1_low TYPE i.
       zlnt_conv_1_low = zlnt_conv_1(1).
       t191 = zlnt_conv_1+1(1).
@@ -27407,7 +27407,7 @@ CLASS zcl_lnt_downport IMPLEMENTATION.
         IF zlnt_builtin_code_de7d0256ebe6 IS NOT BOUND.
           zlnt_builtin_code_de7d0256ebe6 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        t195 = zlnt_builtin_code_de7d0256ebe6->convert( COND string( WHEN t193 IS INITIAL THEN ` ` ELSE t193 ) ).
+        t195 = zlnt_builtin_code_de7d0256ebe6->convert( |{ t193 WIDTH = 1 }| ).
         t196 = t195(1).
         t197 = t195+1(1).
         t191 = t196.

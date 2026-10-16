@@ -69,7 +69,7 @@ CLASS zcl_lnt_dynpros_module IMPLEMENTATION.
       CLEAR t26.
       DATA(t27) = VALUE i( ).
       t23 = t22.
-      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t23 IS INITIAL THEN ` ` ELSE t23 ) ).
+      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t23 WIDTH = 1 }| ).
       DATA zlnt_conv_1_low TYPE i.
       zlnt_conv_1_low = zlnt_conv_1(1).
       t20 = zlnt_conv_1+1(1).
@@ -78,7 +78,7 @@ CLASS zcl_lnt_dynpros_module IMPLEMENTATION.
         IF zlnt_builtin_code_ea1dc2bd83b1 IS NOT BOUND.
           zlnt_builtin_code_ea1dc2bd83b1 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        t24 = zlnt_builtin_code_ea1dc2bd83b1->convert( COND string( WHEN t22 IS INITIAL THEN ` ` ELSE t22 ) ).
+        t24 = zlnt_builtin_code_ea1dc2bd83b1->convert( |{ t22 WIDTH = 1 }| ).
         t25 = t24(1).
         t26 = t24+1(1).
         t20 = t25.

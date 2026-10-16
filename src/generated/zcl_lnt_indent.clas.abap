@@ -272,7 +272,7 @@ CLASS zcl_lnt_indent IMPLEMENTATION.
         CLEAR t80.
         DATA(t81) = VALUE i( ).
         t77 = t76.
-        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t77 IS INITIAL THEN ` ` ELSE t77 ) ).
+        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t77 WIDTH = 1 }| ).
         DATA zlnt_conv_1_low TYPE i.
         zlnt_conv_1_low = zlnt_conv_1(1).
         t74 = zlnt_conv_1+1(1).
@@ -281,7 +281,7 @@ CLASS zcl_lnt_indent IMPLEMENTATION.
           IF zlnt_builtin_code_18659c022673 IS NOT BOUND.
             zlnt_builtin_code_18659c022673 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t78 = zlnt_builtin_code_18659c022673->convert( COND string( WHEN t76 IS INITIAL THEN ` ` ELSE t76 ) ).
+          t78 = zlnt_builtin_code_18659c022673->convert( |{ t76 WIDTH = 1 }| ).
           t79 = t78(1).
           t80 = t78+1(1).
           t74 = t79.
@@ -309,7 +309,7 @@ CLASS zcl_lnt_indent IMPLEMENTATION.
         CLEAR t88.
         DATA(t89) = VALUE i( ).
         t85 = t84.
-        DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t85 IS INITIAL THEN ` ` ELSE t85 ) ).
+        DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t85 WIDTH = 1 }| ).
         DATA zlnt_conv_2_low TYPE i.
         zlnt_conv_2_low = zlnt_conv_2(1).
         t82 = zlnt_conv_2+1(1).
@@ -318,7 +318,7 @@ CLASS zcl_lnt_indent IMPLEMENTATION.
           IF zlnt_builtin_code_18659c022673 IS NOT BOUND.
             zlnt_builtin_code_18659c022673 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t86 = zlnt_builtin_code_18659c022673->convert( COND string( WHEN t84 IS INITIAL THEN ` ` ELSE t84 ) ).
+          t86 = zlnt_builtin_code_18659c022673->convert( |{ t84 WIDTH = 1 }| ).
           t87 = t86(1).
           t88 = t86+1(1).
           t82 = t87.

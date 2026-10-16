@@ -481,7 +481,7 @@ CLASS zcl_lnt_exit_or_check IMPLEMENTATION.
               CLEAR t95.
               DATA(t96) = VALUE i( ).
               t92 = t91.
-              DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t92 IS INITIAL THEN ` ` ELSE t92 ) ).
+              DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t92 WIDTH = 1 }| ).
               DATA zlnt_conv_1_low TYPE i.
               zlnt_conv_1_low = zlnt_conv_1(1).
               t89 = zlnt_conv_1+1(1).
@@ -490,7 +490,7 @@ CLASS zcl_lnt_exit_or_check IMPLEMENTATION.
                 IF zlnt_builtin_code_438f0e5e4132 IS NOT BOUND.
                   zlnt_builtin_code_438f0e5e4132 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                t93 = zlnt_builtin_code_438f0e5e4132->convert( COND string( WHEN t91 IS INITIAL THEN ` ` ELSE t91 ) ).
+                t93 = zlnt_builtin_code_438f0e5e4132->convert( |{ t91 WIDTH = 1 }| ).
                 t94 = t93(1).
                 t95 = t93+1(1).
                 t89 = t94.
@@ -518,7 +518,7 @@ CLASS zcl_lnt_exit_or_check IMPLEMENTATION.
               CLEAR t103.
               DATA(t104) = VALUE i( ).
               t100 = t99.
-              DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t100 IS INITIAL THEN ` ` ELSE t100 ) ).
+              DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t100 WIDTH = 1 }| ).
               DATA zlnt_conv_2_low TYPE i.
               zlnt_conv_2_low = zlnt_conv_2(1).
               t97 = zlnt_conv_2+1(1).
@@ -527,7 +527,7 @@ CLASS zcl_lnt_exit_or_check IMPLEMENTATION.
                 IF zlnt_builtin_code_438f0e5e4132 IS NOT BOUND.
                   zlnt_builtin_code_438f0e5e4132 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                t101 = zlnt_builtin_code_438f0e5e4132->convert( COND string( WHEN t99 IS INITIAL THEN ` ` ELSE t99 ) ).
+                t101 = zlnt_builtin_code_438f0e5e4132->convert( |{ t99 WIDTH = 1 }| ).
                 t102 = t101(1).
                 t103 = t101+1(1).
                 t97 = t102.

@@ -474,7 +474,7 @@ CLASS zcl_lnt_line_only_punc IMPLEMENTATION.
         CLEAR t102.
         DATA(t103) = VALUE i( ).
         t99 = t98.
-        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t99 IS INITIAL THEN ` ` ELSE t99 ) ).
+        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t99 WIDTH = 1 }| ).
         DATA zlnt_conv_1_low TYPE i.
         zlnt_conv_1_low = zlnt_conv_1(1).
         t96 = zlnt_conv_1+1(1).
@@ -483,7 +483,7 @@ CLASS zcl_lnt_line_only_punc IMPLEMENTATION.
           IF zlnt_builtin_code_877e342751bc IS NOT BOUND.
             zlnt_builtin_code_877e342751bc = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t100 = zlnt_builtin_code_877e342751bc->convert( COND string( WHEN t98 IS INITIAL THEN ` ` ELSE t98 ) ).
+          t100 = zlnt_builtin_code_877e342751bc->convert( |{ t98 WIDTH = 1 }| ).
           t101 = t100(1).
           t102 = t100+1(1).
           t96 = t101.
@@ -511,7 +511,7 @@ CLASS zcl_lnt_line_only_punc IMPLEMENTATION.
         CLEAR t110.
         DATA(t111) = VALUE i( ).
         t107 = t106.
-        DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t107 IS INITIAL THEN ` ` ELSE t107 ) ).
+        DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t107 WIDTH = 1 }| ).
         DATA zlnt_conv_2_low TYPE i.
         zlnt_conv_2_low = zlnt_conv_2(1).
         t104 = zlnt_conv_2+1(1).
@@ -520,7 +520,7 @@ CLASS zcl_lnt_line_only_punc IMPLEMENTATION.
           IF zlnt_builtin_code_877e342751bc IS NOT BOUND.
             zlnt_builtin_code_877e342751bc = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t108 = zlnt_builtin_code_877e342751bc->convert( COND string( WHEN t106 IS INITIAL THEN ` ` ELSE t106 ) ).
+          t108 = zlnt_builtin_code_877e342751bc->convert( |{ t106 WIDTH = 1 }| ).
           t109 = t108(1).
           t110 = t108+1(1).
           t104 = t109.
@@ -669,7 +669,7 @@ CLASS zcl_lnt_line_only_punc IMPLEMENTATION.
           CLEAR t161.
           DATA(t162) = VALUE i( ).
           t158 = t157.
-          DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t158 IS INITIAL THEN ` ` ELSE t158 ) ).
+          DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t158 WIDTH = 1 }| ).
           DATA zlnt_conv_3_low TYPE i.
           zlnt_conv_3_low = zlnt_conv_3(1).
           t155 = zlnt_conv_3+1(1).
@@ -678,7 +678,7 @@ CLASS zcl_lnt_line_only_punc IMPLEMENTATION.
             IF zlnt_builtin_code_877e342751bc IS NOT BOUND.
               zlnt_builtin_code_877e342751bc = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t159 = zlnt_builtin_code_877e342751bc->convert( COND string( WHEN t157 IS INITIAL THEN ` ` ELSE t157 ) ).
+            t159 = zlnt_builtin_code_877e342751bc->convert( |{ t157 WIDTH = 1 }| ).
             t160 = t159(1).
             t161 = t159+1(1).
             t155 = t160.
@@ -706,7 +706,7 @@ CLASS zcl_lnt_line_only_punc IMPLEMENTATION.
           CLEAR t169.
           DATA(t170) = VALUE i( ).
           t166 = t165.
-          DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t166 IS INITIAL THEN ` ` ELSE t166 ) ).
+          DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t166 WIDTH = 1 }| ).
           DATA zlnt_conv_4_low TYPE i.
           zlnt_conv_4_low = zlnt_conv_4(1).
           t163 = zlnt_conv_4+1(1).
@@ -715,7 +715,7 @@ CLASS zcl_lnt_line_only_punc IMPLEMENTATION.
             IF zlnt_builtin_code_877e342751bc IS NOT BOUND.
               zlnt_builtin_code_877e342751bc = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t167 = zlnt_builtin_code_877e342751bc->convert( COND string( WHEN t165 IS INITIAL THEN ` ` ELSE t165 ) ).
+            t167 = zlnt_builtin_code_877e342751bc->convert( |{ t165 WIDTH = 1 }| ).
             t168 = t167(1).
             t169 = t167+1(1).
             t163 = t168.

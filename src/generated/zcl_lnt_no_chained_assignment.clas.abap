@@ -755,7 +755,7 @@ CLASS zcl_lnt_no_chained_assignment IMPLEMENTATION.
         CLEAR t120.
         DATA(t121) = VALUE i( ).
         t117 = t116.
-        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t117 IS INITIAL THEN ` ` ELSE t117 ) ).
+        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t117 WIDTH = 1 }| ).
         DATA zlnt_conv_1_low TYPE i.
         zlnt_conv_1_low = zlnt_conv_1(1).
         t114 = zlnt_conv_1+1(1).
@@ -764,7 +764,7 @@ CLASS zcl_lnt_no_chained_assignment IMPLEMENTATION.
           IF zlnt_builtin_code_e8b6ad3e9ab4 IS NOT BOUND.
             zlnt_builtin_code_e8b6ad3e9ab4 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t118 = zlnt_builtin_code_e8b6ad3e9ab4->convert( COND string( WHEN t116 IS INITIAL THEN ` ` ELSE t116 ) ).
+          t118 = zlnt_builtin_code_e8b6ad3e9ab4->convert( |{ t116 WIDTH = 1 }| ).
           t119 = t118(1).
           t120 = t118+1(1).
           t114 = t119.

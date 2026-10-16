@@ -18,14 +18,14 @@ CLASS zlnt_runtime_stri_248d3505915c IMPLEMENTATION.
     DATA low TYPE x LENGTH 1.
     DATA high TYPE x LENGTH 1.
     DATA hi TYPE i.
-    DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch ) ).
+    DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ ch WIDTH = 1 }| ).
     DATA zlnt_conv_1_low TYPE i.
     zlnt_conv_1_low = zlnt_conv_1(1).
     result = zlnt_conv_1+1(1).
     result = result * 256 + zlnt_conv_1_low.
     IF result >= 255.
       converter = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
-      bytes = converter->convert( COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch ) ).
+      bytes = converter->convert( |{ ch WIDTH = 1 }| ).
       low = bytes+0(1).
       high = bytes+1(1).
       result = low.

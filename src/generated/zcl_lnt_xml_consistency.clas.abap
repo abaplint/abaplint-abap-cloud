@@ -2310,7 +2310,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
         CLEAR t60.
         DATA(t61) = VALUE i( ).
         t57 = t56.
-        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t57 IS INITIAL THEN ` ` ELSE t57 ) ).
+        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t57 WIDTH = 1 }| ).
         DATA zlnt_conv_1_low TYPE i.
         zlnt_conv_1_low = zlnt_conv_1(1).
         t52 = zlnt_conv_1+1(1).
@@ -2319,7 +2319,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
             zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t58 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t56 IS INITIAL THEN ` ` ELSE t56 ) ).
+          t58 = zlnt_builtin_code_47a4f748f766->convert( |{ t56 WIDTH = 1 }| ).
           t59 = t58(1).
           t60 = t58+1(1).
           t52 = t59.
@@ -2742,7 +2742,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t244.
             DATA(t245) = VALUE i( ).
             t241 = t240.
-            DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t241 IS INITIAL THEN ` ` ELSE t241 ) ).
+            DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t241 WIDTH = 1 }| ).
             DATA zlnt_conv_2_low TYPE i.
             zlnt_conv_2_low = zlnt_conv_2(1).
             t238 = zlnt_conv_2+1(1).
@@ -2751,7 +2751,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t242 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t240 IS INITIAL THEN ` ` ELSE t240 ) ).
+              t242 = zlnt_builtin_code_47a4f748f766->convert( |{ t240 WIDTH = 1 }| ).
               t243 = t242(1).
               t244 = t242+1(1).
               t238 = t243.
@@ -3437,7 +3437,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t488.
           DATA(t489) = VALUE i( ).
           t485 = t484.
-          DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t485 IS INITIAL THEN ` ` ELSE t485 ) ).
+          DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t485 WIDTH = 1 }| ).
           DATA zlnt_conv_3_low TYPE i.
           zlnt_conv_3_low = zlnt_conv_3(1).
           t480 = zlnt_conv_3+1(1).
@@ -3446,7 +3446,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t486 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t484 IS INITIAL THEN ` ` ELSE t484 ) ).
+            t486 = zlnt_builtin_code_47a4f748f766->convert( |{ t484 WIDTH = 1 }| ).
             t487 = t486(1).
             t488 = t486+1(1).
             t480 = t487.
@@ -3876,7 +3876,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               CLEAR t675.
               DATA(t676) = VALUE i( ).
               t672 = t671.
-              DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t672 IS INITIAL THEN ` ` ELSE t672 ) ).
+              DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t672 WIDTH = 1 }| ).
               DATA zlnt_conv_4_low TYPE i.
               zlnt_conv_4_low = zlnt_conv_4(1).
               t669 = zlnt_conv_4+1(1).
@@ -3885,7 +3885,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
                 IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                   zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                t673 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t671 IS INITIAL THEN ` ` ELSE t671 ) ).
+                t673 = zlnt_builtin_code_47a4f748f766->convert( |{ t671 WIDTH = 1 }| ).
                 t674 = t673(1).
                 t675 = t673+1(1).
                 t669 = t674.
@@ -5283,7 +5283,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
         CLEAR t46.
         DATA(t47) = VALUE i( ).
         t43 = t42.
-        DATA(zlnt_conv_5) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t43 IS INITIAL THEN ` ` ELSE t43 ) ).
+        DATA(zlnt_conv_5) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t43 WIDTH = 1 }| ).
         DATA zlnt_conv_5_low TYPE i.
         zlnt_conv_5_low = zlnt_conv_5(1).
         t40 = zlnt_conv_5+1(1).
@@ -5292,7 +5292,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
             zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t44 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t42 IS INITIAL THEN ` ` ELSE t42 ) ).
+          t44 = zlnt_builtin_code_47a4f748f766->convert( |{ t42 WIDTH = 1 }| ).
           t45 = t44(1).
           t46 = t44+1(1).
           t40 = t45.
@@ -7501,7 +7501,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t749.
           DATA(t750) = VALUE i( ).
           t746 = t745.
-          DATA(zlnt_conv_6) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t746 IS INITIAL THEN ` ` ELSE t746 ) ).
+          DATA(zlnt_conv_6) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t746 WIDTH = 1 }| ).
           DATA zlnt_conv_6_low TYPE i.
           zlnt_conv_6_low = zlnt_conv_6(1).
           t743 = zlnt_conv_6+1(1).
@@ -7510,7 +7510,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t747 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t745 IS INITIAL THEN ` ` ELSE t745 ) ).
+            t747 = zlnt_builtin_code_47a4f748f766->convert( |{ t745 WIDTH = 1 }| ).
             t748 = t747(1).
             t749 = t747+1(1).
             t743 = t748.
@@ -7994,7 +7994,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t938.
           DATA(t939) = VALUE i( ).
           t935 = t934.
-          DATA(zlnt_conv_7) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t935 IS INITIAL THEN ` ` ELSE t935 ) ).
+          DATA(zlnt_conv_7) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t935 WIDTH = 1 }| ).
           DATA zlnt_conv_7_low TYPE i.
           zlnt_conv_7_low = zlnt_conv_7(1).
           t932 = zlnt_conv_7+1(1).
@@ -8003,7 +8003,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t936 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t934 IS INITIAL THEN ` ` ELSE t934 ) ).
+            t936 = zlnt_builtin_code_47a4f748f766->convert( |{ t934 WIDTH = 1 }| ).
             t937 = t936(1).
             t938 = t936+1(1).
             t932 = t937.
@@ -8487,7 +8487,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t1127.
           DATA(t1128) = VALUE i( ).
           t1124 = t1123.
-          DATA(zlnt_conv_8) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1124 IS INITIAL THEN ` ` ELSE t1124 ) ).
+          DATA(zlnt_conv_8) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t1124 WIDTH = 1 }| ).
           DATA zlnt_conv_8_low TYPE i.
           zlnt_conv_8_low = zlnt_conv_8(1).
           t1121 = zlnt_conv_8+1(1).
@@ -8496,7 +8496,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t1125 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1123 IS INITIAL THEN ` ` ELSE t1123 ) ).
+            t1125 = zlnt_builtin_code_47a4f748f766->convert( |{ t1123 WIDTH = 1 }| ).
             t1126 = t1125(1).
             t1127 = t1125+1(1).
             t1121 = t1126.
@@ -8981,7 +8981,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t1316.
           DATA(t1317) = VALUE i( ).
           t1313 = t1312.
-          DATA(zlnt_conv_9) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1313 IS INITIAL THEN ` ` ELSE t1313 ) ).
+          DATA(zlnt_conv_9) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t1313 WIDTH = 1 }| ).
           DATA zlnt_conv_9_low TYPE i.
           zlnt_conv_9_low = zlnt_conv_9(1).
           t1310 = zlnt_conv_9+1(1).
@@ -8990,7 +8990,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t1314 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1312 IS INITIAL THEN ` ` ELSE t1312 ) ).
+            t1314 = zlnt_builtin_code_47a4f748f766->convert( |{ t1312 WIDTH = 1 }| ).
             t1315 = t1314(1).
             t1316 = t1314+1(1).
             t1310 = t1315.
@@ -9475,7 +9475,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t1505.
           DATA(t1506) = VALUE i( ).
           t1502 = t1501.
-          DATA(zlnt_conv_10) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1502 IS INITIAL THEN ` ` ELSE t1502 ) ).
+          DATA(zlnt_conv_10) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t1502 WIDTH = 1 }| ).
           DATA zlnt_conv_10_low TYPE i.
           zlnt_conv_10_low = zlnt_conv_10(1).
           t1499 = zlnt_conv_10+1(1).
@@ -9484,7 +9484,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t1503 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1501 IS INITIAL THEN ` ` ELSE t1501 ) ).
+            t1503 = zlnt_builtin_code_47a4f748f766->convert( |{ t1501 WIDTH = 1 }| ).
             t1504 = t1503(1).
             t1505 = t1503+1(1).
             t1499 = t1504.
@@ -10044,7 +10044,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t1723.
             DATA(t1724) = VALUE i( ).
             t1720 = t1719.
-            DATA(zlnt_conv_11) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1720 IS INITIAL THEN ` ` ELSE t1720 ) ).
+            DATA(zlnt_conv_11) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t1720 WIDTH = 1 }| ).
             DATA zlnt_conv_11_low TYPE i.
             zlnt_conv_11_low = zlnt_conv_11(1).
             t1717 = zlnt_conv_11+1(1).
@@ -10053,7 +10053,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t1721 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1719 IS INITIAL THEN ` ` ELSE t1719 ) ).
+              t1721 = zlnt_builtin_code_47a4f748f766->convert( |{ t1719 WIDTH = 1 }| ).
               t1722 = t1721(1).
               t1723 = t1721+1(1).
               t1717 = t1722.
@@ -10516,7 +10516,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t1906.
             DATA(t1907) = VALUE i( ).
             t1903 = t1902.
-            DATA(zlnt_conv_12) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t1903 IS INITIAL THEN ` ` ELSE t1903 ) ).
+            DATA(zlnt_conv_12) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t1903 WIDTH = 1 }| ).
             DATA zlnt_conv_12_low TYPE i.
             zlnt_conv_12_low = zlnt_conv_12(1).
             t1900 = zlnt_conv_12+1(1).
@@ -10525,7 +10525,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t1904 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t1902 IS INITIAL THEN ` ` ELSE t1902 ) ).
+              t1904 = zlnt_builtin_code_47a4f748f766->convert( |{ t1902 WIDTH = 1 }| ).
               t1905 = t1904(1).
               t1906 = t1904+1(1).
               t1900 = t1905.
@@ -10988,7 +10988,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t2089.
             DATA(t2090) = VALUE i( ).
             t2086 = t2085.
-            DATA(zlnt_conv_13) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t2086 IS INITIAL THEN ` ` ELSE t2086 ) ).
+            DATA(zlnt_conv_13) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t2086 WIDTH = 1 }| ).
             DATA zlnt_conv_13_low TYPE i.
             zlnt_conv_13_low = zlnt_conv_13(1).
             t2083 = zlnt_conv_13+1(1).
@@ -10997,7 +10997,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t2087 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t2085 IS INITIAL THEN ` ` ELSE t2085 ) ).
+              t2087 = zlnt_builtin_code_47a4f748f766->convert( |{ t2085 WIDTH = 1 }| ).
               t2088 = t2087(1).
               t2089 = t2087+1(1).
               t2083 = t2088.
@@ -11460,7 +11460,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t2272.
             DATA(t2273) = VALUE i( ).
             t2269 = t2268.
-            DATA(zlnt_conv_14) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t2269 IS INITIAL THEN ` ` ELSE t2269 ) ).
+            DATA(zlnt_conv_14) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t2269 WIDTH = 1 }| ).
             DATA zlnt_conv_14_low TYPE i.
             zlnt_conv_14_low = zlnt_conv_14(1).
             t2266 = zlnt_conv_14+1(1).
@@ -11469,7 +11469,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t2270 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t2268 IS INITIAL THEN ` ` ELSE t2268 ) ).
+              t2270 = zlnt_builtin_code_47a4f748f766->convert( |{ t2268 WIDTH = 1 }| ).
               t2271 = t2270(1).
               t2272 = t2270+1(1).
               t2266 = t2271.
@@ -11932,7 +11932,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t2455.
             DATA(t2456) = VALUE i( ).
             t2452 = t2451.
-            DATA(zlnt_conv_15) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t2452 IS INITIAL THEN ` ` ELSE t2452 ) ).
+            DATA(zlnt_conv_15) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t2452 WIDTH = 1 }| ).
             DATA zlnt_conv_15_low TYPE i.
             zlnt_conv_15_low = zlnt_conv_15(1).
             t2449 = zlnt_conv_15+1(1).
@@ -11941,7 +11941,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t2453 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t2451 IS INITIAL THEN ` ` ELSE t2451 ) ).
+              t2453 = zlnt_builtin_code_47a4f748f766->convert( |{ t2451 WIDTH = 1 }| ).
               t2454 = t2453(1).
               t2455 = t2453+1(1).
               t2449 = t2454.
@@ -12667,7 +12667,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t76.
           DATA(t77) = VALUE i( ).
           t73 = t72.
-          DATA(zlnt_conv_16) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t73 IS INITIAL THEN ` ` ELSE t73 ) ).
+          DATA(zlnt_conv_16) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t73 WIDTH = 1 }| ).
           DATA zlnt_conv_16_low TYPE i.
           zlnt_conv_16_low = zlnt_conv_16(1).
           t70 = zlnt_conv_16+1(1).
@@ -12676,7 +12676,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t74 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t72 IS INITIAL THEN ` ` ELSE t72 ) ).
+            t74 = zlnt_builtin_code_47a4f748f766->convert( |{ t72 WIDTH = 1 }| ).
             t75 = t74(1).
             t76 = t74+1(1).
             t70 = t75.
@@ -13208,7 +13208,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t285.
             DATA(t286) = VALUE i( ).
             t282 = t281.
-            DATA(zlnt_conv_17) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t282 IS INITIAL THEN ` ` ELSE t282 ) ).
+            DATA(zlnt_conv_17) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t282 WIDTH = 1 }| ).
             DATA zlnt_conv_17_low TYPE i.
             zlnt_conv_17_low = zlnt_conv_17(1).
             t279 = zlnt_conv_17+1(1).
@@ -13217,7 +13217,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t283 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t281 IS INITIAL THEN ` ` ELSE t281 ) ).
+              t283 = zlnt_builtin_code_47a4f748f766->convert( |{ t281 WIDTH = 1 }| ).
               t284 = t283(1).
               t285 = t283+1(1).
               t279 = t284.
@@ -13748,7 +13748,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t494.
             DATA(t495) = VALUE i( ).
             t491 = t490.
-            DATA(zlnt_conv_18) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t491 IS INITIAL THEN ` ` ELSE t491 ) ).
+            DATA(zlnt_conv_18) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t491 WIDTH = 1 }| ).
             DATA zlnt_conv_18_low TYPE i.
             zlnt_conv_18_low = zlnt_conv_18(1).
             t488 = zlnt_conv_18+1(1).
@@ -13757,7 +13757,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t492 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t490 IS INITIAL THEN ` ` ELSE t490 ) ).
+              t492 = zlnt_builtin_code_47a4f748f766->convert( |{ t490 WIDTH = 1 }| ).
               t493 = t492(1).
               t494 = t492+1(1).
               t488 = t493.
@@ -14257,7 +14257,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t76.
           DATA(t77) = VALUE i( ).
           t73 = t72.
-          DATA(zlnt_conv_19) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t73 IS INITIAL THEN ` ` ELSE t73 ) ).
+          DATA(zlnt_conv_19) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t73 WIDTH = 1 }| ).
           DATA zlnt_conv_19_low TYPE i.
           zlnt_conv_19_low = zlnt_conv_19(1).
           t70 = zlnt_conv_19+1(1).
@@ -14266,7 +14266,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t74 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t72 IS INITIAL THEN ` ` ELSE t72 ) ).
+            t74 = zlnt_builtin_code_47a4f748f766->convert( |{ t72 WIDTH = 1 }| ).
             t75 = t74(1).
             t76 = t74+1(1).
             t70 = t75.
@@ -14804,7 +14804,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t288.
             DATA(t289) = VALUE i( ).
             t285 = t284.
-            DATA(zlnt_conv_20) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t285 IS INITIAL THEN ` ` ELSE t285 ) ).
+            DATA(zlnt_conv_20) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t285 WIDTH = 1 }| ).
             DATA zlnt_conv_20_low TYPE i.
             zlnt_conv_20_low = zlnt_conv_20(1).
             t282 = zlnt_conv_20+1(1).
@@ -14813,7 +14813,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t286 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t284 IS INITIAL THEN ` ` ELSE t284 ) ).
+              t286 = zlnt_builtin_code_47a4f748f766->convert( |{ t284 WIDTH = 1 }| ).
               t287 = t286(1).
               t288 = t286+1(1).
               t282 = t287.
@@ -15397,7 +15397,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t110.
             DATA(t111) = VALUE i( ).
             t107 = t106.
-            DATA(zlnt_conv_21) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t107 IS INITIAL THEN ` ` ELSE t107 ) ).
+            DATA(zlnt_conv_21) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t107 WIDTH = 1 }| ).
             DATA zlnt_conv_21_low TYPE i.
             zlnt_conv_21_low = zlnt_conv_21(1).
             t104 = zlnt_conv_21+1(1).
@@ -15406,7 +15406,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t108 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t106 IS INITIAL THEN ` ` ELSE t106 ) ).
+              t108 = zlnt_builtin_code_47a4f748f766->convert( |{ t106 WIDTH = 1 }| ).
               t109 = t108(1).
               t110 = t108+1(1).
               t104 = t109.
@@ -15978,7 +15978,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t338.
             DATA(t339) = VALUE i( ).
             t335 = t334.
-            DATA(zlnt_conv_22) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t335 IS INITIAL THEN ` ` ELSE t335 ) ).
+            DATA(zlnt_conv_22) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t335 WIDTH = 1 }| ).
             DATA zlnt_conv_22_low TYPE i.
             zlnt_conv_22_low = zlnt_conv_22(1).
             t332 = zlnt_conv_22+1(1).
@@ -15987,7 +15987,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t336 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t334 IS INITIAL THEN ` ` ELSE t334 ) ).
+              t336 = zlnt_builtin_code_47a4f748f766->convert( |{ t334 WIDTH = 1 }| ).
               t337 = t336(1).
               t338 = t336+1(1).
               t332 = t337.
@@ -16846,7 +16846,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t76.
             DATA(t77) = VALUE i( ).
             t73 = t72.
-            DATA(zlnt_conv_23) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t73 IS INITIAL THEN ` ` ELSE t73 ) ).
+            DATA(zlnt_conv_23) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t73 WIDTH = 1 }| ).
             DATA zlnt_conv_23_low TYPE i.
             zlnt_conv_23_low = zlnt_conv_23(1).
             t70 = zlnt_conv_23+1(1).
@@ -16855,7 +16855,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t74 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t72 IS INITIAL THEN ` ` ELSE t72 ) ).
+              t74 = zlnt_builtin_code_47a4f748f766->convert( |{ t72 WIDTH = 1 }| ).
               t75 = t74(1).
               t76 = t74+1(1).
               t70 = t75.
@@ -16883,7 +16883,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             CLEAR t84.
             DATA(t85) = VALUE i( ).
             t81 = t80.
-            DATA(zlnt_conv_24) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t81 IS INITIAL THEN ` ` ELSE t81 ) ).
+            DATA(zlnt_conv_24) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t81 WIDTH = 1 }| ).
             DATA zlnt_conv_24_low TYPE i.
             zlnt_conv_24_low = zlnt_conv_24(1).
             t78 = zlnt_conv_24+1(1).
@@ -16892,7 +16892,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                 zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
               ENDIF.
-              t82 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t80 IS INITIAL THEN ` ` ELSE t80 ) ).
+              t82 = zlnt_builtin_code_47a4f748f766->convert( |{ t80 WIDTH = 1 }| ).
               t83 = t82(1).
               t84 = t82+1(1).
               t78 = t83.
@@ -16972,7 +16972,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               CLEAR t109.
               DATA(t110) = VALUE i( ).
               t106 = t105.
-              DATA(zlnt_conv_25) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t106 IS INITIAL THEN ` ` ELSE t106 ) ).
+              DATA(zlnt_conv_25) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t106 WIDTH = 1 }| ).
               DATA zlnt_conv_25_low TYPE i.
               zlnt_conv_25_low = zlnt_conv_25(1).
               t103 = zlnt_conv_25+1(1).
@@ -16981,7 +16981,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
                 IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                   zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                t107 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t105 IS INITIAL THEN ` ` ELSE t105 ) ).
+                t107 = zlnt_builtin_code_47a4f748f766->convert( |{ t105 WIDTH = 1 }| ).
                 t108 = t107(1).
                 t109 = t107+1(1).
                 t103 = t108.
@@ -17009,7 +17009,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
               CLEAR t117.
               DATA(t118) = VALUE i( ).
               t114 = t113.
-              DATA(zlnt_conv_26) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t114 IS INITIAL THEN ` ` ELSE t114 ) ).
+              DATA(zlnt_conv_26) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t114 WIDTH = 1 }| ).
               DATA zlnt_conv_26_low TYPE i.
               zlnt_conv_26_low = zlnt_conv_26(1).
               t111 = zlnt_conv_26+1(1).
@@ -17018,7 +17018,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
                 IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
                   zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                 ENDIF.
-                t115 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t113 IS INITIAL THEN ` ` ELSE t113 ) ).
+                t115 = zlnt_builtin_code_47a4f748f766->convert( |{ t113 WIDTH = 1 }| ).
                 t116 = t115(1).
                 t117 = t115+1(1).
                 t111 = t116.
@@ -17432,7 +17432,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t269.
           DATA(t270) = VALUE i( ).
           t266 = t265.
-          DATA(zlnt_conv_27) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t266 IS INITIAL THEN ` ` ELSE t266 ) ).
+          DATA(zlnt_conv_27) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t266 WIDTH = 1 }| ).
           DATA zlnt_conv_27_low TYPE i.
           zlnt_conv_27_low = zlnt_conv_27(1).
           t263 = zlnt_conv_27+1(1).
@@ -17441,7 +17441,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t267 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t265 IS INITIAL THEN ` ` ELSE t265 ) ).
+            t267 = zlnt_builtin_code_47a4f748f766->convert( |{ t265 WIDTH = 1 }| ).
             t268 = t267(1).
             t269 = t267+1(1).
             t263 = t268.
@@ -17469,7 +17469,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t277.
           DATA(t278) = VALUE i( ).
           t274 = t273.
-          DATA(zlnt_conv_28) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t274 IS INITIAL THEN ` ` ELSE t274 ) ).
+          DATA(zlnt_conv_28) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t274 WIDTH = 1 }| ).
           DATA zlnt_conv_28_low TYPE i.
           zlnt_conv_28_low = zlnt_conv_28(1).
           t271 = zlnt_conv_28+1(1).
@@ -17478,7 +17478,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t275 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t273 IS INITIAL THEN ` ` ELSE t273 ) ).
+            t275 = zlnt_builtin_code_47a4f748f766->convert( |{ t273 WIDTH = 1 }| ).
             t276 = t275(1).
             t277 = t275+1(1).
             t271 = t276.
@@ -17770,7 +17770,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t382.
           DATA(t383) = VALUE i( ).
           t379 = t378.
-          DATA(zlnt_conv_29) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t379 IS INITIAL THEN ` ` ELSE t379 ) ).
+          DATA(zlnt_conv_29) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t379 WIDTH = 1 }| ).
           DATA zlnt_conv_29_low TYPE i.
           zlnt_conv_29_low = zlnt_conv_29(1).
           t376 = zlnt_conv_29+1(1).
@@ -17779,7 +17779,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t380 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t378 IS INITIAL THEN ` ` ELSE t378 ) ).
+            t380 = zlnt_builtin_code_47a4f748f766->convert( |{ t378 WIDTH = 1 }| ).
             t381 = t380(1).
             t382 = t380+1(1).
             t376 = t381.
@@ -17807,7 +17807,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
           CLEAR t390.
           DATA(t391) = VALUE i( ).
           t387 = t386.
-          DATA(zlnt_conv_30) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t387 IS INITIAL THEN ` ` ELSE t387 ) ).
+          DATA(zlnt_conv_30) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t387 WIDTH = 1 }| ).
           DATA zlnt_conv_30_low TYPE i.
           zlnt_conv_30_low = zlnt_conv_30(1).
           t384 = zlnt_conv_30+1(1).
@@ -17816,7 +17816,7 @@ CLASS zcl_lnt_xml_consistency IMPLEMENTATION.
             IF zlnt_builtin_code_47a4f748f766 IS NOT BOUND.
               zlnt_builtin_code_47a4f748f766 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t388 = zlnt_builtin_code_47a4f748f766->convert( COND string( WHEN t386 IS INITIAL THEN ` ` ELSE t386 ) ).
+            t388 = zlnt_builtin_code_47a4f748f766->convert( |{ t386 WIDTH = 1 }| ).
             t389 = t388(1).
             t390 = t388+1(1).
             t384 = t389.

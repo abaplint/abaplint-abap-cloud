@@ -469,7 +469,7 @@ CLASS zcl_lnt_catch_and_raise IMPLEMENTATION.
         CLEAR t114.
         DATA(t115) = VALUE i( ).
         t111 = t110.
-        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t111 IS INITIAL THEN ` ` ELSE t111 ) ).
+        DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t111 WIDTH = 1 }| ).
         DATA zlnt_conv_1_low TYPE i.
         zlnt_conv_1_low = zlnt_conv_1(1).
         t108 = zlnt_conv_1+1(1).
@@ -478,7 +478,7 @@ CLASS zcl_lnt_catch_and_raise IMPLEMENTATION.
           IF zlnt_builtin_code_be380fe754b8 IS NOT BOUND.
             zlnt_builtin_code_be380fe754b8 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t112 = zlnt_builtin_code_be380fe754b8->convert( COND string( WHEN t110 IS INITIAL THEN ` ` ELSE t110 ) ).
+          t112 = zlnt_builtin_code_be380fe754b8->convert( |{ t110 WIDTH = 1 }| ).
           t113 = t112(1).
           t114 = t112+1(1).
           t108 = t113.
@@ -506,7 +506,7 @@ CLASS zcl_lnt_catch_and_raise IMPLEMENTATION.
         CLEAR t122.
         DATA(t123) = VALUE i( ).
         t119 = t118.
-        DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t119 IS INITIAL THEN ` ` ELSE t119 ) ).
+        DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t119 WIDTH = 1 }| ).
         DATA zlnt_conv_2_low TYPE i.
         zlnt_conv_2_low = zlnt_conv_2(1).
         t116 = zlnt_conv_2+1(1).
@@ -515,7 +515,7 @@ CLASS zcl_lnt_catch_and_raise IMPLEMENTATION.
           IF zlnt_builtin_code_be380fe754b8 IS NOT BOUND.
             zlnt_builtin_code_be380fe754b8 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t120 = zlnt_builtin_code_be380fe754b8->convert( COND string( WHEN t118 IS INITIAL THEN ` ` ELSE t118 ) ).
+          t120 = zlnt_builtin_code_be380fe754b8->convert( |{ t118 WIDTH = 1 }| ).
           t121 = t120(1).
           t122 = t120+1(1).
           t116 = t121.

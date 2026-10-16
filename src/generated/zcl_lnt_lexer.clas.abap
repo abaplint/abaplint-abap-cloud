@@ -125,7 +125,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
       CLEAR t23.
       DATA(t24) = VALUE i( ).
       t20 = t19.
-      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t20 IS INITIAL THEN ` ` ELSE t20 ) ).
+      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t20 WIDTH = 1 }| ).
       DATA zlnt_conv_1_low TYPE i.
       zlnt_conv_1_low = zlnt_conv_1(1).
       t17 = zlnt_conv_1+1(1).
@@ -134,7 +134,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
         IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
           zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        t21 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t19 IS INITIAL THEN ` ` ELSE t19 ) ).
+        t21 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t19 WIDTH = 1 }| ).
         t22 = t21(1).
         t23 = t21+1(1).
         t17 = t22.
@@ -162,7 +162,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
       CLEAR t31.
       DATA(t32) = VALUE i( ).
       t28 = t27.
-      DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t28 IS INITIAL THEN ` ` ELSE t28 ) ).
+      DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t28 WIDTH = 1 }| ).
       DATA zlnt_conv_2_low TYPE i.
       zlnt_conv_2_low = zlnt_conv_2(1).
       t25 = zlnt_conv_2+1(1).
@@ -171,7 +171,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
         IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
           zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        t29 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t27 IS INITIAL THEN ` ` ELSE t27 ) ).
+        t29 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t27 WIDTH = 1 }| ).
         t30 = t29(1).
         t31 = t29+1(1).
         t25 = t30.
@@ -313,7 +313,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
           CLEAR t100.
           DATA(t101) = VALUE i( ).
           t97 = t96.
-          DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t97 IS INITIAL THEN ` ` ELSE t97 ) ).
+          DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t97 WIDTH = 1 }| ).
           DATA zlnt_conv_3_low TYPE i.
           zlnt_conv_3_low = zlnt_conv_3(1).
           t90 = zlnt_conv_3+1(1).
@@ -322,7 +322,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
             IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
               zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t98 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t96 IS INITIAL THEN ` ` ELSE t96 ) ).
+            t98 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t96 WIDTH = 1 }| ).
             t99 = t98(1).
             t100 = t98+1(1).
             t90 = t99.
@@ -431,7 +431,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
         CLEAR t153.
         DATA(t154) = VALUE i( ).
         t150 = t149.
-        DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t150 IS INITIAL THEN ` ` ELSE t150 ) ).
+        DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t150 WIDTH = 1 }| ).
         DATA zlnt_conv_4_low TYPE i.
         zlnt_conv_4_low = zlnt_conv_4(1).
         t143 = zlnt_conv_4+1(1).
@@ -440,7 +440,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
           IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
             zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t151 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t149 IS INITIAL THEN ` ` ELSE t149 ) ).
+          t151 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t149 WIDTH = 1 }| ).
           t152 = t151(1).
           t153 = t151+1(1).
           t143 = t152.
@@ -1469,7 +1469,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
           CLEAR t652.
           DATA(t653) = VALUE i( ).
           t649 = t648.
-          DATA(zlnt_conv_5) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t649 IS INITIAL THEN ` ` ELSE t649 ) ).
+          DATA(zlnt_conv_5) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t649 WIDTH = 1 }| ).
           DATA zlnt_conv_5_low TYPE i.
           zlnt_conv_5_low = zlnt_conv_5(1).
           t642 = zlnt_conv_5+1(1).
@@ -1478,7 +1478,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
             IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
               zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t650 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t648 IS INITIAL THEN ` ` ELSE t648 ) ).
+            t650 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t648 WIDTH = 1 }| ).
             t651 = t650(1).
             t652 = t650+1(1).
             t642 = t651.
@@ -1594,7 +1594,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
           CLEAR t706.
           DATA(t707) = VALUE i( ).
           t703 = t702.
-          DATA(zlnt_conv_6) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t703 IS INITIAL THEN ` ` ELSE t703 ) ).
+          DATA(zlnt_conv_6) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t703 WIDTH = 1 }| ).
           DATA zlnt_conv_6_low TYPE i.
           zlnt_conv_6_low = zlnt_conv_6(1).
           t696 = zlnt_conv_6+1(1).
@@ -1603,7 +1603,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
             IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
               zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t704 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t702 IS INITIAL THEN ` ` ELSE t702 ) ).
+            t704 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t702 WIDTH = 1 }| ).
             t705 = t704(1).
             t706 = t704+1(1).
             t696 = t705.
@@ -1800,7 +1800,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
           CLEAR t50.
           DATA(t51) = VALUE i( ).
           t47 = t46.
-          DATA(zlnt_conv_7) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t47 IS INITIAL THEN ` ` ELSE t47 ) ).
+          DATA(zlnt_conv_7) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t47 WIDTH = 1 }| ).
           DATA zlnt_conv_7_low TYPE i.
           zlnt_conv_7_low = zlnt_conv_7(1).
           t40 = zlnt_conv_7+1(1).
@@ -1809,7 +1809,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
             IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
               zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t48 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t46 IS INITIAL THEN ` ` ELSE t46 ) ).
+            t48 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t46 WIDTH = 1 }| ).
             t49 = t48(1).
             t50 = t48+1(1).
             t40 = t49.
@@ -1942,7 +1942,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
         CLEAR t116.
         DATA(t117) = VALUE i( ).
         t113 = t112.
-        DATA(zlnt_conv_8) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t113 IS INITIAL THEN ` ` ELSE t113 ) ).
+        DATA(zlnt_conv_8) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t113 WIDTH = 1 }| ).
         DATA zlnt_conv_8_low TYPE i.
         zlnt_conv_8_low = zlnt_conv_8(1).
         t106 = zlnt_conv_8+1(1).
@@ -1951,7 +1951,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
           IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
             zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t114 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t112 IS INITIAL THEN ` ` ELSE t112 ) ).
+          t114 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t112 WIDTH = 1 }| ).
           t115 = t114(1).
           t116 = t114+1(1).
           t106 = t115.
@@ -2022,7 +2022,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
         CLEAR t151.
         DATA(t152) = VALUE i( ).
         t148 = t147.
-        DATA(zlnt_conv_9) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t148 IS INITIAL THEN ` ` ELSE t148 ) ).
+        DATA(zlnt_conv_9) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t148 WIDTH = 1 }| ).
         DATA zlnt_conv_9_low TYPE i.
         zlnt_conv_9_low = zlnt_conv_9(1).
         t141 = zlnt_conv_9+1(1).
@@ -2031,7 +2031,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
           IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
             zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
           ENDIF.
-          t149 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t147 IS INITIAL THEN ` ` ELSE t147 ) ).
+          t149 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t147 WIDTH = 1 }| ).
           t150 = t149(1).
           t151 = t149+1(1).
           t141 = t150.
@@ -2217,7 +2217,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                         CLEAR t229.
                         DATA(t230) = VALUE i( ).
                         t226 = t225.
-                        DATA(zlnt_conv_10) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t226 IS INITIAL THEN ` ` ELSE t226 ) ).
+                        DATA(zlnt_conv_10) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t226 WIDTH = 1 }| ).
                         DATA zlnt_conv_10_low TYPE i.
                         zlnt_conv_10_low = zlnt_conv_10(1).
                         t223 = zlnt_conv_10+1(1).
@@ -2226,7 +2226,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                           IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
                             zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                           ENDIF.
-                          t227 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t225 IS INITIAL THEN ` ` ELSE t225 ) ).
+                          t227 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t225 WIDTH = 1 }| ).
                           t228 = t227(1).
                           t229 = t227+1(1).
                           t223 = t228.
@@ -2254,7 +2254,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                         CLEAR t237.
                         DATA(t238) = VALUE i( ).
                         t234 = t233.
-                        DATA(zlnt_conv_11) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t234 IS INITIAL THEN ` ` ELSE t234 ) ).
+                        DATA(zlnt_conv_11) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t234 WIDTH = 1 }| ).
                         DATA zlnt_conv_11_low TYPE i.
                         zlnt_conv_11_low = zlnt_conv_11(1).
                         t231 = zlnt_conv_11+1(1).
@@ -2263,7 +2263,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                           IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
                             zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                           ENDIF.
-                          t235 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t233 IS INITIAL THEN ` ` ELSE t233 ) ).
+                          t235 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t233 WIDTH = 1 }| ).
                           t236 = t235(1).
                           t237 = t235+1(1).
                           t231 = t236.
@@ -2379,7 +2379,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                             CLEAR t288.
                             DATA(t289) = VALUE i( ).
                             t285 = t284.
-                            DATA(zlnt_conv_12) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t285 IS INITIAL THEN ` ` ELSE t285 ) ).
+                            DATA(zlnt_conv_12) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t285 WIDTH = 1 }| ).
                             DATA zlnt_conv_12_low TYPE i.
                             zlnt_conv_12_low = zlnt_conv_12(1).
                             t279 = zlnt_conv_12+1(1).
@@ -2388,7 +2388,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                               IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
                                 zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                               ENDIF.
-                              t286 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t284 IS INITIAL THEN ` ` ELSE t284 ) ).
+                              t286 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t284 WIDTH = 1 }| ).
                               t287 = t286(1).
                               t288 = t286+1(1).
                               t279 = t287.
@@ -2451,7 +2451,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                               CLEAR t318.
                               DATA(t319) = VALUE i( ).
                               t315 = t314.
-                              DATA(zlnt_conv_13) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t315 IS INITIAL THEN ` ` ELSE t315 ) ).
+                              DATA(zlnt_conv_13) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t315 WIDTH = 1 }| ).
                               DATA zlnt_conv_13_low TYPE i.
                               zlnt_conv_13_low = zlnt_conv_13(1).
                               t309 = zlnt_conv_13+1(1).
@@ -2460,7 +2460,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                                 IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
                                   zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                                 ENDIF.
-                                t316 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t314 IS INITIAL THEN ` ` ELSE t314 ) ).
+                                t316 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t314 WIDTH = 1 }| ).
                                 t317 = t316(1).
                                 t318 = t316+1(1).
                                 t309 = t317.
@@ -2832,7 +2832,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                 CLEAR t482.
                 DATA(t483) = VALUE i( ).
                 t479 = t478.
-                DATA(zlnt_conv_14) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t479 IS INITIAL THEN ` ` ELSE t479 ) ).
+                DATA(zlnt_conv_14) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t479 WIDTH = 1 }| ).
                 DATA zlnt_conv_14_low TYPE i.
                 zlnt_conv_14_low = zlnt_conv_14(1).
                 t473 = zlnt_conv_14+1(1).
@@ -2841,7 +2841,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                   IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
                     zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                   ENDIF.
-                  t480 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t478 IS INITIAL THEN ` ` ELSE t478 ) ).
+                  t480 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t478 WIDTH = 1 }| ).
                   t481 = t480(1).
                   t482 = t480+1(1).
                   t473 = t481.
@@ -2905,7 +2905,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                   CLEAR t513.
                   DATA(t514) = VALUE i( ).
                   t510 = t509.
-                  DATA(zlnt_conv_15) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t510 IS INITIAL THEN ` ` ELSE t510 ) ).
+                  DATA(zlnt_conv_15) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t510 WIDTH = 1 }| ).
                   DATA zlnt_conv_15_low TYPE i.
                   zlnt_conv_15_low = zlnt_conv_15(1).
                   t504 = zlnt_conv_15+1(1).
@@ -2914,7 +2914,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                     IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
                       zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                     ENDIF.
-                    t511 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t509 IS INITIAL THEN ` ` ELSE t509 ) ).
+                    t511 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t509 WIDTH = 1 }| ).
                     t512 = t511(1).
                     t513 = t511+1(1).
                     t504 = t512.
@@ -2977,7 +2977,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                     CLEAR t543.
                     DATA(t544) = VALUE i( ).
                     t540 = t539.
-                    DATA(zlnt_conv_16) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t540 IS INITIAL THEN ` ` ELSE t540 ) ).
+                    DATA(zlnt_conv_16) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t540 WIDTH = 1 }| ).
                     DATA zlnt_conv_16_low TYPE i.
                     zlnt_conv_16_low = zlnt_conv_16(1).
                     t534 = zlnt_conv_16+1(1).
@@ -2986,7 +2986,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
                       IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
                         zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
                       ENDIF.
-                      t541 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t539 IS INITIAL THEN ` ` ELSE t539 ) ).
+                      t541 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t539 WIDTH = 1 }| ).
                       t542 = t541(1).
                       t543 = t541+1(1).
                       t534 = t542.
@@ -3290,7 +3290,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
           CLEAR t673.
           DATA(t674) = VALUE i( ).
           t670 = t669.
-          DATA(zlnt_conv_17) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t670 IS INITIAL THEN ` ` ELSE t670 ) ).
+          DATA(zlnt_conv_17) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t670 WIDTH = 1 }| ).
           DATA zlnt_conv_17_low TYPE i.
           zlnt_conv_17_low = zlnt_conv_17(1).
           t663 = zlnt_conv_17+1(1).
@@ -3299,7 +3299,7 @@ CLASS zcl_lnt_lexer IMPLEMENTATION.
             IF zlnt_builtin_code_3bfe63ca77b3 IS NOT BOUND.
               zlnt_builtin_code_3bfe63ca77b3 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t671 = zlnt_builtin_code_3bfe63ca77b3->convert( COND string( WHEN t669 IS INITIAL THEN ` ` ELSE t669 ) ).
+            t671 = zlnt_builtin_code_3bfe63ca77b3->convert( |{ t669 WIDTH = 1 }| ).
             t672 = t671(1).
             t673 = t671+1(1).
             t663 = t672.

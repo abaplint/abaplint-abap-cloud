@@ -39190,14 +39190,14 @@ CLASS zlnt_runtime_conf_5b63794eccef IMPLEMENTATION.
     DATA highint TYPE i.
     DATA unit TYPE c LENGTH 1.
     unit = p0.
-    DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN unit IS INITIAL THEN ` ` ELSE unit ) ).
+    DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ unit WIDTH = 1 }| ).
     DATA zlnt_conv_1_low TYPE i.
     zlnt_conv_1_low = zlnt_conv_1(1).
     result = zlnt_conv_1+1(1).
     result = result * 256 + zlnt_conv_1_low.
     IF result >= 255.
       converter = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
-      bytes = converter->convert( COND string( WHEN unit IS INITIAL THEN ` ` ELSE unit ) ).
+      bytes = converter->convert( |{ unit WIDTH = 1 }| ).
       low = bytes+0(1).
       high = bytes+1(1).
       result = low.

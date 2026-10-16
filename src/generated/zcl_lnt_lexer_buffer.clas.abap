@@ -160,7 +160,7 @@ CLASS zcl_lnt_lexer_buffer IMPLEMENTATION.
       CLEAR t19.
       DATA(t20) = VALUE i( ).
       t16 = t15.
-      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t16 IS INITIAL THEN ` ` ELSE t16 ) ).
+      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t16 WIDTH = 1 }| ).
       DATA zlnt_conv_1_low TYPE i.
       zlnt_conv_1_low = zlnt_conv_1(1).
       t11 = zlnt_conv_1+1(1).
@@ -169,7 +169,7 @@ CLASS zcl_lnt_lexer_buffer IMPLEMENTATION.
         IF zlnt_builtin_code_c83088ceb759 IS NOT BOUND.
           zlnt_builtin_code_c83088ceb759 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        t17 = zlnt_builtin_code_c83088ceb759->convert( COND string( WHEN t15 IS INITIAL THEN ` ` ELSE t15 ) ).
+        t17 = zlnt_builtin_code_c83088ceb759->convert( |{ t15 WIDTH = 1 }| ).
         t18 = t17(1).
         t19 = t17+1(1).
         t11 = t18.

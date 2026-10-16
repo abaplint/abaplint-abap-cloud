@@ -8,14 +8,13 @@ import {fileURLToPath} from "node:url";
 //   TYPE REF TO cl_abap_conv_out_ce / _in_ce             -> TYPE REF TO if_abap_conv_out / if_abap_conv_in
 //   cl_abap_conv_out_ce=>create( encoding = '4103' )     -> cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )
 //   cl_abap_conv_in_ce=>create( encoding = '4103' )      -> cl_abap_conv_codepage=>create_in( codepage = `UTF-16LE` )
-//   conv->convert( EXPORTING data = a IMPORTING buffer = b ).  -> b = conv->convert( COND string( ... a ) ).
+//   conv->convert( EXPORTING data = a IMPORTING buffer = b ).  -> b = conv->convert( |{ a WIDTH = 1 }| ).
 //   conv->convert( EXPORTING input = a IMPORTING data = b ).   -> b = conv->convert( a ).
 //   cl_abap_conv_in_ce=>uccpi( 8233 ), =>uccp( '2029' )  -> decodes `2029` as UTF-16BE
 //   x = cl_abap_conv_in_ce=>uccpi( code ).               -> the same, via a helper of type x LENGTH 2
 //   x = cl_abap_conv_out_ce=>uccpi( ch ).                -> encodes ch as UTF-16LE and adds up the two bytes
 //
-// "COND string( WHEN a IS INITIAL THEN ` ` ELSE a )" keeps a blank in a c field, which a conversion to string
-// removes. "|{ a WIDTH = 1 }|" would too, but the transpiler runtime then also removes a newline or tab.
+// "|{ a WIDTH = 1 }|" keeps a blank in a c field, which a conversion to string removes.
 // Code points outside the basic multilingual plane were not supported by uccpi either.
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -24,7 +23,7 @@ const classesFolder = path.join(packageRoot, "src", "generated");
 const operand = "[A-Za-z_][A-Za-z0-9_]*";
 
 function keepBlank(name) {
-  return `COND string( WHEN ${name} IS INITIAL THEN \` \` ELSE ${name} )`;
+  return `|{ ${name} WIDTH = 1 }|`;
 }
 
 if (!existsSync(classesFolder)) {

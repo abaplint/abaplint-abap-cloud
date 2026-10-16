@@ -504,7 +504,7 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
           CLEAR t125.
           DATA(t126) = VALUE i( ).
           t122 = t121.
-          DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t122 IS INITIAL THEN ` ` ELSE t122 ) ).
+          DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t122 WIDTH = 1 }| ).
           DATA zlnt_conv_1_low TYPE i.
           zlnt_conv_1_low = zlnt_conv_1(1).
           t119 = zlnt_conv_1+1(1).
@@ -513,7 +513,7 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
             IF zlnt_builtin_code_7ed9498cda68 IS NOT BOUND.
               zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t123 = zlnt_builtin_code_7ed9498cda68->convert( COND string( WHEN t121 IS INITIAL THEN ` ` ELSE t121 ) ).
+            t123 = zlnt_builtin_code_7ed9498cda68->convert( |{ t121 WIDTH = 1 }| ).
             t124 = t123(1).
             t125 = t123+1(1).
             t119 = t124.
@@ -541,7 +541,7 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
           CLEAR t133.
           DATA(t134) = VALUE i( ).
           t130 = t129.
-          DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t130 IS INITIAL THEN ` ` ELSE t130 ) ).
+          DATA(zlnt_conv_2) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t130 WIDTH = 1 }| ).
           DATA zlnt_conv_2_low TYPE i.
           zlnt_conv_2_low = zlnt_conv_2(1).
           t127 = zlnt_conv_2+1(1).
@@ -550,7 +550,7 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
             IF zlnt_builtin_code_7ed9498cda68 IS NOT BOUND.
               zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
             ENDIF.
-            t131 = zlnt_builtin_code_7ed9498cda68->convert( COND string( WHEN t129 IS INITIAL THEN ` ` ELSE t129 ) ).
+            t131 = zlnt_builtin_code_7ed9498cda68->convert( |{ t129 WIDTH = 1 }| ).
             t132 = t131(1).
             t133 = t131+1(1).
             t127 = t132.
@@ -1263,7 +1263,7 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
       CLEAR t28.
       DATA(t29) = VALUE i( ).
       t25 = t24.
-      DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t25 IS INITIAL THEN ` ` ELSE t25 ) ).
+      DATA(zlnt_conv_3) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t25 WIDTH = 1 }| ).
       DATA zlnt_conv_3_low TYPE i.
       zlnt_conv_3_low = zlnt_conv_3(1).
       t22 = zlnt_conv_3+1(1).
@@ -1272,7 +1272,7 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
         IF zlnt_builtin_code_7ed9498cda68 IS NOT BOUND.
           zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        t26 = zlnt_builtin_code_7ed9498cda68->convert( COND string( WHEN t24 IS INITIAL THEN ` ` ELSE t24 ) ).
+        t26 = zlnt_builtin_code_7ed9498cda68->convert( |{ t24 WIDTH = 1 }| ).
         t27 = t26(1).
         t28 = t26+1(1).
         t22 = t27.
@@ -1300,7 +1300,7 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
       CLEAR t36.
       DATA(t37) = VALUE i( ).
       t33 = t32.
-      DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN t33 IS INITIAL THEN ` ` ELSE t33 ) ).
+      DATA(zlnt_conv_4) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ t33 WIDTH = 1 }| ).
       DATA zlnt_conv_4_low TYPE i.
       zlnt_conv_4_low = zlnt_conv_4(1).
       t30 = zlnt_conv_4+1(1).
@@ -1309,7 +1309,7 @@ CLASS zcl_lnt_cds_field_order IMPLEMENTATION.
         IF zlnt_builtin_code_7ed9498cda68 IS NOT BOUND.
           zlnt_builtin_code_7ed9498cda68 = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` ).
         ENDIF.
-        t34 = zlnt_builtin_code_7ed9498cda68->convert( COND string( WHEN t32 IS INITIAL THEN ` ` ELSE t32 ) ).
+        t34 = zlnt_builtin_code_7ed9498cda68->convert( |{ t32 WIDTH = 1 }| ).
         t35 = t34(1).
         t36 = t34+1(1).
         t30 = t35.

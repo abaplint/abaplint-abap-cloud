@@ -18,11 +18,6 @@ Status: `open`, `workaround` (with a pointer to the workaround), `fixed` (with a
 - **Impact:** The checks can't be activated on an ABAP Cloud system until `GET RUN TIME` is replaced.
 - **Status:** open, best fixed in ABAPiti. The unreleased `cl_abap_conv_out_ce` and `cl_abap_conv_in_ce` (about 600 uses) are worked around by [scripts/replace-conv.mjs](scripts/replace-conv.mjs), which runs after ABAPiti and rewrites them to `cl_abap_conv_codepage`.
 
-### The transpiler runtime removes trailing whitespace for WIDTH
-- **Where:** `@abaplint/runtime`, `template_formatting.js`
-- **What:** `|{ ch WIDTH = 1 }|` uses JavaScript `trimEnd()`, which removes trailing newlines and tabs as well as blanks, for strings too. ABAP only removes trailing blanks, and only of c fields. A newline became a blank, the lexer saw one long line, and a unit test failed. Tested in the transpiler: a newline or tab in `c LENGTH 1` comes back as `' '`. `` `a` && newline `` as a string comes back as `'a'`, and `` `a ` `` as a string also comes back as `'a'`. Without `WIDTH`, all of these are correct.
-- **Status:** workaround: `replace-conv.mjs` uses `COND string( WHEN ch IS INITIAL THEN ` ` ELSE ch )`. Fixed in `@abaplint/runtime` 2.14.8, which no longer calls `trimEnd()`. This repo still installs 2.14.7; upgrade, then drop the workaround and this entry.
-
 ### Code point conversions are untested on a real system
 - **Where:** [scripts/replace-conv.mjs](scripts/replace-conv.mjs)
 - **What:** The rewrite uses `cl_abap_conv_codepage` with `UTF-16LE` for the converters (as before, encoding 4103) and `UTF-16BE` to turn a code point into a character. open-abap-core supports `UTF-16BE` only in `create_in`, which is why `create_out` uses `UTF-16LE` and adds up the two bytes. Not verified on SAP: whether `UTF-16BE` decoding keeps U+FEFF (`uccpi( 65279 )`, 37 uses) or drops it as a byte order mark.

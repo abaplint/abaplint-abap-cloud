@@ -1518,7 +1518,7 @@ CLASS zlnt_runtime_rege_8d1cc1058680 IMPLEMENTATION.
     DATA cp TYPE i.
     WHILE i < strlen( p0 ).
       c = p0+i(1).
-      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( COND string( WHEN c IS INITIAL THEN ` ` ELSE c ) ).
+      DATA(zlnt_conv_1) = cl_abap_conv_codepage=>create_out( codepage = `UTF-16LE` )->convert( |{ c WIDTH = 1 }| ).
       DATA zlnt_conv_1_low TYPE i.
       zlnt_conv_1_low = zlnt_conv_1(1).
       cp = zlnt_conv_1+1(1).
